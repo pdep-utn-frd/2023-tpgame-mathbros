@@ -15,6 +15,11 @@ object scene {
 	var property image = "assets/image-0.jpg"
 }
 
+object text {
+	var property position = game.at(0,9)
+	method text()= "Hola!"
+}
+
 object tree {
 	var currentNode
 	var currentScene = scene
@@ -45,6 +50,7 @@ object tree {
   		game.cellSize(50)
   		game.title("Quiz comun y corriente")
 		game.addVisual(currentScene)
+		game.addVisual(text)
 		self.buildTree()
 		self.act()
 		
