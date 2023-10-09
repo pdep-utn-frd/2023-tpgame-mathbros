@@ -5,7 +5,6 @@ lista = [
     ['¿Cuál es el elemento neutro de la multiplicación de los números complejos?', '1+i', '1', 'quiz.jpg'],
     ['¿De cuál de estos teoremas se deduce el Teorema de Rolle?', 'Teorema de Fermat', 'Teorema de Lagrange', 'quiz.jpg'],
     ['¿Cuál de estos métodos es especialmente útil para ajustar una curva a un conjunto de datos observados?', 'Mínimos cuadrados', 'Polinomios de Taylor', 'quiz.jpg'],
-    ['¿Cuál de estos métodos de ordenamiento de vectores es más eficiente?', 'Método de la burbuja', 'Método de incersión', 'quiz.jpg'],
     ['¿Qué teorema matemático se utiliza para facilitar el cálculo de flujo vectorial a través de una superficie cerrada?', 'Teorema de Stonks', 'Teorema de Gauss', 'quiz.jpg'],
     ['Todos los sistemas en el universo tienden al equilibrio ¿Cómo se conoce este fenómeno?', 'Ley de Murphy', 'Principio de entropía', 'quiz.jpg'],
     ['¿Qué instrumento se utiliza en un experimento para verificar la Ley de Boyle-Mariotte?', 'Manómetro', 'No sé, man. Soy de sistemas', 'quiz.jpg'],

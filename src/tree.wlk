@@ -1,112 +1,132 @@
 import wollok.game.*
 
-/** Clase nodo para la sección de aventuras */
-class Node {
-	/** Atributos de la calse: imagen, audio */
-	var property imageID
-	var property audioID = "silence"
+/** Cada nodo es un árbol */
+class Arbol {
+	/** Imagen: pantalla
+		imagenID es un entero i asociada al nombre de la imagen: "imagen-i.mp3" */
+	var property imageID = 0
+	/** Audio: se reproduce cuando aparece la pantalla */
+	var property audio = "silence"
 	
-	var property leftIsCorrect = false
-	
-	/** Nodos hijos */
-	var property leftChild = null
-	var property rightChild = null
+	/** El árbol es binario, es decir, puede tener dos hijos o ninguno (si es hoja) */
+	var property hijos = [/** Left, Right */]
 }
 
-object scene {
+/** La pantalla tiene un atributo posición y una imagen */
+object pantalla {
 	var property position = game.at(0,0)
 	var property image = "assets/imagen-0.png"
 }
 
-object text {
-	var property position = game.at(0,9)
-	var property text = "0"
+/** Cada estado del autómata es un árbol */
+class Estado inherits Arbol {
+	/** Las transiciones son listas con los índices de los estados siguientes */
+	var property transiciones = []
+	/** El audioInput se reproduce cuando el jugador presiona una tecla
+		El primero está asociado al playerInput = 0 (Left)
+		El segundo está asociado al playerInput = 1 (Right) */
+	var property audioInput = ["silence", "silence"]
 }
 
-object tree {
-	var currentNode = currentNode = new Node(imageID=0)
-	const currentScene = scene
-	var score = 0
-	var end_quiz = null
-	var transition = end_quiz
+/** Acá ocurre la magia */
+object juego {
+	/** Variable auxilar que almacena 0 ("Left") o 1 ("Right") dependiendo de la última tecla que presionó el jugador */
+	var property playerInput = 0
+	/** Variable que contiene la cantidad de preguntadas acertadas por el jugador */
+	var property puntaje = 0
+	/** Lista con todos los estados del autómata y los nodos (pantallas)
+		Si un árbol es hijo de otro, debe definirse dentro de los parámetros de su papi o mami */
+	const estados = [
+		/** Acá arranca el quiz */
+		new Estado(imageID = 0, transiciones = [1], audioInput = ["correct-yay", "incorrect-buzzer"]),
+		new Estado(imageID = 1, transiciones = [2], audioInput = ["incorrect-buzzer", "correct-yay"]),
+		new Estado(imageID = 2, transiciones = [3], audioInput = ["incorrect-buzzer", "correct-yay"]),
+		new Estado(imageID = 3, transiciones = [4], audioInput = ["correct-yay", "incorrect-buzzer"]),
+		new Estado(imageID = 4, transiciones = [5], audioInput = ["incorrect-buzzer", "correct-yay"]),
+		new Estado(imageID = 5, transiciones = [6], audioInput = ["incorrect-buzzer", "correct-yay"]),
+		new Estado(imageID = 6, transiciones = [7, 8, 9, 9, 9, 10, 10, 11], audioInput = ["correct-yay", "incorrect-buzzer"]),
+		/** Acá termina el quiz */
+		new Estado(imageID = 7,  audio = 'quiz-0'),
+		new Estado(imageID = 8,  audio = 'quiz-1'),
+		new Estado(imageID = 9,  audio = 'quiz-2'),
+		new Estado(imageID = 10, audio = 'quiz-3'),
+		new Estado(imageID = 11, audio = 'quiz-4' /** , hijos = [ Acá se definen los siguientes nodos ] */)
+	]
+	/** Variable que apunta al estado actual */
+	var property estadoActual = estados.first()
+	/** Variable que apunta al nodo actual. Si el estado cambia, el nodo debe cambiar también */
+	var property nodoActual = estadoActual
 	
-	method selectLeftOption(){
-		if (currentNode.leftIsCorrect()) {
-			game.schedule(0, {(game.sound("assets/right-yay.mp3").play())})
-			score++
-		}
-		else {game.schedule(0, {(game.sound("assets/wrong-buzzer.mp3").play())})}
-		currentNode = currentNode.leftChild()
-		self.act()
+	/** Transiciona al hijo con índice playerInput ("Left" = 0, "Right" = 1) */
+	method transicionArbol(){
+		nodoActual = self.nodoActual().hijos().get(playerInput)
 	}
 	
-	method selectRightOption() {
-		if (currentNode.leftIsCorrect()) {game.schedule(0, {(game.sound("assets/wrong-buzzer.mp3").play())})}
+	/** Función del estado siguiente. Acá muere la programación orientada a objetos
+		Este método lo modificamos para agregar cualquier funcionalidad que no nos permite el árbol */
+	method estadoSiguiente(){
+		/** Si el estado actual es del quiz */
+		if (estados.take(7).contains(estadoActual)) {
+			/** Si el jugador eligió la respuesta correcta, incrementa el puntaje y suena "yay" */
+			if (estadoActual.audioInput().get(playerInput) == "correct-yay") {
+				game.schedule(0, {(game.sound("assets/correct-yay.mp3").play())})
+				puntaje++
+			}
+			/** Si el jugador eligió la respuesta incorrecta, suena "buzzer" */
+			else {
+				game.schedule(0, {(game.sound("assets/incorrect-buzzer.mp3").play())})
+			}
+		}
+		/** Si está en la última pregunta del quiz, la transición depende del puntaje */
+		if (estadoActual == estados.get(6)) {
+			estadoActual = estados.get(estadoActual.transiciones().get(puntaje))
+		}
+		/** Por defecto la transición es al primer elemento de la lista de transiciones */
 		else {
-			game.schedule(0, {(game.sound("assets/right-yay.mp3").play())})
-			score++
+			estadoActual = estados.get(estadoActual.transiciones().first())
 		}
-		currentNode = currentNode.rightChild()
-		self.act()
 	}
 	
-	method buildTree() {
-		/** Nodos de la aventura */
-		
-		/** Nodos del quiz */
-		const node7 = new Node(imageID=7, leftChild=transition, rightChild=transition)
-		const node6 = new Node(imageID=6, leftChild=node7, rightChild=node7)
-		const node5 = new Node(imageID=5, leftChild=node6, rightChild=node6)
-		const node4 = new Node(imageID=4, leftChild=node5, rightChild=node5)
-		const node3 = new Node(imageID=3, leftChild=node4, rightChild=node4, leftIsCorrect = true)
-		const node2 = new Node(imageID=2, leftChild=node3, rightChild=node3)
-		const node1 = new Node(imageID=1, leftChild=node2, rightChild=node2)
-		currentNode = new Node(imageID=0, leftChild=node1, rightChild=node1, leftIsCorrect = true)
-	}
-	
+	/** Método del cambio de pantalla */
 	method act(){
-		self.quiz_result()
-		scene.image("assets/imagen-"+currentNode.imageID().toString()+".png")
-		text.text(score.toString())
-		game.schedule(1000, {(game.sound("assets/"+currentNode.audioID()+".mp3").play())})
+		/** Si el nodo actual no tiene hijos, entonces la transición es al estado siguiente */
+		if (nodoActual.hijos().isEmpty()) {
+			self.estadoSiguiente()
+		}
+		/** Si el nodo actual tiene hijos, entonces la transición es a alguno de ellos */
+		else {
+			self.transicionArbol()
+		}
+		/** Actualiza la pantalla */
+		pantalla.image("assets/imagen-"+estadoActual.imageID().toString()+".png")
+		/** Reproduce el sonido del nuevo nodo */
+		game.schedule(0, {(game.sound("assets/"+estadoActual.audio()+".mp3").play())})
 	}
 	
-	method quiz_result(){
-		/** Asigna un nodo a la transición (transition) en función del resultado (score) */
-		if (score == 0) {
-			end_quiz = new Node(imageID=7,  audioID="cuestionario_0_de_7")
-		}
-		if (score == 1) {
-			end_quiz = new Node(imageID=8,  audioID="cuestionario_1_de_7")
-		}
-		if ((score == 2) or (score == 3) or (score == 4)) {
-			end_quiz = new Node(imageID=9,  audioID="cuestionario_2_de_7")
-		}
-		if ((score == 5) or (score == 6)) {
-			end_quiz = new Node(imageID=10, audioID="cuestionario_5_de_7")
-		}
-		if (score == 7) {
-			end_quiz = new Node(imageID=11, audioID="cuestionario_7_de_7")
-		}
-	}
-	
-	method init(){
+	method init() {
+		/** Ancho de la pantalla (en celdas) */
 		game.width(1024)
+		/** Alto de la pantalla (en celdas) */
   		game.height(768)
+  		/** Tamaño de la celda (en píxeles) */
   		game.cellSize(1)
+  		/** Título de la ventana del juego */
   		game.title("The Big Quiz")
-  		self.buildTree()
-  		self.act()
-		game.addVisual(currentScene)
-		game.addVisual(text)
+  		/** Agrega la imagen de la pantalla */
+  		game.addVisual(pantalla)
 		
+		/** Cuando el jugador presiona "Left" */
 		keyboard.left().onPressDo({
-			self.selectLeftOption()
+			playerInput = 0
+			self.act()
 		})
+		/** Cuando el jugador presiona ""Right */
 		keyboard.right().onPressDo({
-			self.selectRightOption()
+			playerInput = 1
+			self.act()
 		})
 		
+		/** Inicia el juego */
 		game.start()
 	}
 }
