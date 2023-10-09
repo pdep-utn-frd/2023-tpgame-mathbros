@@ -29,7 +29,7 @@ for i, bloque in enumerate(lista):
   fuente_centro = ImageFont.truetype('font.ttf', tamanio_fuente_centro)
 
   # Definir el ancho máximo para el texto del centro
-  ancho_maximo_centro = width - 20
+  ancho_maximo_centro = width - 60
 
   # Función para dividir el texto en líneas que quepan en el ancho máximo
   def dividir_texto(texto, fuente, ancho_max):
@@ -46,7 +46,10 @@ for i, bloque in enumerate(lista):
           lineas.append(linea_actual)
           linea_actual = palabra
       lineas.append(linea_actual)
-      cadena_final += "\n".join(lineas) + "\n\n"
+      if oracion == oraciones[len(oraciones) - 1]:
+        cadena_final += "\n".join(lineas)
+      else:
+        cadena_final += "\n".join(lineas) + "\n\n"
     return cadena_final
 
   # Función que agrega espacios al texto hasta que quepa en el ancho máximo y quede centrado en x
@@ -75,6 +78,9 @@ for i, bloque in enumerate(lista):
   x_centro = (width - ancho_maximo_centro) // 2
   y_centro = (20)
 
+  # Agrega un fondo negro detrás del texto
+  dibujo.rectangle((20, 10, width - 20, alto_texto_centro * 0.9), fill="black")
+
   # Agregar el texto en el centro
   dibujo.multiline_text((x_centro, y_centro), texto_centro,
                         fill="white", font=fuente_centro, spacing=5)
@@ -87,14 +93,28 @@ for i, bloque in enumerate(lista):
   tamanio_fuente_esquinas = 30
   fuente_esquinas = ImageFont.truetype('font.ttf', tamanio_fuente_esquinas)
 
+# Cálculos
+  bbox_izquierda = dibujo.textbbox((width - tamanio_fuente_esquinas, height -
+                                  tamanio_fuente_esquinas), texto_esquina_izquierda, font=fuente_esquinas)
+  x_esquina_izquierda = (bbox_izquierda[2] - bbox_izquierda[0]) + 20
+
+  # Agrega un fondo negro detrás del texto de la esquina inferior izquierda
+  dibujo.rectangle(
+      (10, height - 60, 10 + x_esquina_izquierda, height - 10), fill="black")
+
   # Agregar el texto en la esquina inferior izquierda
   dibujo.text((20, height - 50), texto_esquina_izquierda,
               fill="white", font=fuente_esquinas)
 
-  # Agregar el texto en la esquina inferior derecha
+  # Cálculos
   bbox_derecha = dibujo.textbbox((width - tamanio_fuente_esquinas, height -
-                                 tamanio_fuente_esquinas), texto_esquina_derecha, font=fuente_esquinas)
-  x_esquina_derecha = width - (bbox_derecha[2] - bbox_derecha[0]) - 20
+                                tamanio_fuente_esquinas), texto_esquina_derecha, font=fuente_esquinas)
+  x_esquina_derecha = width - (bbox_derecha[2] - bbox_derecha[0]) - 30
+
+  # Agrega un fondo negro detrás del texto de la esquina inferior derecha
+  dibujo.rectangle((x_esquina_derecha - 10, height - 60, width - 20, height - 10), fill="black")
+
+  # Agregar el texto en la esquina inferior derecha
   dibujo.text((x_esquina_derecha, height - 50),
               texto_esquina_derecha, fill="white", font=fuente_esquinas)
 
@@ -102,4 +122,4 @@ for i, bloque in enumerate(lista):
   imagen.save(f"imagen-{i}.png")
 
   # Mostrar la imagen generada
-  imagen.show()
+  # imagen.show()

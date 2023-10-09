@@ -34,6 +34,23 @@ object juego {
 	var property playerInput = 0
 	/** Variable que contiene la cantidad de preguntadas acertadas por el jugador */
 	var property puntaje = 0
+	/** Variable con los nodos de la aventura */
+	const arbolAventura = [
+			/** Café */
+			new Arbol(imageID = 12, hijos = [
+				/** Café solo */
+				new Arbol(imageID = 14, audio = 'glitch-0'),
+				/** Café con leche */
+				new Arbol(imageID = 15)
+			]),
+			/** Mate */
+			new Arbol(imageID = 13, hijos = [
+				/** Mate perfecto */
+				new Arbol(imageID = 16, audio = 'que-rico-esta-este-mate'),
+				/** Mate quemado */
+				new Arbol(imageID = 17)
+			])
+		]
 	/** Lista con todos los estados del autómata y los nodos (pantallas)
 		Si un árbol es hijo de otro, debe definirse dentro de los parámetros de su papi o mami */
 	const estados = [
@@ -46,11 +63,11 @@ object juego {
 		new Estado(imageID = 5, transiciones = [6], audioInput = ["incorrect-buzzer", "correct-yay"]),
 		new Estado(imageID = 6, transiciones = [7, 8, 9, 9, 9, 10, 10, 11], audioInput = ["correct-yay", "incorrect-buzzer"]),
 		/** Acá termina el quiz */
-		new Estado(imageID = 7,  audio = 'quiz-0'),
-		new Estado(imageID = 8,  audio = 'quiz-1'),
-		new Estado(imageID = 9,  audio = 'quiz-2'),
-		new Estado(imageID = 10, audio = 'quiz-3'),
-		new Estado(imageID = 11, audio = 'quiz-4' /** , hijos = [ Acá se definen los siguientes nodos ] */)
+		new Estado(imageID = 7,  audio = 'quiz-0', hijos = arbolAventura),
+		new Estado(imageID = 8,  audio = 'quiz-1', hijos = arbolAventura),
+		new Estado(imageID = 9,  audio = 'quiz-2', hijos = arbolAventura),
+		new Estado(imageID = 10, audio = 'quiz-3', hijos = arbolAventura),
+		new Estado(imageID = 11, audio = 'quiz-4', hijos = arbolAventura)
 	]
 	/** Variable que apunta al estado actual */
 	var property estadoActual = estados.first()
@@ -85,6 +102,8 @@ object juego {
 		else {
 			estadoActual = estados.get(estadoActual.transiciones().first())
 		}
+		/** El nodo sigue al estado */
+		nodoActual = estadoActual
 	}
 	
 	/** Método del cambio de pantalla */
@@ -98,9 +117,9 @@ object juego {
 			self.transicionArbol()
 		}
 		/** Actualiza la pantalla */
-		pantalla.image("assets/imagen-"+estadoActual.imageID().toString()+".png")
+		pantalla.image("assets/imagen-"+nodoActual.imageID().toString()+".png")
 		/** Reproduce el sonido del nuevo nodo */
-		game.schedule(0, {(game.sound("assets/"+estadoActual.audio()+".mp3").play())})
+		game.schedule(0, {(game.sound("assets/"+nodoActual.audio()+".mp3").play())})
 	}
 	
 	method init() {
