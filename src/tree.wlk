@@ -39,14 +39,15 @@ object juego {
 	/** Variable con los nodos de la aventura */
 	const arbolAventura = [
 			/** Café */
-			new Arbol(imageID = 12, hijos = [
+			new Arbol(imageID = 12, audio = "olha-a-hora-do-cafe", hijos = [
 				/** Tomar solo */
-				new Arbol(imageID = 14),
+				new Arbol(imageID = 14, audio = "drink-sip-and-swallow"),
 				/** Agregarle leche */
 				new Arbol(imageID = 15, hijos = [
-					null,
+					/** Andá a saber... */
+					new Arbol(imageID = 18, audio = "drop-bounce-plastic-bottle"),
 					/** ¡Yo no fuí! */
-					new Arbol(imageID = 18, audio = "okay-sherlock")
+					new Arbol(imageID = 19, audio = "okay-sherlock")
 				])
 			]),
 			/** Mate */
@@ -136,7 +137,7 @@ object juego {
 		/** Ancho de la pantalla (en celdas) */
 		game.width(1024)
 		/** Alto de la pantalla (en celdas) */
-  		game.height(768)
+  		game.height(1024)
   		/** Tamaño de la celda (en píxeles) */
   		game.cellSize(1)
   		/** Título de la ventana del juego */

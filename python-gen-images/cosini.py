@@ -3,7 +3,7 @@ import textwrap
 from narrativa import lista
 
 # Tamaño de la imagen
-width, height = 1024, 768
+width, height = 1024, 1024
 
 
 for i, bloque in enumerate(lista):
@@ -49,7 +49,7 @@ for i, bloque in enumerate(lista):
       if oracion == oraciones[len(oraciones) - 1]:
         cadena_final += "\n".join(lineas)
       else:
-        cadena_final += "\n".join(lineas) + "\n\n"
+        cadena_final += "\n".join(lineas) + "\n"
     return cadena_final
 
   # Función que agrega espacios al texto hasta que quepa en el ancho máximo y quede centrado en x
