@@ -34,20 +34,26 @@ object juego {
 	var property playerInput = 0
 	/** Variable que contiene la cantidad de preguntadas acertadas por el jugador */
 	var property puntaje = 0
+	/** Música del quiz */
+	const musicaQuiz = game.sound("assets/quiz-game-music-loop.mp3")
 	/** Variable con los nodos de la aventura */
 	const arbolAventura = [
 			/** Café */
 			new Arbol(imageID = 12, hijos = [
-				/** Café solo */
-				new Arbol(imageID = 14, audio = 'glitch-0'),
-				/** Café con leche */
-				new Arbol(imageID = 15)
+				/** Tomar solo */
+				new Arbol(imageID = 14),
+				/** Agregarle leche */
+				new Arbol(imageID = 15, hijos = [
+					null,
+					/** ¡Yo no fuí! */
+					new Arbol(imageID = 18, audio = "okay-sherlock")
+				])
 			]),
 			/** Mate */
 			new Arbol(imageID = 13, hijos = [
-				/** Mate perfecto */
+				/** 348K */
 				new Arbol(imageID = 16, audio = 'que-rico-esta-este-mate'),
-				/** Mate quemado */
+				/** Hervir el agua */
 				new Arbol(imageID = 17, audio = '8-bit-sizzle')
 			])
 		]
@@ -77,6 +83,8 @@ object juego {
 	/** Transiciona al hijo con índice playerInput ("Left" = 0, "Right" = 1) */
 	method transicionArbol(){
 		nodoActual = self.nodoActual().hijos().get(playerInput)
+		/** Reproduce un sonido de transición */
+		game.schedule(0, {(game.sound("assets/glitch-0.mp3").play())})
 	}
 	
 	/** Función del estado siguiente. Acá muere la programación orientada a objetos
@@ -96,6 +104,8 @@ object juego {
 		}
 		/** Si está en la última pregunta del quiz, la transición depende del puntaje */
 		if (estadoActual == estados.get(6)) {
+			/** Detiene la música del quiz */
+			musicaQuiz.stop()
 			estadoActual = estados.get(estadoActual.transiciones().get(puntaje))
 		}
 		/** Por defecto la transición es al primer elemento de la lista de transiciones */
@@ -133,6 +143,13 @@ object juego {
   		game.title("The Big Quiz")
   		/** Agrega la imagen de la pantalla */
   		game.addVisual(pantalla)
+  		/** Configura la música del quiz para que suene en loop */
+		musicaQuiz.shouldLoop(true)
+		/** Ajusta el volumen de la música del quiz */
+		musicaQuiz.volume(0.5)
+		/** Reproduce la música del quiz */
+		game.schedule(0, {musicaQuiz.play()})
+		
 		
 		/** Cuando el jugador presiona "Left" */
 		keyboard.left().onPressDo({
