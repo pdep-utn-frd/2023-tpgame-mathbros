@@ -48,7 +48,7 @@ object juego {
 				/** Mate perfecto */
 				new Arbol(imageID = 16, audio = 'que-rico-esta-este-mate'),
 				/** Mate quemado */
-				new Arbol(imageID = 17)
+				new Arbol(imageID = 17, audio = '8-bit-sizzle')
 			])
 		]
 	/** Lista con todos los estados del autómata y los nodos (pantallas)
