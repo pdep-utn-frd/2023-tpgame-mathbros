@@ -35,7 +35,9 @@ object juego {
 	/** Variable que contiene la cantidad de preguntadas acertadas por el jugador */
 	var property puntaje = 0
 	/** Música del quiz */
-	const musicaQuiz = game.sound("assets/quiz-game-music-loop.mp3")
+	const musicaQuiz = game.sound("assets/amenabar.mp3")
+	/** Créditos */
+	const creditos = new Estado(imageID = 20, audio = "in-the-end")
 	/** Variable con los nodos de la aventura */
 	const arbolAventura = [
 			/** Café */
@@ -55,7 +57,10 @@ object juego {
 				/** 348K */
 				new Arbol(imageID = 16, audio = 'que-rico-esta-este-mate'),
 				/** Hervir el agua */
-				new Arbol(imageID = 17, audio = '8-bit-sizzle')
+				new Arbol(imageID = 17, audio = '8-bit-sizzle', hijos = [
+					creditos,
+					creditos
+				])
 			])
 		]
 	/** Lista con todos los estados del autómata y los nodos (pantallas)
@@ -146,8 +151,8 @@ object juego {
   		game.addVisual(pantalla)
   		/** Configura la música del quiz para que suene en loop */
 		musicaQuiz.shouldLoop(true)
-		/** Ajusta el volumen de la música del quiz */
-		musicaQuiz.volume(0.5)
+		/** Ajusta el volumen de los sonidos */
+		musicaQuiz.volume(0.05)
 		/** Reproduce la música del quiz */
 		game.schedule(0, {musicaQuiz.play()})
 		
