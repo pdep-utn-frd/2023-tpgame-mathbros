@@ -3,13 +3,16 @@ import textwrap
 from narrativa import lista
 
 # Tamaño de la imagen
-width, height = 1024, 1024
+width, height = 1024, 896
 
 
 for i, bloque in enumerate(lista):
 
   # Crear una imagen en blanco con fondo negro
   imagen = Image.new("RGB", (width, height), "black")
+
+  # Convertir la imagen a RGBA
+  imagen = imagen.convert('RGBA')
 
   attached_image = Image.open(f'imagenes/{bloque[3]}')
 
@@ -78,8 +81,19 @@ for i, bloque in enumerate(lista):
   x_centro = (width - ancho_maximo_centro) // 2
   y_centro = (20)
 
-  # Agrega un fondo negro detrás del texto
-  dibujo.rectangle((20, 10, width - 20, alto_texto_centro * 0.9), fill="black")
+  # Crear una imagen transparente para el rectángulo
+  rectangulo_transparente = Image.new(
+    'RGBA', (width - 40, int(alto_texto_centro * 0.85)), (0, 0, 0, 128))
+  
+  # Crear un objeto ImageDraw para la imagen transparente
+  dibujo_transparente = ImageDraw.Draw(rectangulo_transparente)
+
+  # Dibujar el rectángulo en la imagen transparente
+  dibujo_transparente.rectangle(
+    (0, 0, width, alto_texto_centro), fill=(0, 0, 0, 128), outline=None)
+  
+  # Pegar la imagen transparente en la imagen original
+  imagen.paste(rectangulo_transparente, (20, 10), mask=rectangulo_transparente)
 
   # Agregar el texto en el centro
   dibujo.multiline_text((x_centro, y_centro), texto_centro,

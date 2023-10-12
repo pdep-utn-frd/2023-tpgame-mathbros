@@ -37,27 +37,70 @@ object juego {
 	/** Música del quiz */
 	const musicaQuiz = game.sound("assets/amenabar.mp3")
 	/** Créditos */
-	const creditos = new Estado(imageID = 20, audio = "in-the-end")
+	const creditos = new Estado(imageID = 30, audio = "in-the-end")
 	/** Variable con los nodos de la aventura */
 	const arbolAventura = [
 			/** Café */
 			new Arbol(imageID = 12, audio = "olha-a-hora-do-cafe", hijos = [
 				/** Tomar solo */
-				new Arbol(imageID = 14, audio = "drink-sip-and-swallow"),
+				new Arbol(imageID = 13, audio = "drink-sip-and-swallow"),
 				/** Agregarle leche */
-				new Arbol(imageID = 15, hijos = [
+				new Arbol(imageID = 14, audio = "fridge", hijos = [
 					/** Andá a saber... */
-					new Arbol(imageID = 18, audio = "drop-bounce-plastic-bottle"),
+					/** Ruta drama */
+					new Arbol(imageID = 15, audio = "drop-bounce-plastic-bottle", hijos = [
+						/** Intentar salvar el café */
+						new Arbol(imageID = 16, hijos = [
+							/** Mezclar el dulce en el café */
+							new Arbol(imageID = 17),
+							/** Merclar el café en el dule */
+							/** Final: muerte por dulce de leche */
+							new Arbol(imageID = 18, audio = "el-fin-del-hombre-arana", hijos = [
+								creditos,
+								creditos
+							])
+						]),
+						/** Aceptar tu derrota */
+						new Arbol(imageID = 19, hijos = [
+							/** Estudiar para el examen */
+							new Arbol(imageID = 20),
+							/** Trabajar en tu proyecto */
+							new Arbol(imageID = 21, hijos = [
+								/** ... */
+								null,
+								/** Sucumbir a la desesperación */
+								new Arbol(imageID = 22, hijos = [
+									/** Saltar por la ventana */
+									/** Final: muerte por desesperación */
+									new Arbol(imageID = 23, hijos = [
+										creditos,
+										creditos
+									]),
+									/** No saltar */
+									new Arbol(imageID = 24, hijos = [
+										creditos,
+										creditos
+									])
+								])
+							])
+						])
+					]),
 					/** ¡Yo no fuí! */
-					new Arbol(imageID = 19, audio = "okay-sherlock")
+					/** Ruta detective */
+					new Arbol(imageID = 25, audio = "okay-sherlock")
 				])
 			]),
 			/** Mate */
-			new Arbol(imageID = 13, hijos = [
-				/** 348K */
-				new Arbol(imageID = 16, audio = 'que-rico-esta-este-mate'),
+			new Arbol(imageID = 26, hijos = [
+				/** 348 Kelvin */
+				new Arbol(imageID = 27, audio = 'que-rico-esta-este-mate', hijos = [
+					/** Estudiar para el examen */
+					new Arbol(imageID = 28),
+					/** Trabajar en tu proyecto */
+					null
+				]),
 				/** Hervir el agua */
-				new Arbol(imageID = 17, audio = '8-bit-sizzle', hijos = [
+				new Arbol(imageID = 29, audio = '8-bit-sizzle', hijos = [
 					creditos,
 					creditos
 				])
@@ -90,7 +133,7 @@ object juego {
 	method transicionArbol(){
 		nodoActual = self.nodoActual().hijos().get(playerInput)
 		/** Reproduce un sonido de transición */
-		game.schedule(0, {(game.sound("assets/glitch-0.mp3").play())})
+		game.schedule(0, {(game.sound("assets/glitch-"+0.randomUpTo(1).roundUp(0).toString()+".mp3").play())})
 	}
 	
 	/** Función del estado siguiente. Acá muere la programación orientada a objetos
@@ -142,11 +185,13 @@ object juego {
 		/** Ancho de la pantalla (en celdas) */
 		game.width(1024)
 		/** Alto de la pantalla (en celdas) */
-  		game.height(1024)
+  		game.height(896)
   		/** Tamaño de la celda (en píxeles) */
   		game.cellSize(1)
   		/** Título de la ventana del juego */
   		game.title("The Big Quiz")
+  		/** Fondo del juego */
+  		game.boardGround("assets/black.jpg")
   		/** Agrega la imagen de la pantalla */
   		game.addVisual(pantalla)
   		/** Configura la música del quiz para que suene en loop */
