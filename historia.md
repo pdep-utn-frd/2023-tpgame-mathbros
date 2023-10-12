@@ -40,7 +40,7 @@ Café, la bebida de los dioses. O eso dicen... Lo cierto es que no te gusta el c
 ## Pantalla 1.1.1: Tomar sólo
 **[Ruta chad]**
 
-Con los huevos bien puestos, le das el primer sorbo al café y, al instante, un sabor amargo y asqueroso golpea tu paladar. "Es lo que hay", te dices a ti mismo con una mezcla de resignación y determinación. "No puedo desperdiciar el café". Tras cada sorbo, sientes cómo la amargura se adueña de tu lengua y el café castiga tu paladar.
+"Con huevo" te dices a ti mismo. Acto seguido, le das el primer sorbo al café y degustas su sabor amargo y asqueroso. "No puedo desperdiciar el café" continúas con con una mezcla de resignación y determinación. Tras cada sorbo, sientes cómo la amargura se adueña de tu lengua y el café castiga tu paladar.
 
 ...
 
@@ -62,20 +62,34 @@ Te sientes a gusto con tu decisión, al menos por un momento. ¿Valió la pena? 
 
 ## Pantalla 1.1.2.1.1.2: Mezclar el café en el dulce de leche
 **[Final: muerte por dulce de leche]**
+
 Por motivos que sólo a ti te conciernen, decides verter la taza de café sobre el envase de dulce de leche. ¡¿En qué estabas pensando?! La solución resultante tiene un aspecto vomitivo. Tanto así que te provoca náuseas. Corres al baño, pero no llegas a tiempo. Te tropiezas con la botella de edulcorante que dejaste tirada y te golpeas la cabeza. Comienzas a perder el conocimiento a la vez que tu cuerpo comienza a expulsar violentamente el contenido de tu estómago. El tiempo parece detenerse mientras luchas por mantener el control. "¿Es este el fin?" es lo último que pasa por tu mente antes de que, trágicamente, te veas superado por la situación. Te ahogas con tu propio vómito, enfrentando las consecuencias letales de una elección culinaria extrema y tu rivalidad con el destino.
 
 ## Pantalla 1.1.2.1.2: Aceptar tu derrota
-Llevas una mochila suficientemente pesada en la espalda. Puedes cargar con un evento desafortunado. ¡¿Pero dos en un solo día?! Es definitivamente más de lo que puedes soportar. Injustamente quizás, pero has perdido una batalla.\nSin la posibilidad de elegir, le das un sorbo al café y saboreas tu derrota. ¿Cómo prosigues en tu desventura?
+Llevas una mochila lo suficientemente pesada en la espalda. Puede haber lugar para un evento desafortunado. ¡¿Pero dos en un solo día?! Es definitivamente más de lo que tu optimismo puede soportar. Injustamente quizás, pero has perdido una batalla.\nSin la posibilidad de elegir, le das un sorbo al café y saboreas tu derrota. ¿Cómo prosigues en tu desventura?
 
 ## Pantalla 1.1.2.1.2.1: Estudiar para el examen
-(vuelca el café en los apuntes)
+Decides que en tus responsabilidades académicas tienen prioridad. Te acomodas en tu escritorio y sacas tus apuntes de estudio. Sin embargo, mientras sostienes tu taza, un movimiento brusco provoca un derrame de café sobre la mesa. El líquido se esparce rápidamente, empapando tus notas y páginas de lectura. Las palabras se desdibujan y el papel se ondula, dejándote en estado de shock. El valioso conocimiento se pierde en un mar de manchas marrones.
 
 ...
 
 ## Pantalla 1.1.2.1.2.2: Trabajar en tu proyecto
-(vuelca el café en la computadora)
+Decides que tu proyecto de programación requiere atención inmediata, así que te acomodas en tu escritorio. Mientras trabajas en tu computadora, en un descuido, derramas el café caliente sobre el teclado y la pantalla. La computadora emite un sonido de advertencia y la pantalla se oscurece, dejándote con una máquina inutilizable y daños emocionales considerables. La desesperación te inunda.
 
 ...
+
+## Pantalla 1.1.2.1.2.2.2: Sucumbir ante la desesperación
+Las lágrimas llenan tus ojos mientras contemplas la pantalla en negro y el teclado inoperable. Con un suspiro, tomas la decisión más desgarradora de todas.\nCon manos temblorosas, agarras la computadora dañada y te diriges a la ventana más cercana. Miras el precipicio abajo y, seguidamente, la computadora en tus manos y todo tu trabajo, proyectos e ilusiones atrapados en su interior son arrojados al vacío.\nEl sonido de la computadora destrozándose en el suelo abajo es una cacofonía de pérdida y destrucción. Te das cuenta de que has perdido no solo tu herramienta de trabajo, sino también una parte de ti.
+
+## Pantalla 1.1.2.1.2.2.2.1: Saltar por la ventana
+**[Final: muerte por desesperación]**
+
+Las lágrimas fluyen mientras observas impotente el caos que has causado. Primero no hay leche, después no hay edulcorante... ¡Y se rompe la computadora! Has llegado a tu punto de ruptura.\nMientras miras al abismo que se extiende del otro lado de tu ventana, sientes que el vacío te llama.\nDecides afrontar tu inevitable destino y dar fin de una vez por todas a la novela trágica en la que se ha convertido tu vida.
+
+## Pantalla 1.1.2.1.2.2.2.2: No saltar
+**[Final: muerte en vida]**
+
+Cierres la ventana y regresas al interior de tu habitación. Al recordar todo lo que has perdido, la realidad te abruma. "Debería haber saltado..." piensas. Pero no tuviste lo que hay que tener. No tienes nada. Puede que aún no hayas sido dado de baja por la medicina moderna, pero tienes la certeza de que has muerto por dentro.
 
 ## Pantalla 1.1.2.2: ¡Yo no fuí!
 **[Ruta detective]**
