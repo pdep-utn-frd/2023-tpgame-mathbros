@@ -148,49 +148,49 @@ El agua hierve y la pava comienza a silbar en un alarde de energía térmica. Es
 
 ## Subtrama "tocan la puerta" (ruta estudiante)
 
-**Toc toc 1**
+**Toc toc 1.2.1.1**
 Estabas tratando de interpretar la primer ecuacion diferencial cuando sientes un estruendo en tu oreja izquierda. No te asustes. Alguien esta tocando la puerta.
 No esperabas visitas. Incluso tienes el presentimiento de que no debes abrirle la puerta a nadie, el barrio esta peligroso y no podrias hacer nada ante la presencia de un malhechor.
 A) Abrir
 B) No abrir
 
-**HERENCIAAA (p1) 1.1**
+**HERENCIAAA (p1) 1.2.1.1.1**
 Te autoconvences que eres un chad y decides ir a abrir la puerta sin que te tiemble la mano. Cuando sientes el frio del picaporte un gran sentimiento de terror aborda tu cuerpo,
 aun asi, recuerdas que pasaste por momentos mas dificiles, como el examen final de Algebra y Geometria Analitica. Abres la puerta...
 
-**HERENCIAAA (p2) 1.1**
+**HERENCIAAA (p2) 1.2.1.1.1.1**
 La realidad misma se desdibuja al contemplar la presencia inusual del profesor de Paradigmas de Programación en el sancta sanctorum de tu hogar. Súbitamente, te asaltan sospechas sobre la autenticidad del mundo que conoces. ¿Será esta vida, en verdad, una intrincada simulación? Y, aún más desconcertante, ¿qué razón lo ha traído hasta tu umbral?
 El profesor parece más inquieto de lo habitual, al punto de rayar en la ansiedad. Vuestras miradas se entrecruzan en un incómodo compás, llenando el aire con una tensión palpable, mientras el silencio se hace eco de interrogantes.
 
 Finalmente, el profesor rompe el muro de incertidumbre y, con voz tambaleante, plantea una cuestión enigmática: "¿Qué representa, en su esencia, la herencia en la programación orientada a objetos?"
 
 A) No lo recuerdo
-B) Permite que se puedan definir nuevas clases basadas de unas ya existentes a fin de reutilizar el código
+B) Permite que se puedan definir nuevas clases basadas de unas ya existentes a fin de reutilizar el código (mejorar!!!)
 
-**Rapto 1.1.1**
+**Pantalla 1.2.1.1.1.1.2: rapto**
 Una extraña sonrisa se dibuja en el rostro del profesor. Sus ojos se ensanchan y, con una voz ronca, pronuncia: "Bien".
 Unos eternos segundos transcurren antes de que otra palabra salga de sus labios: "Pero no es suficiente".
 Sientes que estás perdiendo el control de tus extremidades, hasta que finalmente te desplomas, desmayado, en tu propia casa.
 
-**Rapto 1.1.2**
+**Pantalla 1.2.1.1.1.1.1: final**
 Ah, lamento comunicarte que has tomado un sendero poco afortunado. Tal vez no cabía la posibilidad de que lo supieras, pero aquí estamos. ¿Qué ocurrió? No lo sé. Yo, apenas un narrador, carezco de esa perspicacia. Lo único que puedo recordar es que cuando respondiste con un simple 'No lo sé', Wollok se tambaleó y la ejecución de tu relato llegó a su abrupto final. ¿Desgarrador, verdad? Pero en última instancia, ¿qué somos sino una serie de algoritmos ejecutando un diálogo preconcebido por la mano invisible de guionistas? Aunque quizás, en mi ingenuidad, me atrevería a creer que somos conscientes de nuestra propia existencia, lamentablemente, esa noción se escapa de nuestro alcance. Espero tener el placer de encontrarte de nuevo en algún rincón de este vasto mundo, querido amigo.
 [Final: muerte filosofica]
 
-**Universidad 1.1.1.1**
+**Pantalla 1.2.1.1.1.1.2.1: Universidad**
 ¡Despierta! Sí, abre los ojos. Te encuentras en este instante en un banco de la facultad. A simple vista, parece ser una de las típicas aulas de la UTN donde se imparten clases sobre Paradigmas. Sin embargo, tus sentidos captan una anomalía sutil: la escasez de estudiantes en la estancia.
 Tras contar meticulosamente, llegas a cinco. Mientras el profesor se empeña en reforzar el concepto de herencia en el pizarrón, tus ojos, sin embargo, no pueden evitar desviarse hacia las expresiones de tus compañeros. No reflejan estar allí por elección propia, sino más bien por un enigma que los envuelve.
 
 A) Decides salir corriendo
 B) Te quedas a prestar atencion a la explicacion del profesor
 
-**Sales corriendo 1.1.1.1.1**
+**Pantalla 1.2.1.1.1.1.2.1.1: sales corriendo**
 Como si se tratara de una competición olímpica, una súbita urgencia impulsa tus piernas a emprender un sprint desesperado hacia la puerta del aula. ¡Has recuperado tu libertad!
 O sea, digamos, si lo ponemos en estos terminos, puedes hacer de tu vida lo que quieras a partir de ahora.
 
 A) Recorrer los pasillos de la facu
 B) Regresar a casa
 
-**Prestas atencion 1.1.1.1.2**
+**Pantalla 1.2.1.1.1.1.2.1.2: prestas atencion**
 Qué buena explicación. Tu mente se siente reconfortada al entender finalmente qué es la herencia en el paradigma orientado a objetos. La clase ha terminado.
 Ha sido extraño ser raptado de esta manera, pero, valió la pena el conocimiento adquirido ¿no?
 Eres libre de la clase ¿ahora qué?
@@ -198,16 +198,16 @@ Eres libre de la clase ¿ahora qué?
 A) Recorrer los pasillos de la facu
 B) Regresar a casa
 
-**El vaso de carton 1.1.1.1.1.1**
+**Pantalla 1.2.1.1.1.1.2.1.1.1: el vaso de carton**
 Luego de una ardua clase, no hay nada mejor que caminar un poco. Oh, observas un vaso de carton en el suelo.
 A) Agarrarlo para desecharlo en el lugar indicado
 B) Ignorarlo, no te importa nada
 
-**Narrador enojado 1.1.1.1.1.1.2**
+**Pantalla 1.2.1.1.1.1.2.1.1.1.2 Narrador enojado**
 Has optado por pasar por alto ese desecho en el suelo. No has contribuido a hacer del mundo un lugar mejor. Mis expectativas eran escasas, y, a pesar de ello, logras decepcionarme. Llegamos al final de nuestro camino juntos. No deseo seguir siendo el narrador de tu historia. Adiós.
 Final) Narrador enojado
 
-**Dilema supremo 1.1.1.1.1.1.1**
+**Pantalla 1.2.1.1.1.1.2.1.1.1.1 Dilema supremo**
 Te felicito, demuestras un deseo genuino de contribuir a la creación de un mundo mejor. Te encaminas hacia la esquina donde se encuentran los contenedores de reciclaje.
 
 Allí, ante ti, se despliegan tres opciones:
