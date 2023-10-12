@@ -39,6 +39,37 @@ object juego {
 	/** Créditos */
 	const creditos = new Estado(imageID = 30, audio = "in-the-end")
 	/** Variable con los nodos de la aventura */
+	
+	
+	const dilemaSupremo = new Arbol(imageID=39, hijos=[
+		/** Lo agarras */
+		new Arbol(imageID=41, hijos=[null, null]),
+		/** Lo ignoras */
+		new Arbol(imageID=40, hijos=[creditos, creditos])
+	])
+	
+	const rapto = new Arbol(imageID=36, hijos=[
+		/** Decides salir corriendo */
+		new Arbol(imageID=37, hijos=[dilemaSupremo, null]),
+		/** Te quedas */
+		new Arbol(imageID=38, hijos=[dilemaSupremo, null])
+	])
+	
+	const abrisLaPuerta = new Arbol(imageID=33, audio="puerta-abre", hijos=[
+		/** No lo recuerdo */
+		new Arbol(imageID=35, hijos=[creditos, creditos]),
+		/** Da una definicion */
+		new Arbol(imageID=34, hijos=[rapto, rapto])
+	])
+	const subtramaFacu = new Arbol(imageID = 31, audio="toctoc", hijos=[
+		/** Abrir */
+		new Arbol(imageID = 32, hijos=[
+			abrisLaPuerta,
+			abrisLaPuerta
+		]),
+		/** No Abrir */
+		null
+	])
 	const arbolAventura = [
 			/** Café */
 			new Arbol(imageID = 12, audio = "olha-a-hora-do-cafe", hijos = [
@@ -63,7 +94,13 @@ object juego {
 						/** Aceptar tu derrota */
 						new Arbol(imageID = 19, hijos = [
 							/** Estudiar para el examen */
-							new Arbol(imageID = 20),
+							new Arbol(imageID = 20, hijos= [
+								/** ... */
+								subtramaFacu,
+								/** ... */
+								subtramaFacu
+								
+							]),
 							/** Trabajar en tu proyecto */
 							new Arbol(imageID = 21, hijos = [
 								/** ... */
@@ -95,7 +132,7 @@ object juego {
 				/** 348 Kelvin */
 				new Arbol(imageID = 27, audio = 'que-rico-esta-este-mate', hijos = [
 					/** Estudiar para el examen */
-					new Arbol(imageID = 28),
+					new Arbol(imageID = 28, hijos=[subtramaFacu, subtramaFacu]),
 					/** Trabajar en tu proyecto */
 					null
 				]),
