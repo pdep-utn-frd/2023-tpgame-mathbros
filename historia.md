@@ -136,7 +136,22 @@ Hechas sobre la yerba un chorrito de agua tibia para humedecerla. Luego, con la 
 
 **[Ruta estudiante]**
 
-...
+Decides que tus responsabilidades académicas deben ocupar el primer lugar en tu lista de prioridades. Te desplazas hasta tu escritorio, donde aguarda una montaña de apuntes y libros, testigos silenciosos de las horas de estudio que te esperan.\nEl mundo exterior desaparece a medida que te sumerges en tu tarea, recordando la importancia de este examen para tu futuro académico.
+
+## 2do Quiz - Pregunta 1
+'¿Cuál es el elemento neutro de la multiplicación de los números complejos?', '1+i', 'i'
+
+## 2do Quiz - Pregunta 2
+'¿Cuándo converge la serie p?', 'Cuando p < 1', 'Cuando p >= 1'
+
+## 2do Quiz - Pregunta 3
+'¿Cuál es la contrapositiva de la proposición p --> q?', '-p --> -q', '-q --> -p'
+
+## 2do Quiz - Pregunta 4
+'Si a y m son primos, entonces a elevada a la cantidad de números entre 0 y m coprimos con m es congruente con 1 módulo m. ¿Cómo se llama este teorema?', 'Teorema de Euler-Fermat', 'Pequeño teorema  de Fermat'
+
+## 2do Quiz - Pregunta 5
+'¿Cuál es el mejor lenguaje de programación?', 'Python', 'Wollok'
 
 ## Pantalla 1.2.1.2: Trabajar en tu proyecto
 
