@@ -37,39 +37,47 @@ object juego {
 	/** Música del quiz */
 	const musicaQuiz = game.sound("assets/amenabar.mp3")
 	/** Créditos */
-	const creditos = new Estado(imageID = 30, audio = "in-the-end")
-	/** Variable con los nodos de la aventura */
-	
-	
-	const dilemaSupremo = new Arbol(imageID=39, hijos=[
+	const creditos = new Estado(imageID = 46, audio = "in-the-end")
+	/** Ruta estudiante */
+	const nodoEstudiante = new Arbol(imageID = 28)
+	const estadosQuiz2 = [
+		/** Acá arranca el quiz */
+		new Estado(imageID = 29, transiciones = [1], audioInput = ["incorrect-buzzer", "correct-yay"]),
+		new Estado(imageID = 30, transiciones = [2], audioInput = ["correct-yay", "incorrect-buzzer"]),
+		new Estado(imageID = 31, transiciones = [3], audioInput = ["incorrect-buzzer", "correct-yay"]),
+		new Estado(imageID = 32, transiciones = [4], audioInput = ["correct-yay", "incorrect-buzzer"]),
+		new Estado(imageID = 33, audioInput = ["incorrect-buzzer", "correct-yay"])
+	]
+	const dilemaSupremo = new Arbol(imageID=42, hijos=[
 		/** Lo agarras */
-		new Arbol(imageID=41, hijos=[null, null]),
+		new Arbol(imageID=43, hijos=[null, null]),
 		/** Lo ignoras */
-		new Arbol(imageID=40, hijos=[creditos, creditos])
+		new Arbol(imageID=44, hijos=[creditos, creditos])
 	])
 	
-	const rapto = new Arbol(imageID=36, hijos=[
+	const rapto = new Arbol(imageID=39, hijos=[
 		/** Decides salir corriendo */
-		new Arbol(imageID=37, hijos=[dilemaSupremo, null]),
+		new Arbol(imageID=40, hijos=[dilemaSupremo, null]),
 		/** Te quedas */
-		new Arbol(imageID=38, hijos=[dilemaSupremo, null])
+		new Arbol(imageID=41, hijos=[dilemaSupremo, null])
 	])
 	
-	const abrisLaPuerta = new Arbol(imageID=33, audio="puerta-abre", hijos=[
-		/** No lo recuerdo */
-		new Arbol(imageID=35, hijos=[creditos, creditos]),
-		/** Da una definicion */
-		new Arbol(imageID=34, hijos=[rapto, rapto])
+	const abrisLaPuerta = new Arbol(imageID=36, audio="puerta-abre", hijos=[
+		/** Pascal */
+		new Arbol(imageID=37, hijos=[creditos, creditos]),
+		/** Wollok */
+		new Arbol(imageID=38, hijos=[rapto, rapto])
 	])
-	const subtramaFacu = new Arbol(imageID = 31, audio="toctoc", hijos=[
+	const subtramaFacu = new Arbol(imageID = 34, audio="toctoc", hijos=[
 		/** Abrir */
-		new Arbol(imageID = 32, hijos=[
+		new Arbol(imageID = 35, hijos=[
 			abrisLaPuerta,
 			abrisLaPuerta
 		]),
 		/** No Abrir */
 		null
 	])
+	/** Variable con los nodos de la aventura */
 	const arbolAventura = [
 			/** Café */
 			new Arbol(imageID = 12, audio = "olha-a-hora-do-cafe", hijos = [
@@ -132,12 +140,12 @@ object juego {
 				/** 348 Kelvin */
 				new Arbol(imageID = 27, audio = 'que-rico-esta-este-mate', hijos = [
 					/** Estudiar para el examen */
-					new Arbol(imageID = 28, hijos=[subtramaFacu, subtramaFacu]),
+					nodoEstudiante,
 					/** Trabajar en tu proyecto */
 					null
 				]),
 				/** Hervir el agua */
-				new Arbol(imageID = 29, audio = '8-bit-sizzle', hijos = [
+				new Arbol(imageID = 45, audio = '8-bit-sizzle', hijos = [
 					creditos,
 					creditos
 				])
@@ -187,16 +195,43 @@ object juego {
 			else {
 				game.schedule(0, {(game.sound("assets/incorrect-buzzer.mp3").play())})
 			}
+			/** Si está en la última pregunta del quiz, la transición depende del puntaje */
+			if (estadoActual == estados.get(6)) {
+				/** Detiene la música del quiz */
+				game.schedule(0, {musicaQuiz.pause()})
+				estadoActual = estados.get(estadoActual.transiciones().get(puntaje))
+			}
+			/** Por defecto la transición es al primer elemento de la lista de transiciones */
+			else {
+				estadoActual = estados.get(estadoActual.transiciones().first())
+			}
 		}
-		/** Si está en la última pregunta del quiz, la transición depende del puntaje */
-		if (estadoActual == estados.get(6)) {
-			/** Detiene la música del quiz */
-			musicaQuiz.stop()
-			estadoActual = estados.get(estadoActual.transiciones().get(puntaje))
-		}
-		/** Por defecto la transición es al primer elemento de la lista de transiciones */
-		else {
-			estadoActual = estados.get(estadoActual.transiciones().first())
+		/** Si el nodo actual es el nodo del estudiante */
+		if (nodoActual == nodoEstudiante)
+			/** Va al estado inicial del quiz 2 */
+			estadoActual = estadosQuiz2.first()
+			/** Continúa la música del quiz */
+			if (musicaQuiz.paused()) {game.schedule(0, {musicaQuiz.resume()})}
+		/** Si el estado actual está en el quiz 2 */
+		if (estadosQuiz2.contains(estadoActual)) {
+			/** Si el jugador eligió la respuesta correcta, suena "yay" */
+			if (estadoActual.audioInput().get(playerInput) == "correct-yay") {
+				game.schedule(0, {(game.sound("assets/correct-yay.mp3").play())})
+			}
+			/** Si el jugador eligió la respuesta incorrecta, suena "buzzer" */
+			else {
+				game.schedule(0, {(game.sound("assets/incorrect-buzzer.mp3").play())})
+			}
+			/** Si está en la última pregunta del quiz, la transición es a la subtrama facu */
+			if (estadoActual == estadosQuiz2.get(4)) {
+				/** Detiene la música del quiz */
+				game.schedule(0, {musicaQuiz.pause()})
+				estadoActual = subtramaFacu
+			}
+			/** Por defecto la transición es al primer elemento de la lista de transiciones */
+			else {
+				estadoActual = estadosQuiz2.get(estadoActual.transiciones().first())
+			}
 		}
 		/** El nodo sigue al estado */
 		nodoActual = estadoActual
