@@ -69,6 +69,12 @@ object juego {
 				}
 			}
 		}
+		/** Ruta chad */
+		/** Si el nodo actual es el primero de la ruta chad */
+		if (nodoActual == tree.rutaChad().first()) {
+			/** Va al estado siguiente */
+			estadoActual = tree.rutaChad().get(nodoActual.transiciones().first())
+		}
 		/** Inicio */
 		/** Si el estado actual es del quiz */
 		if (tree.inicio().take(7).contains(estadoActual)) {
