@@ -14,6 +14,8 @@ object juego {
 	var property puntaje = 0
 	/** Música del quiz */
 	const musicaQuiz = game.sound("assets/amenabar.mp3")
+	/** Música de terror */
+	const musicaTerror = game.sound("assets/horror-background-atmosphere.mp3")
 	/** Sonido de cada nodo/pantalla */
 	var sonidoPantalla = null
 	/** Variable que apunta al estado actual */
@@ -27,7 +29,7 @@ object juego {
 		/** Detiene el sonido de la pantalla previa */
 		sonidoPantalla.stop()
 		/** Reproduce un sonido de transición */
-		game.schedule(0, {(game.sound("assets/glitch-"+0.randomUpTo(1).roundUp(0).toString()+".mp3").play())})
+		game.schedule(0, {(game.sound("assets/glitch-"+(0).randomUpTo(2).truncate(0).toString()+".mp3").play())})
 	}
 	
 	/** Función del estado siguiente. Acá muere la programación orientada a objetos
@@ -46,9 +48,10 @@ object juego {
 			/** Continúa la música del quiz */
 			if (musicaQuiz.paused()) {game.schedule(0, {musicaQuiz.resume()})}
 		}
-		else{
+		/** Entonces, si el estado actual está en los estados de la ruta estudiante */
+		else if (tree.rutaEstudiante().contains(estadoActual)) {
 			/** Si el estado actual está en el quiz 2 */
-			if (tree.rutaEstudiante().drop(1).contains(estadoActual)) {
+			if (tree.rutaEstudiante().drop(1).take(5).contains(estadoActual)) {
 				/** Si el jugador eligió la respuesta correcta, suena "yay" */
 				if (playerInput == estadoActual.auxiliar()) {
 					game.schedule(0, {(game.sound("assets/correct-yay.mp3").play())})
@@ -57,17 +60,24 @@ object juego {
 				else {
 					game.schedule(0, {(game.sound("assets/incorrect-buzzer.mp3").play())})
 				}
-				/** Si está en la última pregunta del quiz, la transición es a la subtrama facu */
+				/** Si está en la última pregunta del quiz, se detiene la música */
 				if (estadoActual == tree.rutaEstudiante().get(5)) {
 					/** Detiene la música del quiz */
 					game.schedule(0, {musicaQuiz.pause()})
-					estadoActual = tree.subtramaFacu()
-				}
-				/** Por defecto la transición es al primer elemento de la lista de transiciones */
-				else {
-					estadoActual = tree.rutaEstudiante().get(estadoActual.transiciones().first())
 				}
 			}
+			/** Si el estado actual es el de la puerta */
+			else if (tree.rutaEstudiante().get(6) == estadoActual) {
+				/** Si abre la puerta, reproduce la música de terror */
+				if (playerInput == 0) {game.schedule(0, {musicaTerror.play()})}
+			}
+			/** Si el estado actual es la muerte filosófica o el rapto */
+			else if ((tree.rutaEstudiante().get(9) == estadoActual and playerInput == 0) or (tree.rutaEstudiante().get(11) == estadoActual)) {
+				/** Detiene la música de terror */
+				game.schedule(0, {musicaTerror.pause()})
+			}
+			/** Por defecto la transición es al elemento de la lista de transiciones que se corresponde con el playerInput */
+			estadoActual = tree.rutaEstudiante().get(estadoActual.transiciones().get(playerInput))
 		}
 		/** Ruta chad */
 		/** Si el nodo actual es el primero de la ruta chad */
@@ -136,6 +146,7 @@ object juego {
 		musicaQuiz.shouldLoop(true)
 		/** Ajusta el volumen de los sonidos */
 		musicaQuiz.volume(0.05)
+		musicaTerror.volume(0.25)
 		/** Reproduce la música del quiz */
 		game.schedule(0, {musicaQuiz.play()})
 		

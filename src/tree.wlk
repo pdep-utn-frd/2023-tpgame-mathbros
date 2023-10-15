@@ -24,17 +24,57 @@ class Estado inherits Arbol {
 /** Objeto con los subárboles y nodos de la trama */
 object tree {
 	/** Créditos */
-	const property creditos = new Estado(imageID = 61, audio = "in-the-end")
+	const property creditos = new Estado(imageID = 62, audio = "in-the-end")
+	/** La desición más dificil de toda la historia */
+	const property dilemaSupremo = new Arbol(imageID = 58, hijos = [
+		/** Lo agarrás */
+		new Arbol(imageID = 59, hijos = [null, null]),
+		/** Lo ignorás */
+		new Arbol(imageID = 60, audio = "anti-ecologismo-ending", hijos = [creditos, creditos])
+	])
 	/** Ruta estudiante */
 	const property rutaEstudiante = [
-		new Estado(imageID = 43, transiciones = [1]),
+		new Estado(imageID = 44, transiciones = [1, 1]),
 		/** Acá arranca el quiz */
-		new Estado(imageID = 44, transiciones = [2], auxiliar = 1),
-		new Estado(imageID = 45, transiciones = [3], auxiliar = 0),
-		new Estado(imageID = 46, transiciones = [4], auxiliar = 1),
-		new Estado(imageID = 47, transiciones = [5], auxiliar = 0),
-		new Estado(imageID = 48, auxiliar = 1)
+		new Estado(imageID = 45, transiciones = [2, 2], auxiliar = 1),
+		new Estado(imageID = 46, transiciones = [3, 3], auxiliar = 0),
+		new Estado(imageID = 47, transiciones = [4, 4], auxiliar = 1),
+		new Estado(imageID = 48, transiciones = [5, 5], auxiliar = 0),
+		new Estado(imageID = 49, transiciones = [6, 6], auxiliar = 1),
 		/** Acá termina el quiz */
+		/** Nodo de la puerta */
+		new Estado(imageID = 50, audio = "toctoc", transiciones = [7, 8]),
+		/** Abrir */
+		new Estado(imageID = 51, transiciones = [9, 9]),
+		/** No abrir */
+		null,
+		/** Te armás de valor */
+		new Estado(imageID = 52, audio = "puerta-abre", transiciones = [10, 11]),
+		/** Pascal */
+		/** Final: muerte filosófica */
+		new Arbol(imageID = 53, audio = "filosofia-ending", hijos = [
+			creditos,
+			creditos
+			]),
+		/** Wollok */
+		new Estado(imageID = 54, audio = "profe", transiciones = [12, 12]),
+		/** Escuela */
+		new Arbol(imageID = 55, hijos = [
+			/** Decides salir corriendo */
+			new Arbol(imageID = 56, hijos = [
+				/** Recorrer los pasillos de la facu */
+				dilemaSupremo,
+				/** Regresar a casa */
+				null
+			]),
+			/** Te quedas */
+			new Estado(imageID = 57, hijos = [
+				/** Recorrer los pasillos de la facu */
+				dilemaSupremo,
+				/** Regresar a casa */
+				null
+			])
+		])
 	]
 	/** Ruta chad */
 	const property rutaChad = [
@@ -55,7 +95,11 @@ object tree {
 									/** ¡Dale gordo! */
 									new Estado(imageID = 21, audio = "joder"),
 									/** Cortar */
-									new Estado(imageID = 22)
+									/** Final: ruptura */
+									new Estado(imageID = 22, audio = "ruptura-ending", hijos = [
+										creditos,
+										creditos
+									])
 								]),
 								/** Tu servicio es desproporcional al precio */
 								new Estado(imageID = 23, audio = "lo-que-no-tengo-proporcional")
@@ -76,37 +120,7 @@ object tree {
 			new Estado(imageID = 28, audio = "chad-1")
 		])
 	]
-	/** La desición más dificil de toda la historia */
-	const property dilemaSupremo = new Arbol(imageID = 42, hijos = [
-		/** Lo agarrás */
-		new Arbol(imageID = 54, hijos = [null, null]),
-		/** Lo ignorás */
-		new Arbol(imageID = 55, audio = "anti-ecologismo-ending", hijos = [creditos, creditos])
-	])
-	
-	const property rapto = new Arbol(imageID = 39, hijos = [
-		/** Decides salir corriendo */
-		new Arbol(imageID = 52, hijos = [dilemaSupremo, null]),
-		/** Te quedas */
-		new Arbol(imageID = 53, hijos = [dilemaSupremo, null])
-	])
-	
-	const property abrisLaPuerta = new Arbol(imageID = 36, audio = "puerta-abre", hijos = [
-		/** Pascal */
-		new Arbol(imageID = 50, audio = "filosofia-ending", hijos = [creditos, creditos]),
-		/** Wollok */
-		new Arbol(imageID = 51, audio = "profe", hijos = [rapto, rapto])
-	])
-	const property subtramaFacu = new Arbol(imageID = 34, audio = "toctoc", hijos = [
-		/** Abrir */
-		new Arbol(imageID = 49, hijos = [
-			abrisLaPuerta,
-			abrisLaPuerta
-		]),
-		/** No Abrir */
-		null
-	])
-	/** Variable con los nodos de la aventura */
+	/** Aventura principal */
 	const property aventura = [
 			/** Café */
 			new Arbol(imageID = 12, audio = "olha-a-hora-do-cafe", hijos = [
@@ -131,12 +145,11 @@ object tree {
 						/** Aceptar tu derrota */
 						new Arbol(imageID = 34, hijos = [
 							/** Estudiar para el examen */
-							new Arbol(imageID = 35, hijos= [
+							new Arbol(imageID = 35, hijos = [
 								/** ... */
-								subtramaFacu,
+								null,
 								/** ... */
-								subtramaFacu
-								
+								null
 							]),
 							/** Trabajar en tu proyecto */
 							new Arbol(imageID = 36, hijos = [
@@ -161,20 +174,25 @@ object tree {
 					]),
 					/** ¡Yo no fuí! */
 					/** Ruta detective */
-					new Arbol(imageID = 40, audio = "okay-sherlock")
+					new Arbol(imageID = 40, audio = "okay-sherlock", hijos = [
+						/** Investigar si te robaron algo */
+						null,
+						/** Buscar *señales* */
+						new Arbol(imageID = 41)
+					])
 				])
 			]),
 			/** Mate */
-			new Arbol(imageID = 41, hijos = [
+			new Arbol(imageID = 42, hijos = [
 				/** 348 Kelvin */
-				new Arbol(imageID = 42, audio = 'que-rico-esta-este-mate', hijos = [
+				new Arbol(imageID = 43, audio = 'que-rico-esta-este-mate', hijos = [
 					/** Estudiar para el examen */
 					rutaEstudiante.first(),
 					/** Trabajar en tu proyecto */
 					null
 				]),
 				/** Hervir el agua */
-				new Arbol(imageID = 60, audio = 'thunder', hijos = [
+				new Arbol(imageID = 61, audio = 'thunder', hijos = [
 					creditos,
 					creditos
 				])
