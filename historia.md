@@ -91,7 +91,39 @@ Has agotado tu paciencia y decides poner fin a la llamada. Canalizas toda la ene
 
 Abres la llave de la ducha y, en un instante, un caudal de agua helada arremete contra tu piel, como si te clavaran mil agujas en cada poro. "El dolor es temporal, pero el orgullo es para siempre" te dices a ti mismo, dándote la fuerza necesaria para soportar la experiencia.
 
+Finalmente, con el cuerpo entumecido y los dientes castañeteando, apagas la llave de la ducha, poniendo fin a tu tormento.\nTe sientes más despierto y alerta que nunca, es un buen momento para ponerte al día con tus tareas pendientes.
+
+## Pantalla 1.1.1.2.1: Estudiar para el examen
+Decides dar prioridad a tu próximo examen de Análisis Matemático 2. Te encaminas hacia tu escritorio, donde aguarda pacientemente la guía de ejercicios típicos para el tercer parcial.\nLos problemas iniciales, quitando el del tanque, no suponen niguna dificultad. Comienzas a plantear el ejercicio 21.
+
+## Pantalla 1.1.1.2.1.1: Aplicar la fórmula
+Inmediatamente al ver la ecuación, tu mente identifica las componentes de la fórmula del método del factor integrante. El ejercicio es resuelto en pocos minutos.
+
 ...
+
+## Pantalla 1.1.1.2.1.2: Deducir el procedimiento
+[**Ruta chad**]
+
+No necesitas ninguna fórmula. Con paciencia y atención, comienzas a analizar la ecuación diferencial:\ndy/dt - 3y = e^(2t)\nMientras dejas que las ideas sobre cómo resolverla fluyan por tu castigada mente.
+
+## Pantalla 1.1.1.2.1.2.1: Resolver por separación de variables
+Pese a tu buena disposición, las variables no acceden a separarse. Las reglas matemáticas simplemente no lo permiten.
+
+## Pantalla 1.1.1.2.1.2.1.2: Reinventar la matemática
+[**Final: muerte matemática**]
+
+Decides que el hecho de que las variables no puedan separarse es inaceptable, por lo que te propones reinventar toda la matemática desde sus axiomas.\nLa resolución del ejercicio 21 de la guía de ejercicios típicos para el tercer parcial de Análisis Matemático 2 se ha convertido en algo más que una obsesión. Es un proyecto de vida. Tu presencia en el mundo parece desvanecerse a medida que avanzas en tu proyecto.\nEl tiempo transcurre, tendiendo a infinito, hasta que eventualmente te conviertes en un mártir de la nueva matemática, renunciando al mundo material en pos de la verdad absoluta.
+
+## Pantalla 1.1.1.2.1.2.2 / 1.1.1.2.1.2.1.2: Aplicar la regla del producto para derivadas
+Esta puede ser una buena oportunidad para aplicar la regla del producto para derivadas, en forma inversa a la usual. Propones una función de g(t) tal que g'(t) = -3 g(t). Entonces tienes ante ti otra ecuación diferencial. Esta vez puedes resolverla por separación de variables.
+
+Llegas a que g(t) = c e^(-3t). Ahora puedes multiplicar por esta función a cada término de la ecuación original, y luego aplicar la regla del producto. Finalmente llegas a que\nd(c e^(-3t) y) = c e^(t) dt\nA continuación, integras ambos miembros y despejas la y. El procedimiento es sencillo, pero tedioso.
+
+El resultado final es\ny(t) = e^(2t) (c e^t - 1)\nRápidamente deduces que c = 2 a partir de las condiciones iniciales dadas. Llegados a este punto, decides que vale la pena verificar el resultado reemplazando en la ecuación original. Una vez que compruebas que es correcto, pasas al siguiente ejercicio.
+
+Continúas así hasta terminar la guía. Ningún ejercicio te toma menos de 20 minutos. Durante horas, tu 
+
+## Pantalla 1.1.1.2.2: Trabajar en tu proyecto
 
 ## Pantalla 1.1.2: Agregar leche
 Decides que un poco de leche podría suavizar este café tan desagradable. Abres la heladera y agarras el sachet de leche. Te sorprende su peso, "no más de 11 gramos", estimas. Lo viertes sobre la taza de café y una única, mísera gota de leche cae sobre este. "¿Cómo puede ser?" te preguntas. "¿Quién se tomó toda la leche?"\nPero esta es tu casa y no hay nadie más que tú. ¿Por qué guardaste el sachet vacío en la heladera?
@@ -141,7 +173,7 @@ Las lágrimas fluyen mientras observas impotente el caos que has causado. Primer
 Cierres la ventana y regresas al interior de tu habitación. Al recordar todo lo que has perdido, la realidad te abruma. "Debería haber saltado..." piensas. Pero no tuviste lo que hay que tener. No tienes nada. Puede que aún no hayas sido dado de baja por la medicina moderna, pero tienes la certeza de que has muerto por dentro.
 
 ## Pantalla 1.1.2.2: ¡Yo no fuí!
-**[Ruta detective]**
+**[Ruta detective]** *cancelada*
 
 Okay Sherlock. Alguien entró en tu casa, se tomó tu leche y guardó el sachet vacío en la heladera. ¿Qué vas a hacer al respecto?
 
@@ -217,6 +249,22 @@ Has optado por pasar por alto ese desecho en el suelo. No has contribuido a hace
 
 ## Pantalla 1.2.1.2: Trabajar en tu proyecto
 **[Ruta Bandersnatch (en Wollok)]**
+
+Optas por continuar el desarrollo de tu videojuego en Wollok. Algo que en un principio parecía sencillo, pronto se convierte en una tarea desafiante. Cada línea de código parece estar rodeada de restricciones y obstáculos que dificultan la tarea. Wollok, aunque prometedora, se revela como un entorno de desarrollo complicado.
+
+Cada idea que tienes parece tropezar con las peculiaridades y limitaciones de Wollok. Por momentos, incluso llegas a aborrecer la programación orientada a objetos. A pesar de todo, sigues adelante. El mate, ya lavado, es testigo de tus esfuerzos.
+
+Tu obra comienza a tomar forma. El concepto de *un alien que atrapa autos* puede no parecer una idea brillante, pero cumple. Notas que tu juego necesita alguna dificultad. Entonces te planteas la pregunta: ¿cuál sería el enemigo perfecto para desafiar a este alien?
+
+## Pantalla 1.2.1.2.1: Bombas
+Decides que las bombas son el enemigo ideal para cualquier juego. Trabajas arduamente en la implementación de estas amenazas explosivas. El mate, ya frío, no puede competir con la adrenalina de creación.\nHasta que al fin, tu obra maestra cobra vida.
+
+## Pantalla 1.2.1.2.2: Ranas
+Decides que unas ranas pueden hacerle frente a tu alien. Trabajas arduamente en la implementación de estos anfibios saltarines. El mate, ya frío, no puede competir con la adrenalina de creación.\nHasta que al fin, tu obra maestra cobra vida.
+
+## Pantalla 1.2.1.2.1.1 / 1.2.1.2.2.1: Es hermoso
+
+## Pantalla 1.2.1.2.1.2 / 1.2.1.2.2.2: Es una mierda
 
 ...
 

@@ -13,9 +13,13 @@ object juego {
 	/** Variable que contiene la cantidad de preguntadas acertadas por el jugador */
 	var property puntaje = 0
 	/** Música del quiz */
-	const musicaQuiz = game.sound("assets/amenabar.mp3")
+	const musicaQuiz = game.sound("assets/dreamscape.mp3")
 	/** Música de terror */
 	const musicaTerror = game.sound("assets/horror-background-atmosphere.mp3")
+	/** Música drama */
+	const musicaDrama = game.sound("assets/gnossienne.mp3")
+	/** Música flaco */
+	const musicaFlaco = game.sound("assets/amenabar.mp3")
 	/** Sonido de cada nodo/pantalla */
 	var sonidoPantalla = null
 	/** Variable que apunta al estado actual */
@@ -79,11 +83,62 @@ object juego {
 			/** Por defecto la transición es al elemento de la lista de transiciones que se corresponde con el playerInput */
 			estadoActual = tree.rutaEstudiante().get(estadoActual.transiciones().get(playerInput))
 		}
+		/** Ruta Bandersnatch */
+		/** Inicializa el autómata */
+		if (nodoActual == tree.rutaBandersnatch().first()) {
+			/** Actualiza el estado */
+			estadoActual = nodoActual
+			/** Pone música */
+			game.schedule(0, {musicaFlaco.play()})
+		}
+		/** Funcionamiento del autómata */
+		if (tree.rutaBandersnatch().contains(estadoActual)) {
+			/** Por defecto trancisiones a donde corresponde por el input */
+			estadoActual = tree.rutaBandersnatch().get(estadoActual.transiciones().get(playerInput))
+		}
 		/** Ruta chad */
 		/** Si el nodo actual es el primero de la ruta chad */
 		if (nodoActual == tree.rutaChad().first()) {
-			/** Va al estado siguiente */
-			estadoActual = tree.rutaChad().get(nodoActual.transiciones().first())
+			/** Actualiza el estado */
+			estadoActual = nodoActual
+		}
+		/** Si el estado actual es de la ruta chad */
+		if (tree.rutaChad().contains(estadoActual)) {
+			/** Por defecto trancisiones a donde corresponde por el input */
+			estadoActual = tree.rutaChad().get(estadoActual.transiciones().get(playerInput))
+		}
+		/** Ejercicio 21 */
+		/** Inicializa el autómata */
+		if (nodoActual == tree.ejercicio21().first()) {
+			/** Actualiza el estado */
+			estadoActual = nodoActual
+		}
+		/** Funcionamiento del autómata */
+		if (tree.ejercicio21().contains(estadoActual)) {
+			/** Por defecto trancisiones a donde corresponde por el input */
+			estadoActual = tree.ejercicio21().get(estadoActual.transiciones().get(playerInput))
+		}
+		/** Ruta drama */
+		/** Si el nodo actual es el primero de la ruta drama */
+		if (nodoActual == tree.rutaDrama().first()) {
+			/** Cambia el estado */
+			estadoActual = nodoActual
+			/** Si elige "Aceptar tu derrota" suena la música drama */
+			if (playerInput == 1) {game.schedule(0, {musicaDrama.play()})}
+		}
+		/** Si el estado actual es de la ruta drama */
+		if (tree.rutaDrama().contains(estadoActual)) {
+			/** Por defecto la transición es al elemento de la lista de transiciones que se corresponde con el playerInput */
+			estadoActual = tree.rutaDrama().get(estadoActual.transiciones().get(playerInput))
+		}
+		/** Si no, pero la música drama se está reproduciéndo, la pausa */
+		else if (musicaDrama.played()) {musicaDrama.pause()}
+		/** Si el nodo actual es el primero de la ruta drama */
+		if (nodoActual == tree.rutaDrama().first()) {
+			/** Cambia el estado */
+			estadoActual = nodoActual
+			/** Si elige "Aceptar tu derrota" suena la música drama */
+			if (playerInput == 1) {game.schedule(0, {musicaDrama.play()})}
 		}
 		/** Inicio */
 		/** Si el estado actual es del quiz */
@@ -145,8 +200,10 @@ object juego {
   		/** Configura la música del quiz para que suene en loop */
 		musicaQuiz.shouldLoop(true)
 		/** Ajusta el volumen de los sonidos */
-		musicaQuiz.volume(0.05)
+		musicaQuiz.volume(0.03)
 		musicaTerror.volume(0.25)
+		musicaDrama.volume(0.10)
+		musicaFlaco.volume(0.07)
 		/** Reproduce la música del quiz */
 		game.schedule(0, {musicaQuiz.play()})
 		
