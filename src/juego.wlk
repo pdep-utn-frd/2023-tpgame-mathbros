@@ -34,7 +34,7 @@ object juego {
 			if (musicaQuiz.paused()) {game.schedule(0, {musicaQuiz.resume()})}
 		}
 		/** Si el estado actual está en algún quiz */
-		else if ((automata.estados().take(7) + automata.estados().drop(52).take(5)).contains(estadoActual)) {
+		else if (automata.estados().take(7).contains(estadoActual) or automata.estados().drop(25).take(5).contains(estadoActual) or automata.estados().drop(69).take(5).contains(estadoActual)) {
 				/** Si el jugador eligió la respuesta correcta, suena "yay" */
 				if (playerInput == estadoActual.auxiliar()) {
 					game.schedule(0, {(game.sound("assets/correct-yay.mp3").play())})
@@ -46,27 +46,26 @@ object juego {
 					game.schedule(0, {(game.sound("assets/incorrect-buzzer.mp3").play())})
 				}
 				/** Si está en la última pregunta del quiz, se detiene la música */
-				if ((estadoActual == automata.estados().get(6)) or (estadoActual == automata.estados().get(56))) {
+				if ((estadoActual == automata.estados().get(6)) or (estadoActual == automata.estados().get(29)) or (estadoActual == automata.estados().get(73))) {
 					/** Detiene la música del quiz */
 					game.schedule(0, {musicaQuiz.pause()})
 				}
 			}
-		/** Si el estado actual es el de la puerta */
-		else if (automata.estados().get(57) == estadoActual) {
-			/** Si abre la puerta, reproduce la música de terror */
-			if (playerInput == 0) {game.schedule(0, {musicaTerror.play()})}
-		}
-		/** Si el estado actual es la muerte filosófica o el rapto */
-		else if ((automata.estados().get(59) == estadoActual and playerInput == 0) or (automata.estados().get(62) == estadoActual)) {
+		/** Si no, reproduce un sonido de transición */
+		else {game.schedule(0, {(game.sound("assets/glitch-"+(0).randomUpTo(2).truncate(0).toString()+".mp3").play())})}
+		/** Si el estado actual es el de la puerta, reproduce la música de terror */
+		if (automata.estados().get(74) == estadoActual) {game.schedule(0, {musicaTerror.play()})}
+		/** Si el estado actual es la muerte filosófica, el rapto o la puerta 3 */
+		else if ((automata.estados().get(59) == estadoActual and playerInput == 0) or (automata.estados().get(61) == estadoActual) or (automata.estados().get(69) == estadoActual)) {
 			/** Detiene la música de terror */
 			game.schedule(0, {musicaTerror.pause()})
 		}
 		/** Si elige "Aceptar tu derrota" suena la música drama */
-		else if (estadoActual == automata.estados().get(39) and playerInput == 1) {game.schedule(0, {musicaDrama.play()})}
+		else if (estadoActual == automata.estados().get(54) and playerInput == 1) {game.schedule(0, {musicaDrama.play()})}
+		/** Si el estado actual es el del mate perfecto y elige "Trabajar en tu proyecto", reproduce la música del flaco Spinetta */
+		else if (playerInput == 1 and estadoActual == automata.estados().get(67)) {game.schedule(0, {musicaFlaco.play()})}
 		/** Detiene el sonido de la pantalla previa */
 		if (sonidoPantalla.played()) {sonidoPantalla.stop()}
-		/** Reproduce un sonido de transición */
-		game.schedule(0, {(game.sound("assets/glitch-"+(0).randomUpTo(2).truncate(0).toString()+".mp3").play())})
 		/** Si está en la última pregunta del primer quiz, la transición depende del puntaje */
 		if (estadoActual == automata.estados().get(6)) {estadoActual = automata.estados().get(estadoActual.transiciones().get(puntaje))}
 		/** Por defecto la transición es al elemento de la lista de transiciones que se corresponde con el playerInput */
