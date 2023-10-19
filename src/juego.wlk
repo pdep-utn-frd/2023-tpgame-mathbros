@@ -52,6 +52,8 @@ object juego {
 		if (sonidoPantalla.played()) {sonidoPantalla.stop()}
 		/** Si está en la última pregunta del primer quiz, la transición depende del puntaje */
 		if (estadoActual == automata.estados().get(6)) {estadoActual = automata.estados().get(estadoActual.transiciones().get(puntaje))}
+		/** Si no, si está en el estado de cobranza, la transición es al azar */
+		else if (estadoActual == automata.estados().get(68)) {estadoActual = automata.estados().get(estadoActual.transiciones().get((0).randomUpTo(2).truncate(0)))}
 		/** Por defecto la transición es al elemento de la lista de transiciones que se corresponde con el playerInput */
 		else {estadoActual = automata.estados().get(estadoActual.transiciones().get(playerInput))}
 	}
