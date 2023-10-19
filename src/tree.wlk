@@ -1,4 +1,5 @@
 import wollok.game.*
+import juego.*
 
 /** Estados de un autómata */
 class Estado {
@@ -10,7 +11,22 @@ class Estado {
 	var property transiciones = [/** Left, Right */]
 	/** Variable auxiliar cuya utilidad se define en la función del estado siguiente */
 	var property auxiliar = null
-}
+	
+	var property musicaID = [0, 0]
+
+	/** Método que reproduce o pausa la música */
+	method poneMusica(input) {
+		const id = [juego.silence(), juego.musicaQuiz(), juego.musicaTerror(), juego.musicaDrama(), juego.musicaFlaco()]
+		const music = id.get(musicaID.get(input))
+		/** Si está pausada, la despausa */
+		if (music.paused()){game.schedule(0, {music.resume()})}
+		/** Si se está reproduciendo, la pausa */
+		else if (music.played()) {game.schedule(0, {music.pause()})}
+		/** Si no, la reproduce */
+		else {game.schedule(0, {music.play()})}}
+	}
+	
+
 
 /** Autómata del juego */
 object automata {
@@ -24,7 +40,7 @@ object automata {
 		new Estado(imageID = 3, transiciones = [4, 4], auxiliar = 0),
 		new Estado(imageID = 4, transiciones = [5, 5], auxiliar = 1),
 		new Estado(imageID = 5, transiciones = [6, 6], auxiliar = 1),
-		new Estado(imageID = 6, transiciones = [7, 8, 9, 9, 9, 10, 10, 11], auxiliar = 0),
+		new Estado(imageID = 6, transiciones = [7, 8, 9, 9, 9, 10, 10, 11], auxiliar = 0, musicaID = [1, 1]),
 		/** Acá termina el quiz */
 		/** Resultados del primer quiz */
 		new Estado(imageID = 7,  audio = 'quiz-0', transiciones = [12, 66]),
@@ -59,13 +75,13 @@ object automata {
 									/** Tu servicio es desproporcional al precio */
 									new Estado(imageID = 23, audio = "lo-que-no-tengo-proporcional", transiciones = [24]),
 										/** Estudiar para el examen */
-										new Estado(imageID = 24, transiciones = [25, 25]),
+										new Estado(imageID = 24, transiciones = [25, 25], musicaID = [1, 1]),
 										/** Empieza el segundo quiz */
 										new Estado(imageID = 25, transiciones = [26, 26], auxiliar = 1),
 										new Estado(imageID = 26, transiciones = [27, 27], auxiliar = 0),
 										new Estado(imageID = 27, transiciones = [28, 28], auxiliar = 1),
 										new Estado(imageID = 28, transiciones = [29, 29], auxiliar = 0),
-										new Estado(imageID = 29, audio = "quieres-que-te-cague-en-la-cara", transiciones = [30, 30], auxiliar = 1),
+										new Estado(imageID = 29, audio = "quieres-que-te-haga-caca-en-la-cara", transiciones = [30, 30], auxiliar = 1, musicaID = [1, 1]),
 										/** Termina el segundo quiz */
 										new Estado(imageID = 30, audio = "telefono", transiciones = [31, 37]),
 											/** No, no la hay */
@@ -117,13 +133,14 @@ object automata {
 					/** ... */
 			/** Agregarle leche */
 			new Estado(imageID = 53, audio = "fridge", transiciones = [54, 54]),
-			new Estado(imageID = 54, audio = "drop-bounce-plastic-bottle", transiciones = [55, 60]),
+			new Estado(imageID = 54, audio = "drop-bounce-plastic-bottle", transiciones = [55, 60], musicaID = [0, 3]),
 				/** Intentar salvar el café */
 				new Estado(imageID = 55, transiciones = [56, 59]),
 					/** Mezclar el dulce en el café */
 					new Estado(imageID = 56, transiciones = [57, 57]),
 					new Estado(imageID = 57, audio = "disturbing-call", transiciones = []),
 						/** ... */
+						new Estado(imageID = 58),
 					/** Mezclar el café en el dulce */
 					/** Final: muerte por dulce de leche */
 					new Estado(imageID = 59, audio = "el-fin-del-hombre-arana", transiciones = [95, 95]),
@@ -148,15 +165,15 @@ object automata {
 			/** 348 Kelvin */
 			new Estado(imageID = 67, audio = 'que-rico-esta-este-mate', transiciones = [68, 90]),
 				/** Estudiar para el examen */
-				new Estado(imageID = 68, transiciones = [69, 69]),
+				new Estado(imageID = 68, transiciones = [69, 69], musicaID = [1, 1]),
 				/** Acá arranca el segundo quiz */
 				new Estado(imageID = 69, transiciones = [70, 70], auxiliar = 1),
 				new Estado(imageID = 70, transiciones = [71, 71], auxiliar = 0),
 				new Estado(imageID = 71, transiciones = [72, 72], auxiliar = 1),
 				new Estado(imageID = 72, transiciones = [73, 73], auxiliar = 0),
-				new Estado(imageID = 73, transiciones = [74, 74], auxiliar = 1),
+				new Estado(imageID = 73, transiciones = [74, 74], auxiliar = 1, musicaID = [1, 1]),
 				/** Acá termina el segundo quiz */
-				new Estado(imageID = 74, audio = "toctoc", transiciones = [75, 85]),
+				new Estado(imageID = 74, audio = "toctoc", transiciones = [75, 85], musicaID = [2, 2]),
 					/** Abrir */
 					new Estado(imageID = 75, transiciones = [76, 76]),
 					new Estado(imageID = 76, audio = "puerta-abre", transiciones = [77, 78]),
@@ -181,9 +198,9 @@ object automata {
 							/** Te quedas */
 							new Estado(imageID = 84, transiciones = [81]),
 					/** No abrir */
-					new Estado(imageID = 85, audio = "toctoc-1", transiciones = [86, 75]),
+					new Estado(imageID = 85, audio = "toctoc-1", transiciones = [75, 86]),
 						/** No abrir */
-						new Estado(imageID = 86, audio = "toctoc-2", transiciones = [87, 75]),
+						new Estado(imageID = 86, audio = "toctoc-2", transiciones = [75, 87], musicaID = [0, 2]),
 							/** No abrir */
 							new Estado(imageID = 87, transiciones = [88, 88]),
 							new Estado(imageID = 88, transiciones = [89, 89]),

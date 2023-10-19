@@ -19,18 +19,6 @@
 ## Quiz - Pregunta 7
 '¿Qué instrumento se utiliza en un experimento para verificar la Ley de Boyle-Mariotte?', 'Manómetro', 'No sé, man. Soy de sistemas'
 
-## 2do Quiz - Pregunta 1
-'¿Cuál es el elemento neutro de la multiplicación de los números complejos?', '1+i', 'i'
-
-## 2do Quiz - Pregunta 2
-'¿Cuándo converge la serie p?', 'Cuando p < 1', 'Cuando p >= 1'
-
-## 2do Quiz - Pregunta 3
-'¿Cuál es la contrapositiva de la proposición p --> q?', '-p --> -q', '-q --> -p'
-
-## 2do Quiz - Pregunta 4
-'Si a y m son primos, entonces a elevada a la cantidad de números entre 0 y m coprimos con m es congruente con 1 módulo m. ¿Cómo se llama este teorema?', 'Teorema de Euler-Fermat', 'Pequeño teorema  de Fermat'
-
 ## Resultado - 0/7
 No has acertado ni una sola respuesta en el cuestionario. Te preguntas cómo puedes ser tan ignorante. Siento pena por ti. No es una situación que debas tomar a la ligera.\nDecides ir a buscar algo para tomar.
 
@@ -79,67 +67,24 @@ Te sientes indignado por la falta de agua caliente y decides llamar al dueño de
 ## Pantalla 1.1.1.1.1.1.1.1.1.1: ¡Dale, gordo!
 "Joder" grita con resignación. Finalmente, cede ante tu demanda. "Voy a mandar a alguien a revisarlo, pero no esperes que sea rápido. Tengo muchas cosas que hacer". Seguidamente corta el teléfono.
 
-## Pantalla 1.1.1.1.1.1.1.1.1.1.1: Estudiar para el examen
-...
-
-## Pantalla 1.1.1.1.1.1.1.1.1.1.2: Trabajar en tu proyecto
-...
-
 ## Pantalla 1.1.1.1.1.1.1.1.1.2: Cortar
 **[Final: ruptura]**
 Has agotado tu paciencia y decides poner fin a la llamada. Canalizas toda la energía térmica adquirida durante la discusión en un golpe contra el pobre aparato telefónico. La fuerza ejercida es tal que supera incluso las limitaciones establecidas por la segunda ley de la termodinámica, provocando una ruptura en la simulación. Este es el fin de tu historia.
 
 ## Pantalla 1.1.1.1.1.1.1.1.2: Tu servicio es desproporcional al precio
-"Lo que no tengo proporcional es la polla, que la tengo *muy* pequeña." son sus últimas palabras antes de cortar la llamada.\nMientras terminas de procesar lo que acabas de escuchar, ¿por qué no aprovechas para ponerte al día con alguna de tus tareas pendientes?
-
-## Pantalla 1.1.1.1.1.1.1.1.2.1 / 1.1.1.1.1.1.1.2.1 / 1.1.1.1.1.1.2.1 / 1.1.1.1.1.2.1 / 1.1.1.1.2.1: Estudiar para el examen
-### 2do Quiz
-
-## 2do Quiz - Pregunta 5
-'¿Quieres que te haga caca en la cara?', 'Si', 'No'
-
-El sonido agudo de un teléfono rompe el silencio de tu departamento. El timbre insiste en llamar tu atención, como si te recordara que el mundo exterior sigue existiendo. No hay razón para no contestar, ¿verdad?
-
-## Pantalla 1.1.1.1.1.1.1.1.2.1.1 / 1.1.1.1.1.1.1.2.1.1 / 1.1.1.1.1.1.2.1.1 / 1.1.1.1.1.2.1.1 / 1.1.1.1.2.1.1: No, no la hay
-Cuando finalmente te dignas a contestar el teléfono, no oyes nada. "¿Hola?" preguntas con cierta impaciencia. Del otro lado de la línea, una voz familiar te llega, con tono abatido. "Me he dejado las llaves dentro..." dice el dueño del edificio al borde del llanto, implorando clemencia.
-
-"¡No es gracioso!" interviene rápidamente. Como siempre, tienes dos opciones. ¿Lo ayudas o lo dejas a su suerte?
-
-## Pantalla "".1: Apiadarte del pobre infeliz
-"Gracias por escuchar mis plegarias, tío." exclama con genuina gratitud. Das por hecho que el tema del agua estará solucionado al cabo de unos días.
-
-Habiendo realizado la buena acción del día, decides que es momento de ir a dormir.
-
-**Termina el día 1**
-
-## Pantalla "".1: ¡Que se cague por gil!
-"¡Me cago en tus muertos!" se oye desde la ventana. Por una vez, el karma parece funcionar y la realidad imparte justicia.
-
-Con la satisfacción causada por el desarrollo de los hechos, decides que es momento de ir a dormir.
-
-**Termina el día 1**
-
-## 1.1.1.1.1.1.1.1.2.1.2 / 1.1.1.1.1.1.1.2.1.2 / 1.1.1.1.1.1.2.1.2 / 1.1.1.1.1.2.1.2 / 1.1.1.1.2.1.2: Me da paja
-"Eres un vago de mierda" oyes de repente. ¿Será tu cabeza haciéndote una mala pasada? Ojalá sea solo eso. Pero ahora debes contestar el teléfono para demostrar que no eres *un vago de mierda*.
-
-## 1.1.1.1.1.1.1.1.2.1.2 / 1.1.1.1.1.1.1.2.1.2 / 1.1.1.1.1.1.2.1.2 / 1.1.1.1.1.2.1.2 / 1.1.1.1.2.1.2: Ser *un vago de mierda*
-**[Final: vago de mierda]**
-Te rindes ante las voces en tu cabeza. Dejas de lado tus estudios y, con el tiempo, pierdes tu trabajo debido a tu falta de compromiso.\nTe conviertes en un vagabundo, un alma perdida que deambula por las calles, sin sueños ni aspiraciones. No es un estilo de vida menos digno que cualquier otro.
-
-## Pantalla 1.1.1.1.1.1.1.1.2.2 / 1.1.1.1.1.1.1.2.2 / 1.1.1.1.1.1.2.2 / 1.1.1.1.1.2.2 / 1.1.1.1.2.2: Trabajar en tu proyecto
-...
+"Lo que no tengo proporcional es la polla, que la tengo *muy* pequeña." son sus últimas palabras antes de cortar la llamada.
 
 ## Pantalla 1.1.1.1.1.1.1.2: Me lo vas a descontar del alquiler
-"Eres un puto mentiroso de mierda y un hijo de la gran puta. Y un pecetero. Y un mierdas". La llamada se corta abruptamente.\nNo te lamentes todavía, tienes cosas que hacer.
+"Eres un puto mentiroso de mierda y un hijo de la gran puta. Y un pecetero. Y un mierdas". La llamada se corta abruptamente.
 
 ## Pantalla 1.1.1.1.1.1.2: Dejá de hacerte el boludo
-"¿Quién cojones te crees que eres?" contesta ofendido por tu tono. A continuación, cuelga la llamada en un acceso de enojo.\nNo te lamentes todavía, tienes cosas que hacer.
+"¿Quién cojones te crees que eres?" contesta ofendido por tu tono. A continuación, cuelga la llamada en un acceso de enojo.
 
 ## Pantalla 1.1.1.1.1.2: I don't have hot water
-"¡¿Qué dices?!" responde el dueño, confundido por tu inglés rudimentario. "¡No tengo tiempo para esta mierda!" agrega justo antes de cortar la llamada.\nNo te lamentes todavía, tienes cosas que hacer.
+"¡¿Qué dices?!" responde el dueño, confundido por tu inglés rudimentario. "¡No tengo tiempo para esta mierda!" agrega justo antes de cortar la llamada.
 
 ## Pantalla 1.1.1.1.2: So
-"Eres imbécil" responde. "Ya está" son sus últimas palabras antes de colgar el teléfono. Puede que hayas desperdiciado la oportunidad para solucionar tu problema con el agua, pero sientes que tomaste la decisión correcta.\nEn cualquier caso, deberías ocuparte de alguna de tus tareas pendientes.
+"Eres imbécil" responde. "Ya está" son sus últimas palabras antes de colgar el teléfono. Puede que hayas desperdiciado la oportunidad para solucionar tu problema con el agua, pero sientes que tomaste la decisión correcta.
 
 ## Pantalla 1.1.1.2: Ducharte con agua fría
 [**Ruta chad**]
@@ -164,10 +109,10 @@ No necesitas ninguna fórmula. Con paciencia y atención, comienzas a analizar l
 ## Pantalla 1.1.1.2.1.2.1: Resolver por separación de variables
 Pese a tu buena disposición, las variables no acceden a separarse. Las reglas matemáticas simplemente no lo permiten.
 
-## Pantalla 1.1.1.2.1.2.1.2: Demostrar que no pueden separarse
-[**Final chad 1**]
+## Pantalla 1.1.1.2.1.2.1.2: Reinventar la matemática
+[**Final: muerte matemática**]
 
-¿Será correcta tu intuición? Solo hay una manera de averiguarlo. Decides que *la verdad* se antepone a tus necesidades mundanas, como aprobar un examen. Nada es lo suficientemente importante como para impedirte hacer lo correcto. Todo conocimiento debe ser demostrado, no puedes simplemente *aceptarlo*.\n¿Felicidad? No es eso lo que buscas. Tienes un camino dificil por delante, uno que pocos se atreven a seguir. No habrá recompensa al final de este, pero no permitas que esto te desaliente.
+Decides que el hecho de que las variables no puedan separarse es inaceptable, por lo que te propones reinventar toda la matemática desde sus axiomas.\nLa resolución del ejercicio 21 de la guía de ejercicios típicos para el tercer parcial de Análisis Matemático 2 se ha convertido en algo más que una obsesión. Es un proyecto de vida. Tu presencia en el mundo parece desvanecerse a medida que avanzas en tu proyecto.\nEl tiempo transcurre, tendiendo a infinito, hasta que eventualmente te conviertes en un mártir de la nueva matemática, renunciando al mundo material en pos de la verdad absoluta.
 
 ## Pantalla 1.1.1.2.1.2.2 / 1.1.1.2.1.2.1.2: Aplicar la regla del producto para derivadas
 Esta puede ser una buena oportunidad para aplicar la regla del producto para derivadas, en forma inversa a la usual. Propones una función de g(t) tal que g'(t) = -3 g(t). Entonces tienes ante ti otra ecuación diferencial. Esta vez puedes resolverla por separación de variables.
@@ -181,9 +126,10 @@ Continúas así hasta terminar la guía. Ningún ejercicio te toma menos de 20 m
 ## Pantalla 1.1.1.2.2: Trabajar en tu proyecto
 
 ## Pantalla 1.1.2: Agregar leche
-**[Ruta drama]**
-
 Decides que un poco de leche podría suavizar este café tan desagradable. Abres la heladera y agarras el sachet de leche. Te sorprende su peso, "no más de 11 gramos", estimas. Lo viertes sobre la taza de café y una única, mísera gota de leche cae sobre este. "¿Cómo puede ser?" te preguntas. "¿Quién se tomó toda la leche?"\nPero esta es tu casa y no hay nadie más que tú. ¿Por qué guardaste el sachet vacío en la heladera?
+
+## Pantalla 1.1.2.1: Andá a saber...
+**[Ruta drama]**
 
 Ese café no se puede tomar. Tienes que hacer algo.\nDecides añadir edulcorante. Al sostener la botella, se te eriza la piel y sientes un escalofrío recorriendo tu espalda. "No supera los 30 gramos", estimas. Un nudo en la garganta te hace sentir como si hubieras sido víctima de una broma cruel del destino. "Esto no puede estar pasando" piensas. Pero la realidad golpea con fuerza. La botella de edulcorante también está vacía.
 
@@ -191,14 +137,7 @@ Ese café no se puede tomar. Tienes que hacer algo.\nDecides añadir edulcorante
 La serie de eventos desafortunados que ha comenzado no va a vencer tu determinación, ni mucho menos tu amor por el café. Para arreglar esta situación, debes pensar fuera de la caja. Te pasas minutos rebuscando entre cajones, explorando las posibilidades hasta que te das cuenta de que la solución siempre estuvo ante tus narices.\nFinalmente, abres la heladera y agarras un envase de dulce de leche repostero.
 
 ## Pantalla 1.1.2.1.1.1: Mezclar el dulce de leche en el café
-Te sientes a gusto con tu decisión, al menos por un momento. ¿Valió la pena? El sabor no es necesariamente peor que el del café solo, pero no es bueno. Estabas en una situación extremadamente complicada y pudiste solucionarlo. Deberías sentir orgullo, pero no, solo remordimiento.
-
-Te sientes momentáneamente complacido con tu decisión. ¿Valió la pena? El sabor resultante no es necesariamente peor que el del café solo, pero tampoco es una revelación culinaria. Te enfrentaste a una situación extremadamente complicada y, a tu manera, lograste resolverla. Deberías sentir un atisbo de orgullo por tu ingenio, pero en su lugar, solo persiste un regusto de remordimiento.
-
-El aire que respiras tiene su precio. Cada elección tomada tiene su precio. Todo tiene su precio. Y la acción de mezclar dulce de leche en el café no es la excepción. De hecho, su precio es sorprendentemente alto.\nTu vida está en juego. ¿Qué eliges?
-
-**[Final: muerte por azar]**
-La fortuna, una vez más, te niega su favor. Tu camino llega a su abrupto final.
+Te sientes a gusto con tu decisión, al menos por un momento. ¿Valió la pena? El sabor no es necesariamente peor que el del café solo, pero no es bueno. De repente, una ola de arrepentimiento te sacude mientras te das cuenta de que ninguna persona normal mezclaría dulce de leche en el café. ¿En qué te has convertido?
 
 ...
 
@@ -256,18 +195,28 @@ Hechas sobre la yerba un chorrito de agua tibia para humedecerla. Luego, con la 
 
 Decides que tus responsabilidades académicas deben ocupar el primer lugar en tu lista de prioridades. Te desplazas hasta tu escritorio, donde aguarda una montaña de apuntes y libros, testigos silenciosos de las horas de estudio que te esperan.\nEl mundo exterior desaparece a medida que te sumerges en tu tarea, recordando la importancia de este examen para tu futuro académico.
 
-### 2do Quiz
+## 2do Quiz - Pregunta 1
+'¿Cuál es el elemento neutro de la multiplicación de los números complejos?', '1+i', 'i'
+
+## 2do Quiz - Pregunta 2
+'¿Cuándo converge la serie p?', 'Cuando p < 1', 'Cuando p >= 1'
+
+## 2do Quiz - Pregunta 3
+'¿Cuál es la contrapositiva de la proposición p --> q?', '-p --> -q', '-q --> -p'
+
+## 2do Quiz - Pregunta 4
+'Si a y m son primos, entonces a elevada a la cantidad de números entre 0 y m coprimos con m es congruente con 1 módulo m. ¿Cómo se llama este teorema?', 'Teorema de Euler-Fermat', 'Pequeño teorema  de Fermat'
 
 ## 2do Quiz - Pregunta 5
 '¿Cuál es el mejor lenguaje de programación?', 'Python', 'Wollok'
 
 ## Tocan la puerta
-Estabas tratando de interpretar la ecuación diferencial, cuando sientes un estruendo en tu oreja izquierda. No te asustes. Alguien está tocando la puerta.\nNo esperabas visitas. Incluso tienes el presentimiento de que no debes abrirle la puerta a nadie. El barrio está peligroso y no podrías hacer nada ante la presencia de un malhechor.
+Estabas tratando de interpretar la ecuación diferencial de primer orden, cuando sientes un estruendo en tu oreja izquierda. No te asustes. Alguien está tocando la puerta.\nNo esperabas visitas. Incluso tienes el presentimiento de que no debes abrirle la puerta a nadie. El barrio está peligroso y no podrías hacer nada ante la presencia de un malhechor.
 
 ## Pantalla 1.2.1.1.1: Abrir
 Te armas de valor y decides que vas a abrir la puerta sin que te tiemble la mano. Cuando sientes el frío del picaporte, un gran sentimiento de terror aborda tu cuerpo. Aún así, recuerdas que pasaste por momentos más difíciles, como el examen final de Álgebra y Geometría Analítica.\nAbres la puerta...
 
-La realidad misma se desdibuja al contemplar la presencia inusual del profesor de Paradigmas de la Programación en el sancta sanctorum de tu hogar. Súbitamente, te asaltan sospechas sobre la autenticidad del mundo que conoces. ¿Será esta vida, en verdad, una intrincada simulación? Y, aún más desconcertante, ¿qué razón lo ha traído hasta tu umbral?\nEl profesor parece más inquieto de lo habitual, al punto de rayar en la ansiedad. Vuestras miradas se entrecruzan en un incómodo compás, llenando el aire con una tensión palpable, mientras el silencio se hace eco de interrogantes.\nFinalmente, el profesor rompe el muro de incertidumbre y, con voz tambaleante, plantea una cuestión enigmática:\n"¿Cuál es el mejor lenguaje de programación?"
+La realidad misma se desdibuja al contemplar la presencia inusual del profesor de Paradigmas de Programación en el sancta sanctorum de tu hogar. Súbitamente, te asaltan sospechas sobre la autenticidad del mundo que conoces. ¿Será esta vida, en verdad, una intrincada simulación? Y, aún más desconcertante, ¿qué razón lo ha traído hasta tu umbral?\nEl profesor parece más inquieto de lo habitual, al punto de rayar en la ansiedad. Vuestras miradas se entrecruzan en un incómodo compás, llenando el aire con una tensión palpable, mientras el silencio se hace eco de interrogantes.\nFinalmente, el profesor rompe el muro de incertidumbre y, con voz tambaleante, plantea una cuestión enigmática:\n"¿Cuál es el mejor lenguaje de programación?"
 
 ## Pantalla 1.2.1.1.1.1: Pascal
 **[Final: muerte filosófica]**
@@ -291,25 +240,12 @@ Luego de una ardua clase, no hay nada mejor que caminar un poco. Oh, observas un
 ## Pantalla 1.2.1.1.1.2.1.1.1 / 1.2.1.1.1.2.1.2.1: Agarrarlo para desecharlo
 Te felicito, demuestras un deseo genuino de contribuir a la creación de un mundo mejor. Te encaminas hacia la esquina donde se encuentran los contenedores de reciclaje.\nAllí, ante ti, se despliegan tres opciones:\n1. Papel y cartón.\n2. Vidrio y plásticos.\n3. Orgánicos.\nNo obstante, tu decisión se complica al notar que el vaso de cartón aún alberga residuos de yerba usada. La elección se torna repentinamente en una decisión crucial, como si tu destino dependiera de ello.\n¿Dónde decides desechar el vaso?
 
-...
-
 ## Pantalla 1.2.1.1.1.2.1.1.2 / 1.2.1.1.1.2.1.2.2: Ignorarlo, no te importa nada
 **[Final anti-ecologismo]**
 
 Has optado por pasar por alto ese desecho en el suelo. No has contribuido a hacer del mundo un lugar mejor. Mis expectativas eran escasas, y, a pesar de ello, logras decepcionarme. Llegamos al final de nuestro camino juntos. No deseo seguir siendo el narrador de tu historia. Adiós.
 
-## Pantalla 1.2.1.1.2: No abrir
-Los golpes en la puerta se vuelven más intensos. Quien sea que esté del otro lado debe tener algo importante que comunicarte. O quizás simplemente no soporta ser ignorado.
-
-## Pantalla 1.2.1.1.2.2: No abrir
-Están sacudiendo violentamente tu puerta. No sabes qué hay afuera, pero está empeñado en entrar y no con buenas intenciones. Deberías prepararte para lo peor.
-
-## Pantalla 1.2.1.1.2.2.2: No abrir
-El ruido cesa. Parece ser que has aguantado la prueba. Puedes volver a lo que estabas haciendo.
-
-¿En qué estabas? Ah, cierto. La ecuación diferencial, el ejercicio 21. ¿Cómo lo resuelves?
-
-De repente, una figura aterradora emerge ante tus ojos. ¿Monstruo? No, es tu profesor de Paradigmas de la Programación. Esta revelación no te consuela en absoluto, habrías preferido encontrarte con un fantasma. ¡¿Qué hace aquí el endemoniado profesor?!\nPoco importan ahora estas cuestiones, el puto susto es como recibir una descarga de 200 voltios directa al corazón. Tu cuerpo no aguanta la presión y, en cuestión de segundos, te desvaneces en la oscuridad de un desmayo repentino.
+...
 
 ## Pantalla 1.2.1.2: Trabajar en tu proyecto
 **[Ruta Bandersnatch (en Wollok)]**
