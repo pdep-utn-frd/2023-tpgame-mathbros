@@ -133,7 +133,7 @@ for i, bloque in enumerate(lista):
               texto_esquina_derecha, fill="white", font=fuente_esquinas)
 
   # Guardar la imagen generada
-  imagen.save(f"imagen-{i}.png")
+  imagen.save(f"imagen-{bloque[4]}.png")
 
   # Mostrar la imagen generada
   # imagen.show()

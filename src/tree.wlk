@@ -3,29 +3,66 @@ import juego.*
 
 /** Estados de un autómata */
 class Estado {
-	/** imagenID es un entero i asociada al nombre de la imagen: "imagen-i.png" */
-	var property imageID = 0
+	/** imageID es el nombre de la imagen: "imagen-imageID.png" */
+	var property imageID = ""
 	/** Audio: se reproduce cuando aparece la pantalla */
 	var property audio = "silence"
-	/** Las transiciones son listas con los índices de los estados siguientes */
-	var property transiciones = [/** Left, Right */]
+	/** Las transiciones son listas con los ID de los estados siguientes */
+	var property transiciones = ["to-be-continued" /** Left */, "to-be-continued" /** Right */]
 	/** Variable auxiliar cuya utilidad se define en la función del estado siguiente */
 	var property auxiliar = null
-	
-	var property musicaID = [0, 0]
+	/** musicaID es la key del diccionario de canciones del juego */
+	var property musicaID = ["silence", "silence"]
 
 	/** Método que reproduce o pausa la música */
-	method poneMusica(input) {
-		const id = [juego.silence(), juego.musicaQuiz(), juego.musicaTerror(), juego.musicaDrama(), juego.musicaFlaco()]
-		const music = id.get(musicaID.get(input))
+	method poneMusica() {
+		/** Variable que obtiene el objeto musical */
+		const music = juego.musica().get(self.musicaID().get(juego.playerInput()))
 		/** Si está pausada, la despausa */
 		if (music.paused()){game.schedule(0, {music.resume()})}
 		/** Si se está reproduciendo, la pausa */
 		else if (music.played()) {game.schedule(0, {music.pause()})}
 		/** Si no, la reproduce */
-		else {game.schedule(0, {music.play()})}}
+		else {game.schedule(0, {music.play()})}
 	}
 	
+	/** Función del estado siguiente */
+	method estadoSiguiente(){
+		
+		/** Interacciones especiales */
+		/** En la pantalla de créditos, si presiona cualquier tecla, se cierra el juego */
+		if (self.imageID() == "creditos") {game.stop()}
+		/** Si el estado actual está en algún quiz */
+		else if (self.imageID().take(4) == "quiz") {
+				/** Si el jugador eligió la respuesta correcta, suena "yay" */
+				if (juego.playerInput() == self.auxiliar()) {
+					game.schedule(0, {(game.sound("assets/correct-yay.mp3").play())})
+					/** E incrementa el puntaje */
+					juego.incrementarPuntaje()
+				}
+				/** Si el jugador eligió la respuesta incorrecta, suena "buzzer" */
+				else {
+					game.schedule(0, {(game.sound("assets/incorrect-buzzer.mp3").play())})
+				}
+			}
+		/** Si no, reproduce un sonido de transición */
+		else {game.schedule(0, {(game.sound("assets/glitch-"+(0).randomUpTo(2).truncate(0).toString()+".mp3").play())})}
+	
+		/** Transiciones */
+		/** Si está en la última pregunta del primer quiz, la transición depende del puntaje */
+		if (self.imageID() == "quiz-6") {juego.cambioEstado(automata.estados().find({estado => estado.imageID() == self.transiciones().get(juego.puntaje())}))}
+		/** Si no, si está en el estado de cobranza, la transición es al azar */
+		else if (self.imageID() == "cobrador-0") {juego.cambioEstado(automata.estados().find({estado => estado.imageID() == self.transiciones().get((0).randomUpTo(2).truncate(0))}))}
+		/** Por defecto la transición es al elemento de la lista de transiciones que se corresponde con el playerInput */
+		else {juego.cambioEstado(automata.estados().find({estado => estado.imageID() == self.transiciones().get(juego.playerInput())}))}
+		
+		/** Interacciones comunes */
+		/** Llama al método de poner música del estado actual */
+		self.poneMusica()
+		/** Detiene el sonido de la pantalla previa */
+		if (juego.sonidoPantalla().played()) {juego.sonidoPantalla().stop()}
+	}
+}	
 
 
 /** Autómata del juego */
@@ -34,210 +71,199 @@ object automata {
 	const property estados = [
 		/** Acá arranca el quiz */
 		/** El valor de auxiliar representa la respuesta correcta */
-		new Estado(imageID = 0, transiciones = [1, 1], auxiliar = 0),
-		new Estado(imageID = 1, transiciones = [2, 2], auxiliar = 1),
-		new Estado(imageID = 2, transiciones = [3, 3], auxiliar = 1),
-		new Estado(imageID = 3, transiciones = [4, 4], auxiliar = 0),
-		new Estado(imageID = 4, transiciones = [5, 5], auxiliar = 1),
-		new Estado(imageID = 5, transiciones = [6, 6], auxiliar = 1),
-		new Estado(imageID = 6, transiciones = [7, 8, 9, 9, 9, 10, 10, 11], auxiliar = 0, musicaID = [1, 1]),
+		new Estado(imageID = "quiz-0", transiciones = ["quiz-1", "quiz-1"], auxiliar = 0),
+		new Estado(imageID = "quiz-1", transiciones = ["quiz-2", "quiz-2"], auxiliar = 1),
+		new Estado(imageID = "quiz-2", transiciones = ["quiz-3", "quiz-3"], auxiliar = 1),
+		new Estado(imageID = "quiz-3", transiciones = ["quiz-4", "quiz-4"], auxiliar = 0),
+		new Estado(imageID = "quiz-4", transiciones = ["quiz-5", "quiz-5"], auxiliar = 1),
+		new Estado(imageID = "quiz-5", transiciones = ["quiz-6", "quiz-6"], auxiliar = 1),
+		new Estado(imageID = "quiz-6", transiciones = ["resultado-0", "resultado-1", "resultado-2", "resultado-2", "resultado-2", "resultado-3", "resultado-3", "resultado-4"], auxiliar = 0, musicaID = ["quiz", "quiz"]),
 		/** Acá termina el quiz */
 		/** Resultados del primer quiz */
-		new Estado(imageID = 7,  audio = 'quiz-0', transiciones = [12, 80]),
-		new Estado(imageID = 8,  audio = 'quiz-1', transiciones = [12, 80]),
-		new Estado(imageID = 9,  audio = 'quiz-2', transiciones = [12, 80]),
-		new Estado(imageID = 10, audio = 'quiz-3', transiciones = [12, 80]),
-		new Estado(imageID = 11, audio = 'quiz-4', transiciones = [12, 80]),
+		new Estado(imageID = "resultado-0", audio = 'quiz-0', transiciones = ["cafe", "mate"]),
+		new Estado(imageID = "resultado-1", audio = 'quiz-1', transiciones = ["cafe", "mate"]),
+		new Estado(imageID = "resultado-2", audio = 'quiz-2', transiciones = ["cafe", "mate"]),
+		new Estado(imageID = "resultado-3", audio = 'quiz-3', transiciones = ["cafe", "mate"]),
+		new Estado(imageID = "resultado-4", audio = 'quiz-4', transiciones = ["cafe", "mate"]),
 		/** Acá arranca la aventura */
 		/** Café */
-		new Estado(imageID = 12, audio = "olha-a-hora-do-cafe", transiciones = [13, 64]),
+		new Estado(imageID = "cafe", audio = "olha-a-hora-do-cafe", transiciones = ["chad-cafe-solo", "leche"]),
 			/** Tomar solo */
-			new Estado(imageID = 13, audio = "chad-0", transiciones = [14, 14]),
-			new Estado(imageID = 14, transiciones = [15, 51]),
+			new Estado(imageID = "chad-cafe-solo", audio = "chad-0", transiciones = ["ducha-0", "ducha-0"]),
+			new Estado(imageID = "ducha-0", transiciones = ["telefono-0", "chad-ducha"]),
 				/** Llamar al dueño del edificio */
-				new Estado(imageID = 15, audio = "que", transiciones = [16, 50]),
+				new Estado(imageID = "telefono-0", audio = "que", transiciones = ["telefono-01", "telefono-11"]),
 					/** Soy yo, man */
-					new Estado(imageID = 16, audio = "tell-me-what-you-want", transiciones = [17, 49]),
+					new Estado(imageID = "telefono-01", audio = "tell-me-what-you-want", transiciones = ["telefono-02", "telefono-12"]),
 						/** No tengo agua caliente */
-						new Estado(imageID = 17, audio = "me-suda-la-polla", transiciones = [18, 48]),
+						new Estado(imageID = "telefono-02", audio = "me-suda-la-polla", transiciones = ["telefono-03", "telefono-13"]),
 							/** Me tenés que ayudar */
-							new Estado(imageID = 18, audio = "es-culpa-tuya", transiciones = [19, 47]),
+							new Estado(imageID = "telefono-03", audio = "es-culpa-tuya", transiciones = ["telefono-04", "telefono-14"]),
 								/** Es tu edificio, hacete cargo */
-								new Estado(imageID = 19, audio = "que-quieres-que-haga", transiciones = [20, 25]),
+								new Estado(imageID = "telefono-04", audio = "que-quieres-que-haga", transiciones = ["telefono-05", "telefono-15"]),
 									/** Solucioname el tema del agua */
-									new Estado(imageID = 20, audio = "no-quiero", transiciones = [21, 24]),
+									new Estado(imageID = "telefono-05", audio = "no-quiero", transiciones = ["telefono-06", "telefono-16"]),
 										/** ¡Dale, gordo! */
-										new Estado(imageID = 21, audio = "joder", transiciones = [22, 23]),
+										new Estado(imageID = "telefono-06", audio = "joder"),
 											/** ... */
-											new Estado(imageID = 22, audio = "roundabout", transiciones = [114, 114]),
-											new Estado(imageID = 23, audio = "roundabout", transiciones = [114, 114]),
 										/** Cortar */
 										/** Final: ruptura */
-										new Estado(imageID = 24, audio = "ruptura-ending", transiciones = [114, 114]),
+										new Estado(imageID = "telefono-16", audio = "ruptura-ending", transiciones = ["creditos", "creditos"]),
 									/** Tu servicio es desproporcional al precio */
-									new Estado(imageID = 25, audio = "lo-que-no-tengo-proporcional", transiciones = [26, 41]),
+									new Estado(imageID = "telefono-15", audio = "lo-que-no-tengo-proporcional", transiciones = ["intro-quiz2", "no-es-un-juego-0"]),
 										/** Estudiar para el examen */
-										new Estado(imageID = 26, transiciones = [27, 27], musicaID = [1, 1]),
+										new Estado(imageID = "intro-quiz2", transiciones = ["quiz2-0", "quiz2-0"], musicaID = ["quiz", "quiz"]),
 										/** Empieza el segundo quiz */
-										new Estado(imageID = 27, transiciones = [28, 28], auxiliar = 1),
-										new Estado(imageID = 28, transiciones = [29, 29], auxiliar = 0),
-										new Estado(imageID = 29, transiciones = [30, 30], auxiliar = 1),
-										new Estado(imageID = 30, transiciones = [31, 31], auxiliar = 0),
-										new Estado(imageID = 31, audio = "quieres-que-te-haga-caca-en-la-cara", transiciones = [30, 30], auxiliar = 1, musicaID = [1, 1]),
+										new Estado(imageID = "quiz2-0", transiciones = ["quiz2-1", "quiz2-1"], auxiliar = 1),
+										new Estado(imageID = "quiz2-1", transiciones = ["quiz2-2", "quiz2-2"], auxiliar = 0),
+										new Estado(imageID = "quiz2-2", transiciones = ["quiz2-3", "quiz2-3"], auxiliar = 1),
+										new Estado(imageID = "quiz2-3", transiciones = ["quiz2-caca", "quiz2-caca"], auxiliar = 0),
+										new Estado(imageID = "quiz2-caca", audio = "quieres-que-te-haga-caca-en-la-cara", transiciones = ["suena-telefono-0", "suena-telefono-0"], auxiliar = 1, musicaID = ["quiz", "quiz"]),
 										/** Termina el segundo quiz */
-										new Estado(imageID = 32, audio = "telefono", transiciones = [33, 37]),
+										new Estado(imageID = "suena-telefono-0", audio = "telefono", transiciones = ["contesta-telefono-0", "suena-telefono-1"]),
 											/** No, no la hay */
-											new Estado(imageID = 33, audio = "me-he-dejado-las-llaves-dentro", transiciones = [34, 34]),
-											new Estado(imageID = 34, audio = "no-es-gracioso", transiciones = [35, 37]),
+											new Estado(imageID = "contesta-telefono-0", audio = "me-he-dejado-las-llaves-dentro", transiciones = ["contesta-telefono-1", "contesta-telefono-1"]),
+											new Estado(imageID = "contesta-telefono-1", audio = "no-es-gracioso", transiciones = ["contesta-telefono-apiadarse-0", "contesta-telefono-que-se-cague-0"]),
 												/** Apiadarte del pobre infeliz */
-												new Estado(imageID = 35, audio = "gracias-por-escuchar-mis-plegarias-tio", transiciones = [36, 36]),
-												new Estado(imageID = 36, transiciones = [46, 46]),
+												new Estado(imageID = "contesta-telefono-apiadarse-0", audio = "gracias-por-escuchar-mis-plegarias-tio", transiciones = ["contesta-telefono-apiadarse-1", "contesta-telefono-apiadarse-1"]),
+												new Estado(imageID = "contesta-telefono-apiadarse-1"),
 													/** Termina el día 1 */
 												/** ¡Que se cague por gil! */
-												new Estado(imageID = 37, audio = "me-cago-en-tus-muertos", transiciones = [38, 38]),
-												new Estado(imageID = 38, transiciones = [46, 46]),
+												new Estado(imageID = "contesta-telefono-que-se-cague-0", audio = "me-cago-en-tus-muertos", transiciones = ["contesta-telefono-que-se-cague-1", "contesta-telefono-que-se-cague-1"]),
+												new Estado(imageID = "contesta-telefono-que-se-cague-1"),
 													/** Termina el día 1 */
 											/** Me da paja */
-											new Estado(imageID = 39, audio = "eres-un-vago-de-mierda", transiciones = [33, 40]),
+											new Estado(imageID = "suena-telefono-1", audio = "eres-un-vago-de-mierda", transiciones = ["contesta-telefono-0", "vagabundo-ending"]),
 												/** Ser un *vago de mierda* */
-												new Estado(imageID = 40, audio = "vago-ending", transiciones = [114, 114]),
+												new Estado(imageID = "vagabundo-ending", audio = "vagabundo-ending", transiciones = ["creditos", "creditos"]),
 										/** Trabajar en tu proyecto */
-										new Estado(imageID = 41, transiciones = [42, 42]),
-										new Estado(imageID = 42, audio = "como-que-un-juego", transiciones = [43, 43]),
-										new Estado(imageID = 43, audio = "esto-no-es-un-juego", transiciones = [44, 45]),
+										new Estado(imageID = "videojuego-0", transiciones = ["no-es-un-juego-0", "no-es-un-juego-0"]),
+										new Estado(imageID = "no-es-un-juego-0", audio = "como-que-un-juego", transiciones = ["no-es-un-juego-1", "no-es-un-juego-1"]),
+										new Estado(imageID = "no-es-un-juego-1", audio = "esto-no-es-un-juego", transiciones = ["libertad-ending", "no-es-un-juego-2"]),
 											/** Esto ES un juego */
 											/** Final: libertad */
-											new Estado(imageID = 44, audio = "libertad-ending", transiciones = [114, 114]),
+											new Estado(imageID = "libertad-ending", audio = "libertad-ending", transiciones = ["creditos", "creditos"]),
 											/** NADA es un juego */
-											new Estado(imageID = 45, transiciones = [46, 46]),
+											new Estado(imageID = "no-es-un-juego-2"),
 											/** ... */
-											new Estado(imageID = 46, audio = "roundabout", transiciones = [114, 114]),
 								/** Me lo vas a descontar del alquiler */
-								new Estado(imageID = 47, audio = "mentiroso-de-mierda", transiciones = [26, 41]),
+								new Estado(imageID = "telefono-14", audio = "mentiroso-de-mierda", transiciones = ["intro-quiz2", "videojuego-0"]),
 							/** Dejá de hacerte el boludo */
-							new Estado(imageID = 48, audio = "quien-cojones-te-crees-que-eres", transiciones = [26, 41]),
+							new Estado(imageID = "telefono-13", audio = "quien-cojones-te-crees-que-eres", transiciones = ["intro-quiz2", "videojuego-0"]),
 						/** I don't have hot water */
-						new Estado(imageID = 49, audio = "que-dices", transiciones = [26, 41]),
+						new Estado(imageID = "telefono-12", audio = "que-dices", transiciones = ["intro-quiz2", "videojuego-0"]),
 					/** So */
-					new Estado(imageID = 50, audio = "eres-imbecil", transiciones = [26, 41]),
+					new Estado(imageID = "telefono-11", audio = "eres-imbecil", transiciones = ["intro-quiz2", "videojuego-0"]),
 				/** Tomar una ducha fría */
-				new Estado(imageID = 51, audio = "chad-1", transiciones = [52, 52]),
-				new Estado(imageID = 52, transiciones = [53, 63]),
+				new Estado(imageID = "chad-ducha", audio = "chad-1", transiciones = ["ducha-1", "ducha-1"]),
+				new Estado(imageID = "ducha-1", transiciones = ["ejercicio-0", "to-be-continued"]),
 					/** Estudiar para el examen */
-					new Estado(imageID = 53, transiciones = [54, 56]),
+					new Estado(imageID = "ejercicio-0", transiciones = ["ejercicio-1", "ejercicio-2"]),
 						/** Aplicar la fórmula */
-						new Estado(imageID = 54, transiciones = [55, 55]),
+						new Estado(imageID = "ejercicio-1"),
 							/** ... */
-							new Estado(imageID = 55, audio = "roundabout", transiciones = [114, 114]),
 						/** Deducir el procedimiento */
-						new Estado(imageID = 56, audio = "chad-2", transiciones = [57, 59]),
+						new Estado(imageID = "ejercicio-2", audio = "chad-2", transiciones = ["ejercicio-3", "ejercicio-4"]),
 							/** Separar las variables */
-							new Estado(imageID = 57, transiciones = [58, 59]),
+							new Estado(imageID = "ejercicio-3", transiciones = ["ejercicio-4", "chad-ending"]),
 								/** Demostrarlo */
 								/** Final chad 1 */
-								new Estado(imageID = 58, audio = "chad-3", transiciones = [114, 114]),
+								new Estado(imageID = "chad-ending", audio = "chad-3", transiciones = ["creditos", "creditos"]),
 								/** Usar la regla del producto para derivadas */
-									new Estado(imageID = 59, transiciones = [60, 60]),
-									new Estado(imageID = 60, transiciones = [61, 61]),
-									new Estado(imageID = 61, transiciones = [62, 62]),
+									new Estado(imageID = "ejercicio-4", transiciones = ["ejercicio-5", "ejercicio-5"]),
+									new Estado(imageID = "ejercicio-5", transiciones = ["ejercicio-6", "ejercicio-6"]),
+									new Estado(imageID = "ejercicio-6"),
 									/** ... */
-									new Estado(imageID = 62, audio = "roundabout", transiciones = [114, 114]),
 					/** Trabajar en tu proyecto */
 					/** ... */
-					new Estado(imageID = 63, audio = "roundabout", transiciones = [114, 114]),
 			/** Agregarle leche */
-			new Estado(imageID = 64, audio = "fridge", transiciones = [65, 65]),
-			new Estado(imageID = 65, audio = "drop-bounce-plastic-bottle", transiciones = [66, 72], musicaID = [0, 3]),
+			new Estado(imageID = "leche", audio = "fridge", transiciones = ["edulcorante", "edulcorante"]),
+			new Estado(imageID = "edulcorante", audio = "drop-bounce-plastic-bottle", transiciones = ["salvar-cafe", "aceptar-derrota"], musicaID = ["silence", "quiz"]),
 				/** Intentar salvar el café */
-				new Estado(imageID = 66, transiciones = [67, 71]),
+				new Estado(imageID = "salvar-cafe", transiciones = ["arrepentimiento", "spiderman-ending"]),
 					/** Mezclar el dulce en el café */
-					new Estado(imageID = 67, transiciones = [68, 68]),
-					new Estado(imageID = 68, audio = "disturbing-call", transiciones = [69, 70]),
-						new Estado(imageID = 69, audio = "coin-drop", transiciones = [114, 114]),
-						new Estado(imageID = 70, audio = "coin-drop", transiciones = [12, 80]),
+					new Estado(imageID = "arrepentimiento", transiciones = ["cobrador-0", "cobrador-0"]),
+					new Estado(imageID = "cobrador-0", audio = "disturbing-call", transiciones = ["cobrador-ending", "cobrador-salvado"]),
+						new Estado(imageID = "cobrador-ending", audio = "coin-drop", transiciones = ["creditos", "creditos"]),
+						new Estado(imageID = "cobrador-salvado", audio = "coin-drop", transiciones = ["cafe", "mate"]),
 					/** Mezclar el café en el dulce */
 					/** Final: muerte por dulce de leche */
-					new Estado(imageID = 71, audio = "el-fin-del-hombre-arana", transiciones = [114, 114]),
+					new Estado(imageID = "spiderman-ending", audio = "el-fin-del-hombre-arana", transiciones = ["creditos", "creditos"]),
 				/** Aceptar tu derrota */
-				new Estado(imageID = 72, transiciones = [73, 75]),
+				new Estado(imageID = "aceptar-derrota", transiciones = ["derrame-escritorio", "derrame-compu"]),
 					/** Estudiar para el examen */
-					new Estado(imageID = 73, audio = "mad-world-kid", transiciones = [74, 74]),
+					new Estado(imageID = "derrame-escritorio", audio = "mad-world-kid"),
 						/** ... */
-						new Estado(imageID = 74, audio = "roundabout", transiciones = [114, 114]),
 					/** Trabajar en tu proyecto */
-					new Estado(imageID = 75, audio = "mad-world-kid", transiciones = [76, 77]),
+					new Estado(imageID = "derrame-compu", audio = "mad-world-kid", transiciones = ["to be continued", "compu-caida"]),
 						/** ... */
-						new Estado(imageID = 76, audio = "roundabout", transiciones = [114, 114]),
 						/** Sucumbir a la desesperación */
-						new Estado(imageID = 77, transiciones = [78, 79]),
+						new Estado(imageID = "compu-caida", transiciones = ["suicido-ending", "zombie-ending"]),
 							/** Saltar por la ventana */
 							/** Final: muerte por desesperación */
-							new Estado(imageID = 78, transiciones = [114, 114]),
+							new Estado(imageID = "suicido-ending", transiciones = ["creditos", "creditos"]),
 							/** No saltar */
 							/** Final: muerte en vida */
-							new Estado(imageID = 79, transiciones = [114, 114]),
+							new Estado(imageID = "zombie-ending", transiciones = ["creditos", "creditos"]),
 		/** Mate */
-		new Estado(imageID = 80, transiciones = [81, 112]),
+		new Estado(imageID = "mate", transiciones = ["mate-bueno", "mate-quemao"]),
 			/** 348 Kelvin */
-			new Estado(imageID = 81, audio = 'que-rico-esta-este-mate', transiciones = [82, 106]),
+			new Estado(imageID = "mate-bueno", audio = 'que-rico-esta-este-mate', transiciones = ["intro-quiz3", "videojuego-1"]),
 				/** Estudiar para el examen */
-				new Estado(imageID = 82, transiciones = [83, 83], musicaID = [1, 1]),
+				new Estado(imageID = "intro-quiz3", transiciones = ["quiz3-0", "quiz3-0"], musicaID = ["quiz", "quiz"]),
 				/** Acá arranca el segundo quiz */
-				new Estado(imageID = 83, transiciones = [84, 84], auxiliar = 1),
-				new Estado(imageID = 84, transiciones = [85, 85], auxiliar = 0),
-				new Estado(imageID = 85, transiciones = [86, 86], auxiliar = 1),
-				new Estado(imageID = 86, transiciones = [87, 87], auxiliar = 0),
-				new Estado(imageID = 87, transiciones = [88, 88], auxiliar = 1, musicaID = [1, 1]),
+				new Estado(imageID = "quiz3-0", transiciones = ["quiz3-1", "quiz3-1"], auxiliar = 1),
+				new Estado(imageID = "quiz3-1", transiciones = ["quiz3-2", "quiz3-2"], auxiliar = 0),
+				new Estado(imageID = "quiz3-2", transiciones = ["quiz3-3", "quiz3-3"], auxiliar = 1),
+				new Estado(imageID = "quiz3-3", transiciones = ["quiz3-wollok", "quiz3-wollok"], auxiliar = 0),
+				new Estado(imageID = "quiz3-wollok", transiciones = ["tocan-puerta-0", "tocan-puerta-0"], auxiliar = 1, musicaID = ["quiz", "quiz"]),
 				/** Acá termina el segundo quiz */
-				new Estado(imageID = 88, audio = "toctoc", transiciones = [89, 101], musicaID = [2, 2]),
+				new Estado(imageID = "tocan-puerta-0", audio = "toctoc", transiciones = ["abrir-puerta-0", "no-abrir-puerta-0"], musicaID = ["terror", "terror"]),
 					/** Abrir */
-					new Estado(imageID = 89, transiciones = [90, 90]),
-					new Estado(imageID = 90, audio = "puerta-abre", transiciones = [91, 92]),
+					new Estado(imageID = "abrir-puerta-0", transiciones = ["abrir-puerta-1", "abrir-puerta-1"]),
+					new Estado(imageID = "abrir-puerta-1", audio = "puerta-abre", transiciones = ["filosofia-ending", "abrir-puerta-2"], musicaID = ["terror", "silence"]),
 						/** Pascal */
 						/** Final: muerte filosófica */
-						new Estado(imageID = 91, audio = "filosofia-ending", transiciones = [114, 114]),
+						new Estado(imageID = "filosofia-ending", audio = "filosofia-ending", transiciones = ["creditos", "creditos"]),
 						/** Wollok */
-						new Estado(imageID = 92, audio = "profe", transiciones = [93, 93], musicaID = [1, 1]),
-						new Estado(imageID = 93, audio = "campana", transiciones = [94, 100]),
+						new Estado(imageID = "abrir-puerta-2", audio = "profe", transiciones = ["facu-aula", "facu-aula"], musicaID = ["terror", "terror"]),
+						new Estado(imageID = "facu-aula", audio = "campana", transiciones = ["facu-recorrer", "facu-clase"]),
 							/** Decides salir corriendo */
-							new Estado(imageID = 94, transiciones = [95, 99]),
+							new Estado(imageID = "facu-recorrer", transiciones = ["facu-vaso", "to-be-continued"]),
 								/** Recorrer los pasillos de la facu */
-								new Estado(imageID = 95, transiciones = [96, 98]),
+								new Estado(imageID = "facu-vaso", transiciones = ["dilema-supremo", "anti-ecologismo-ending"]),
 									/** Lo agarrás */
-									new Estado(imageID = 96, transiciones = [97, 97]),
+									new Estado(imageID = "dilema-supremo"),
 										/** ... */
-										new Estado(imageID = 97, audio = "roundabout", transiciones = [114, 114]),
 									/** Lo ignorás */
 									/** Final: anti-ecologismo */
-									new Estado(imageID = 98, audio = "anti-ecologismo-ending", transiciones = [114, 114]),
+									new Estado(imageID = "anti-ecologismo-ending", audio = "anti-ecologismo-ending", transiciones = ["creditos", "creditos"]),
 								/** Regresar a casa */
 								/** ... */
-								new Estado(imageID = 99, audio = "roundabout", transiciones = [114, 114]),
 							/** Te quedas */
-							new Estado(imageID = 100, transiciones = [95, 99]),
+							new Estado(imageID = "facu-clase", transiciones = ["facu-vaso", "to-be-continued"]),
 					/** No abrir */
-					new Estado(imageID = 101, audio = "toctoc-1", transiciones = [89, 102]),
+					new Estado(imageID = "no-abrir-puerta-0", audio = "toctoc-1", transiciones = ["abrir-puerta-0", "no-abrir-puerta-1"]),
 						/** No abrir */
-						new Estado(imageID = 86, audio = "toctoc-2", transiciones = [89, 103], musicaID = [0, 2]),
+						new Estado(imageID = "no-abrir-puerta-1", audio = "toctoc-2", transiciones = ["abrir-puerta-0", "no-abrir-puerta-2"], musicaID = ["silence", "terror"]),
 							/** No abrir */
-							new Estado(imageID = 103, transiciones = [104, 104]),
-							new Estado(imageID = 104, transiciones = [105, 105]),
-							new Estado(imageID = 105, audio = "jump-scare", transiciones = [93, 93]),
+							new Estado(imageID = "no-abrir-puerta-2", transiciones = ["no-abrir-puerta-2", "no-abrir-puerta-2"]),
+							new Estado(imageID = "no-abrir-puerta-2", transiciones = ["no-abrir-puerta-2", "no-abrir-puerta-2"]),
+							new Estado(imageID = "no-abrir-puerta-2", audio = "jump-scare", transiciones = ["facu-aula", "facu-aula"]),
 				/** Trabajar en tu proyecto */
-				new Estado(imageID = 106, transiciones = [107, 107], musicaID = [3, 3]),
-				new Estado(imageID = 107, transiciones = [108, 110]),
-				new Estado(imageID = 108, transiciones = [109, 109]),
+				new Estado(imageID = "videojuego-1", transiciones = ["videojuego-2", "videojuego-2"]),
+				new Estado(imageID = "videojuego-2", transiciones = ["videojuego-bombas", "videojuego-ranas"]),
+				new Estado(imageID = "videojuego-bombas"),
 					/** ... */
-					new Estado(imageID = 109, audio = "roundabout", transiciones = [114, 114]),
-				new Estado(imageID = 110, transiciones = [111, 111]),
+				new Estado(imageID = "videojuego-ranas"),
 					/** ... */
-					new Estado(imageID = 111, audio = "roundabout", transiciones = [114, 114]),
 			/** Hervir el agua */
-			new Estado(imageID = 112, audio = 'thunder', transiciones = [113, 113]),
+			new Estado(imageID = "mate-quemao", audio = 'thunder'),
 				/** ... */
-				new Estado(imageID = 113, audio = "roundabout", transiciones = [114, 114]),
+		/** To be continued... */
+		new Estado(imageID = "to-be-continued", audio = "roundabout", transiciones = ["creditos", "creditos"]),
 		/** Créditos */
-		new Estado(imageID = 114, audio = "in-the-end")
+		new Estado(imageID = "creditos", audio = "in-the-end")
 	]
 }
 		
