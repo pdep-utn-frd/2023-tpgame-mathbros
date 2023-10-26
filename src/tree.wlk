@@ -6,13 +6,13 @@ class Estado {
 	/** imageID es el nombre de la imagen: "imagen-imageID.png" */
 	var property imageID = ""
 	/** Audio: se reproduce cuando aparece la pantalla */
-	var property audio = "chad-1"
+	var property audio = "silence"
 	/** Las transiciones son listas con los ID de los estados siguientes */
 	var property transiciones = ["to-be-continued" /** Left */, "to-be-continued" /** Right */]
 	/** Variable auxiliar cuya utilidad se define en la función del estado siguiente */
 	var property auxiliar = null
 	/** musicaID es la key del diccionario de canciones del juego */
-	var property musicaID = ["drama", "drama"]
+	var property musicaID = ["silence", "silence"]
 
 	method iniciar(){}
 
@@ -29,7 +29,7 @@ class Estado {
 	}
 	
 	/** Función del estado siguiente */
-	method estadoSiguiente(){
+	method estadoSiguiente() {
 
 		/** Interacciones especiales */
 		/** En la pantalla de créditos, si presiona cualquier tecla, se cierra el juego */
@@ -58,7 +58,7 @@ class Estado {
 					game.schedule(0, {(game.sound("assets/incorrect-buzzer.mp3").play())})
 				}
 			}
-		/** Si no, reproduce un sonido de transición */
+		/** Reproduce un sonido de transición */
 		else {game.schedule(0, {(game.sound("assets/glitch-"+(0).randomUpTo(2).truncate(0).toString()+".mp3").play())})}
 	
 		/** Transiciones */
@@ -76,7 +76,8 @@ class Estado {
 		/** Detiene el sonido de la pantalla previa */
 		if (juego.sonidoPantalla().played()) {juego.sonidoPantalla().stop()}
 	}
-}	
+}
+
 
 class  Item {
 	var property position
@@ -226,7 +227,7 @@ object automata {
 		/** Acá arranca el quiz */
 		/** El valor de auxiliar representa la respuesta correcta */
 		new Estado(imageID = "quiz-0", transiciones = ["quiz-1", "quiz-1"], auxiliar = 0),
-		new Estado(imageID = "quiz-1", transiciones = ["minijuego", "minijuego"], auxiliar = 1),
+		new Estado(imageID = "quiz-1", transiciones = ["quiz-2", "quiz-2"], auxiliar = 1),
 		new Estado(imageID = "quiz-2", transiciones = ["quiz-3", "quiz-3"], auxiliar = 1),
 		new Estado(imageID = "quiz-3", transiciones = ["quiz-4", "quiz-4"], auxiliar = 0),
 		new Estado(imageID = "quiz-4", transiciones = ["quiz-5", "quiz-5"], auxiliar = 1),
@@ -307,7 +308,7 @@ object automata {
 											new Estado(imageID = "final-juego-4", audio = "4-dale", transiciones = ["final-juego-5", "final-juego-5"]),
 											new Estado(imageID = "final-juego-5", audio = "5-el-boton-de-reset", transiciones = ["final-juego-6", "final-juego-6"]),
 											new Estado(imageID = "final-juego-6", audio = "6-el-creador-de-esta-mierda", transiciones = ["final-juego-7", "final-juego-7"]),
-											new Estado(imageID = "final-juego-7", audio = "7-quien-cono-es-fede"),
+											new Estado(imageID = "final-juego-7", audio = "7-quien-cono-es-fede", musicaID = ["kevin", "kevin"]),
 								/** Me lo vas a descontar del alquiler */
 								new Estado(imageID = "telefono-14", audio = "mentiroso-de-mierda", transiciones = ["intro-quiz2", "videojuego-0"]),
 							/** Dejá de hacerte el boludo */
@@ -318,7 +319,7 @@ object automata {
 					new Estado(imageID = "telefono-11", audio = "eres-imbecil", transiciones = ["intro-quiz2", "videojuego-0"]),
 				/** Tomar una ducha fría */
 				new Estado(imageID = "chad-ducha", audio = "chad-1", transiciones = ["ducha-1", "ducha-1"]),
-				new Estado(imageID = "ducha-1", transiciones = ["ejercicio-0", "to-be-continued"]),
+				new Estado(imageID = "ducha-1", transiciones = ["ejercicio-0", "videojuego-3"]),
 					/** Estudiar para el examen */
 					new Estado(imageID = "ejercicio-0", transiciones = ["ejercicio-1", "ejercicio-2"]),
 						/** Aplicar la fórmula */
@@ -337,7 +338,7 @@ object automata {
 									new Estado(imageID = "ejercicio-6"),
 									/** ... */
 					/** Trabajar en tu proyecto */
-					/** ... */
+					new Estado(imageID = "videojuego-3", transiciones = ["minijuego", "to-be-continued"], musicaID = ["flaco", "silence"]),
 			/** Agregarle leche */
 			new Estado(imageID = "leche", audio = "fridge", transiciones = ["edulcorante", "edulcorante"]),
 			new Estado(imageID = "edulcorante", audio = "drop-bounce-plastic-bottle", transiciones = ["salvar-cafe", "aceptar-derrota"], musicaID = ["silence", "drama"]),
@@ -413,7 +414,7 @@ object automata {
 							new Estado(imageID = "no-abrir-puerta-3", transiciones = ["no-abrir-puerta-4", "no-abrir-puerta-4"]),
 							new Estado(imageID = "no-abrir-puerta-4", audio = "jump-scare", transiciones = ["facu-aula", "facu-aula"]),
 				/** Trabajar en tu proyecto */
-				new Estado(imageID = "videojuego-1", transiciones = ["videojuego-2", "videojuego-2"]),
+				new Estado(imageID = "videojuego-1", transiciones = ["minijuego", "videojuego-2"], musicaID = ["flaco", "silence"]),
 				new Estado(imageID = "videojuego-2", transiciones = ["videojuego-bombas", "videojuego-ranas"]),
 				new Estado(imageID = "videojuego-bombas"),
 					/** ... */
