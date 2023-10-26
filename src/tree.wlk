@@ -303,10 +303,10 @@ object automata {
 					new Estado(imageID = "derrame-compu", audio = "mad-world-kid", transiciones = ["to be continued", "compu-caida"]),
 						/** ... */
 						/** Sucumbir a la desesperación */
-						new Estado(imageID = "compu-caida", transiciones = ["suicido-ending", "zombie-ending"]),
+						new Estado(imageID = "compu-caida", transiciones = ["suicidio-ending", "zombie-ending"]),
 							/** Saltar por la ventana */
 							/** Final: muerte por desesperación */
-							new Estado(imageID = "suicido-ending", transiciones = ["creditos", "creditos"]),
+							new Estado(imageID = "suicidio-ending", transiciones = ["creditos", "creditos"]),
 							/** No saltar */
 							/** Final: muerte en vida */
 							new Estado(imageID = "zombie-ending", transiciones = ["creditos", "creditos"]),
