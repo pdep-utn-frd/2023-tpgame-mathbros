@@ -242,5 +242,13 @@ lista = [
       ['To be continued...',
        'Dale, no pasa nada', '¡Qué manga de vagos!', 'black.jpg', 'to-be-continued'],
       ['Juego hecho, realizado y efectuado por:\nJoaquin Terzano\nMariano Baldovino\nGuillermo Salaberry\n...\nCon el apoyo, la asistencia y colaboración de:\nChatGPT\nBingIA\nGitHubCopilot\nJohn Loquendo\nelxokas\nDrossRotzank',
-       'Ta bueno', 'Juegazo', 'end.jfif', 'creditos']
+       'Ta bueno', 'Juegazo', 'end.jfif', 'creditos'],
+      ['"El mono loco"\nInstrucciones del juego:\nMovimiento con las flechas izquierda y derecha\nAtrapa mates y bananas. Evita el cafe\nBanana: 2 puntos\nMate: 4 puntos\nCafe: pierdes 15 puntos',
+       'Empezar', 'Empeza, no te queda otra', 'mono-vivo.jfif', 'mono-instrucciones'],
+      ['Game Over\nEl mono murio de sobredosis de cafe',
+       ':(', ':(', 'mono-muerto.jfif', 'mono-muerto-0'
+       ],
+       ['Game Over\nEl mono murio por tomar mate con banana. El estomago le exploto.',
+       'Que se joda', 'Pobrecito', 'mono-muerto.jfif', 'mono-muerto-1'
+       ]
 ]

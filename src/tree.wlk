@@ -119,8 +119,12 @@ class EstadoMinijuego inherits Estado {
 			item.mover()
 		})
 		
-		if(puntaje.valor() >= 50) {
+		if(puntaje.valor() >= 40) {
 			dificultad = 2
+		} else if(puntaje.valor() < 0) {
+			self.perder()
+		} else if(puntaje.valor() >= 80) {
+			self.ganar()
 		}
 		
 
@@ -144,12 +148,12 @@ class EstadoMinijuego inherits Estado {
 	}
 	method ganar(){
 		game.removeTickEvent("actualizar")
-		juego.cambioEstado(automata.estados().find({estado => estado.imageID() == "imagen-perder"}))
+		juego.cambioEstado(automata.estados().find({estado => estado.imageID() == "mono-muerto-1"}))
 		
 	}
 	method perder(){
 		game.removeTickEvent("actualizar")
-		juego.cambioEstado(automata.estados().find({estado => estado.imageID() == "imagen-perder"}))
+		juego.cambioEstado(automata.estados().find({estado => estado.imageID() == "mono-muerto-0"}))
 	}
 }
 
@@ -271,7 +275,7 @@ object automata {
 									new Estado(imageID = "ejercicio-6"),
 									/** ... */
 					/** Trabajar en tu proyecto */
-					new Estado(imageID = "videojuego-3", transiciones = ["minijuego", "to-be-continued"], musicaID = ["minijuego", "silence"]),
+					new Estado(imageID = "videojuego-3", transiciones = ["mono-instrucciones", "to-be-continued"], musicaID = ["minijuego", "silence"]),
 			/** Agregarle leche */
 			new Estado(imageID = "leche", audio = "fridge", transiciones = ["edulcorante", "edulcorante"]),
 			new Estado(imageID = "edulcorante", audio = "drop-bounce-plastic-bottle", transiciones = ["salvar-cafe", "aceptar-derrota"], musicaID = ["silence", "drama"]),
@@ -347,7 +351,7 @@ object automata {
 							new Estado(imageID = "no-abrir-puerta-3", transiciones = ["no-abrir-puerta-4", "no-abrir-puerta-4"]),
 							new Estado(imageID = "no-abrir-puerta-4", audio = "jump-scare", transiciones = ["facu-aula", "facu-aula"]),
 				/** Trabajar en tu proyecto */
-				new Estado(imageID = "videojuego-1", transiciones = ["minijuego", "videojuego-2"], musicaID = ["minijuego", "silence"]),
+				new Estado(imageID = "videojuego-1", transiciones = ["mono-instrucciones", "videojuego-2"], musicaID = ["minijuego", "silence"]),
 				new Estado(imageID = "videojuego-2", transiciones = ["videojuego-bombas", "videojuego-ranas"]),
 				new Estado(imageID = "videojuego-bombas"),
 					/** ... */
@@ -356,7 +360,10 @@ object automata {
 			/** Hervir el agua */
 			new Estado(imageID = "mate-quemao", audio = 'thunder'),
 				/** ... */
+		new Estado(imageID="mono-instrucciones", transiciones=["minijuego", "minijuego"]),
 		new EstadoMinijuego(imageID = "minijuego", audio="monomovimiento", transiciones=[]),
+			new Estado(imageID = "mono-muerto-0", musicaID=["minijuego", "minijuego"]),
+			new Estado(imageID = "mono-muerto-1", musicaID=["minijuego", "minijuego"]),
 		/** To be continued... */
 		new Estado(imageID = "to-be-continued", audio = "roundabout", transiciones = ["creditos", "creditos"]),
 		/** Créditos */
