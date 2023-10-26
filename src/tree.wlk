@@ -32,6 +32,17 @@ class Estado {
 		/** Interacciones especiales */
 		/** En la pantalla de créditos, si presiona cualquier tecla, se cierra el juego */
 		if (self.imageID() == "creditos") {game.stop()}
+		/** Si el estado actual es la pregunta sobre Wollok */
+		else if (self.imageID() == "quiz3-wollok") {
+			if (juego.playerInput() == self.auxiliar()) {
+				/** Si el jugador eligió la respuesta correcta, suena "SIII!" */
+				game.schedule(0, {(game.sound("assets/SIII!.mp3").play())})
+				}
+				/** Si el jugador eligió la respuesta incorrecta, suena "NOOO!" */
+				else {
+					game.schedule(0, {(game.sound("assets/NOOO!.mp3").play())})
+			}
+		}
 		/** Si el estado actual está en algún quiz */
 		else if (self.imageID().take(4) == "quiz") {
 				/** Si el jugador eligió la respuesta correcta, suena "yay" */
@@ -144,8 +155,16 @@ object automata {
 											/** Final: libertad */
 											new Estado(imageID = "libertad-ending", audio = "libertad-ending", transiciones = ["creditos", "creditos"]),
 											/** NADA es un juego */
-											new Estado(imageID = "no-es-un-juego-2"),
+											new Estado(imageID = "no-es-un-juego-2", transiciones = ["final-juego-0", "final-juego-0"]),
 											/** ... */
+											new Estado(imageID = "final-juego-0", transiciones = ["final-juego-1", "final-juego-1"]),
+											new Estado(imageID = "final-juego-1", audio = "1-muy-buenas-tardes-a-todos", transiciones = ["final-juego-2", "final-juego-2"], musicaID = ["kevin", "kevin"]),
+											new Estado(imageID = "final-juego-2", audio = "2-get-ready", transiciones = ["final-juego-3", "final-juego-3"]),
+											new Estado(imageID = "final-juego-3", audio = "3-me-cago-en-dios-gaste-un-poder", transiciones = ["final-juego-4", "final-juego-4"]),
+											new Estado(imageID = "final-juego-4", audio = "4-dale", transiciones = ["final-juego-5", "final-juego-5"]),
+											new Estado(imageID = "final-juego-5", audio = "5-el-boton-de-reset", transiciones = ["final-juego-6", "final-juego-6"]),
+											new Estado(imageID = "final-juego-6", audio = "6-el-creador-de-esta-mierda", transiciones = ["final-juego-7", "final-juego-7"]),
+											new Estado(imageID = "final-juego-7", audio = "7-quien-cono-es-fede"),
 								/** Me lo vas a descontar del alquiler */
 								new Estado(imageID = "telefono-14", audio = "mentiroso-de-mierda", transiciones = ["intro-quiz2", "videojuego-0"]),
 							/** Dejá de hacerte el boludo */
@@ -178,7 +197,7 @@ object automata {
 					/** ... */
 			/** Agregarle leche */
 			new Estado(imageID = "leche", audio = "fridge", transiciones = ["edulcorante", "edulcorante"]),
-			new Estado(imageID = "edulcorante", audio = "drop-bounce-plastic-bottle", transiciones = ["salvar-cafe", "aceptar-derrota"], musicaID = ["silence", "quiz"]),
+			new Estado(imageID = "edulcorante", audio = "drop-bounce-plastic-bottle", transiciones = ["salvar-cafe", "aceptar-derrota"], musicaID = ["silence", "drama"]),
 				/** Intentar salvar el café */
 				new Estado(imageID = "salvar-cafe", transiciones = ["arrepentimiento", "spiderman-ending"]),
 					/** Mezclar el dulce en el café */
@@ -237,7 +256,7 @@ object automata {
 										/** ... */
 									/** Lo ignorás */
 									/** Final: anti-ecologismo */
-									new Estado(imageID = "anti-ecologismo-ending", audio = "anti-ecologismo-ending", transiciones = ["creditos", "creditos"]),
+									new Estado(imageID = "anti-ecologimo-ending", audio = "anti-ecologismo-ending", transiciones = ["creditos", "creditos"]),
 								/** Regresar a casa */
 								/** ... */
 							/** Te quedas */
@@ -247,9 +266,9 @@ object automata {
 						/** No abrir */
 						new Estado(imageID = "no-abrir-puerta-1", audio = "toctoc-2", transiciones = ["abrir-puerta-0", "no-abrir-puerta-2"], musicaID = ["silence", "terror"]),
 							/** No abrir */
-							new Estado(imageID = "no-abrir-puerta-2", transiciones = ["no-abrir-puerta-2", "no-abrir-puerta-2"]),
-							new Estado(imageID = "no-abrir-puerta-2", transiciones = ["no-abrir-puerta-2", "no-abrir-puerta-2"]),
-							new Estado(imageID = "no-abrir-puerta-2", audio = "jump-scare", transiciones = ["facu-aula", "facu-aula"]),
+							new Estado(imageID = "no-abrir-puerta-2", transiciones = ["no-abrir-puerta-3", "no-abrir-puerta-3"]),
+							new Estado(imageID = "no-abrir-puerta-3", transiciones = ["no-abrir-puerta-4", "no-abrir-puerta-4"]),
+							new Estado(imageID = "no-abrir-puerta-4", audio = "jump-scare", transiciones = ["facu-aula", "facu-aula"]),
 				/** Trabajar en tu proyecto */
 				new Estado(imageID = "videojuego-1", transiciones = ["videojuego-2", "videojuego-2"]),
 				new Estado(imageID = "videojuego-2", transiciones = ["videojuego-bombas", "videojuego-ranas"]),
