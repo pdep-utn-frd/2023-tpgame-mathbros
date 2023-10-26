@@ -83,14 +83,20 @@ class EstadoMinijuego inherits Estado {
 	var nuevoItem = 0
 	var dificultad = 1
 	
-	override method estadoSiguiente(){}
+	override method estadoSiguiente(){
+		if(puntaje.valor() < 0){
+			juego.cambioEstado(automata.estados().find({estado => estado.imageID() == "mono-muerto-0"}))
+		}else if (puntaje.valor() >= 30){
+			juego.cambioEstado(automata.estados().find({estado => estado.imageID() == "mono-muerto-1"}))
+		}
+	}
 	override method iniciar() {
 		game.addVisual(jugador)
 		game.addVisual(puntaje)
-		keyboard.left().onPressDo({
+		keyboard.a().onPressDo({
 			jugador.moverIzq()
 		})
-		keyboard.right().onPressDo({
+		keyboard.d().onPressDo({
 			jugador.moverDer()
 		})
 		game.onTick(100, "actualizar", {
@@ -119,12 +125,11 @@ class EstadoMinijuego inherits Estado {
 			item.mover()
 		})
 		
-		if(puntaje.valor() >= 40) {
+		if(puntaje.valor() >= 15) {
 			dificultad = 2
-		} else if(puntaje.valor() < 0) {
-			self.perder()
-		} else if(puntaje.valor() >= 80) {
-			self.ganar()
+		} 
+		if(puntaje.valor() < 0 or puntaje.valor() >= 30) {
+			self.fin()
 		}
 		
 
@@ -146,14 +151,14 @@ class EstadoMinijuego inherits Estado {
 		}
 		nuevoItem++
 	}
-	method ganar(){
+	method fin(){
 		game.removeTickEvent("actualizar")
-		juego.cambioEstado(automata.estados().find({estado => estado.imageID() == "mono-muerto-1"}))
-		
-	}
-	method perder(){
-		game.removeTickEvent("actualizar")
-		juego.cambioEstado(automata.estados().find({estado => estado.imageID() == "mono-muerto-0"}))
+		items.forEach({item => 
+			game.removeVisual(item)
+		})
+		game.removeVisual(jugador)
+		game.removeVisual(puntaje)
+		juego.actualizar()
 	}
 }
 
