@@ -27,6 +27,7 @@ object juego {
 		musica.put("drama", game.sound("assets/gnossienne.mp3"))
 		musica.put("flaco", game.sound("assets/amenabar.mp3"))
 		musica.put("kevin", game.sound("assets/not-as-it-seems.mp3"))
+		musica.put("minijuego", game.sound("assets/minijuego.mp3"))
 	}
 	
 	/** Método para incrementar el puntaje */
@@ -56,12 +57,12 @@ object juego {
 	
 	method init() {
 		/** Ancho de la pantalla (en celdas) */
-		game.width(16)
+		game.width(32)
 		/** Alto de la pantalla (en celdas) */
-  		game.height(14)
+  		game.height(28)
   
   		/** Tamaño de la celda (en píxeles) */
-  		game.cellSize(64)
+  		game.cellSize(32)
   		/** Título de la ventana del juego */
   		game.title("The Big Quiz")
   		/** Fondo del juego */

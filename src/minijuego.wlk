@@ -40,7 +40,7 @@ class Cafe inherits Item {
 
 object puntaje {
 	var property valor = 0
-	method position() = game.at(1, 13)
+	method position() = game.at(1, 26)
 	
 	method text() = "Puntaje: "+valor
 	
@@ -60,7 +60,7 @@ object jugador {
 	}
 	method moverDer() {
 		image = "assets/mono2.png"
-		if (position.x() != 15 ){	
+		if (position.x() != 31 ){	
 			position = game.at(position.x() + 1, position.y())
 		}
 	}

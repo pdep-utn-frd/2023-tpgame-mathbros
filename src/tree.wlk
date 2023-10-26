@@ -33,10 +33,8 @@ class Estado {
 	method estadoSiguiente() {
 
 		/** Interacciones especiales */
-		/** En la pantalla de créditos, si presiona cualquier tecla, se cierra el juego */
-		if (self.imageID() == "creditos") {game.stop()}
 		/** Si el estado actual es la pregunta sobre Wollok */
-		else if (self.imageID() == "quiz3-wollok") {
+		if (self.imageID() == "quiz3-wollok") {
 			if (juego.playerInput() == self.auxiliar()) {
 				/** Si el jugador eligió la respuesta correcta, suena "SIII!" */
 				game.schedule(0, {(game.sound("assets/SIII!.mp3").play())})
@@ -64,7 +62,7 @@ class Estado {
 	
 		/** Transiciones */
 		/** Si está en la última pregunta del primer quiz, la transición depende del puntaje */
-		if (self.imageID() == "quiz-6") {juego.cambioEstado(automata.estados().find({estado => estado.imageID() == self.transiciones().get(juego.puntaje())}))}
+		if (self.imageID() == "quiz-6" or self.imageID() == "creditos") {juego.cambioEstado(automata.estados().find({estado => estado.imageID() == self.transiciones().get(juego.puntaje())}))}
 		/** Si no, si está en el estado de cobranza, la transición es al azar */
 		else if (self.imageID() == "cobrador-0") {juego.cambioEstado(automata.estados().find({estado => estado.imageID() == self.transiciones().get((0).randomUpTo(2).truncate(0))}))}
 		/** Por defecto la transición es al elemento de la lista de transiciones que se corresponde con el playerInput */
@@ -126,15 +124,15 @@ class EstadoMinijuego inherits Estado {
 		}
 		
 
-		if (nuevoItem == 4/dificultad){
+		if (nuevoItem == 8/dificultad){
 			const random = 0.randomUpTo(100)
 			var item
-			if(random < 33){
-				item = new Banana(position=game.at(0.randomUpTo(16).truncate(0), 13), delay=6/dificultad)
-			} else if (random < 66) {
-				item = new Mate(position=game.at(0.randomUpTo(16).truncate(0), 13), delay=6/dificultad)
+			if(random < 20){
+				item = new Banana(position=game.at(0.randomUpTo(32).truncate(0), 27), delay=4/dificultad)
+			} else if (random < 40) {
+				item = new Mate(position=game.at(0.randomUpTo(32).truncate(0), 27), delay=4/dificultad)
 			} else {
-				item = new Cafe(position=game.at(0.randomUpTo(16).truncate(0), 13), delay=6/dificultad)
+				item = new Cafe(position=game.at(0.randomUpTo(32).truncate(0), 27), delay=4/dificultad)
 			}
 			
 		
@@ -273,7 +271,7 @@ object automata {
 									new Estado(imageID = "ejercicio-6"),
 									/** ... */
 					/** Trabajar en tu proyecto */
-					new Estado(imageID = "videojuego-3", transiciones = ["minijuego", "to-be-continued"], musicaID = ["flaco", "silence"]),
+					new Estado(imageID = "videojuego-3", transiciones = ["minijuego", "to-be-continued"], musicaID = ["minijuego", "silence"]),
 			/** Agregarle leche */
 			new Estado(imageID = "leche", audio = "fridge", transiciones = ["edulcorante", "edulcorante"]),
 			new Estado(imageID = "edulcorante", audio = "drop-bounce-plastic-bottle", transiciones = ["salvar-cafe", "aceptar-derrota"], musicaID = ["silence", "drama"]),
@@ -329,7 +327,7 @@ object automata {
 							/** Decides salir corriendo */
 							new Estado(imageID = "facu-recorrer", transiciones = ["facu-vaso", "to-be-continued"]),
 								/** Recorrer los pasillos de la facu */
-								new Estado(imageID = "facu-vaso", transiciones = ["dilema-supremo", "anti-ecologismo-ending"]),
+								new Estado(imageID = "facu-vaso", transiciones = ["dilema-supremo", "anti-ecologimo-ending"]),
 									/** Lo agarrás */
 									new Estado(imageID = "dilema-supremo"),
 										/** ... */
@@ -349,7 +347,7 @@ object automata {
 							new Estado(imageID = "no-abrir-puerta-3", transiciones = ["no-abrir-puerta-4", "no-abrir-puerta-4"]),
 							new Estado(imageID = "no-abrir-puerta-4", audio = "jump-scare", transiciones = ["facu-aula", "facu-aula"]),
 				/** Trabajar en tu proyecto */
-				new Estado(imageID = "videojuego-1", transiciones = ["minijuego", "videojuego-2"], musicaID = ["flaco", "silence"]),
+				new Estado(imageID = "videojuego-1", transiciones = ["minijuego", "videojuego-2"], musicaID = ["minijuego", "silence"]),
 				new Estado(imageID = "videojuego-2", transiciones = ["videojuego-bombas", "videojuego-ranas"]),
 				new Estado(imageID = "videojuego-bombas"),
 					/** ... */
@@ -362,7 +360,7 @@ object automata {
 		/** To be continued... */
 		new Estado(imageID = "to-be-continued", audio = "roundabout", transiciones = ["creditos", "creditos"]),
 		/** Créditos */
-		new Estado(imageID = "creditos", audio = "in-the-end")
+		new Estado(imageID = "creditos", audio = "in-the-end", transiciones = ["resultado-0", "resultado-1", "resultado-2", "resultado-2", "resultado-2", "resultado-3", "resultado-3", "resultado-4"])
 	]
 }
 		
