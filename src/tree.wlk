@@ -6,13 +6,15 @@ class Estado {
 	/** imageID es el nombre de la imagen: "imagen-imageID.png" */
 	var property imageID = ""
 	/** Audio: se reproduce cuando aparece la pantalla */
-	var property audio = "silence"
+	var property audio = "chad-1"
 	/** Las transiciones son listas con los ID de los estados siguientes */
 	var property transiciones = ["to-be-continued" /** Left */, "to-be-continued" /** Right */]
 	/** Variable auxiliar cuya utilidad se define en la función del estado siguiente */
 	var property auxiliar = null
 	/** musicaID es la key del diccionario de canciones del juego */
-	var property musicaID = ["silence", "silence"]
+	var property musicaID = ["drama", "drama"]
+
+	method iniciar(){}
 
 	/** Método que reproduce o pausa la música */
 	method poneMusica() {
@@ -28,7 +30,7 @@ class Estado {
 	
 	/** Función del estado siguiente */
 	method estadoSiguiente(){
-		
+
 		/** Interacciones especiales */
 		/** En la pantalla de créditos, si presiona cualquier tecla, se cierra el juego */
 		if (self.imageID() == "creditos") {game.stop()}
@@ -56,6 +58,7 @@ class Estado {
 		/** Por defecto la transición es al elemento de la lista de transiciones que se corresponde con el playerInput */
 		else {juego.cambioEstado(automata.estados().find({estado => estado.imageID() == self.transiciones().get(juego.playerInput())}))}
 		
+		juego.estadoActual().iniciar()
 		/** Interacciones comunes */
 		/** Llama al método de poner música del estado actual */
 		self.poneMusica()
@@ -64,6 +67,146 @@ class Estado {
 	}
 }	
 
+class  Item {
+	var property position
+	var delay
+	var delayCount = 0
+	
+	method image() = null
+	
+
+	
+	method mover() {
+		delayCount++
+		
+		if(delayCount == delay){
+			position = game.at(position.x(), position.y() - 1)
+			delayCount = 0
+		}
+	}
+	
+	method cambioPuntaje()= 0
+}
+
+class Banana inherits Item {
+	override method image()= "assets/banana.png"
+	override method cambioPuntaje() = 2
+}
+
+class Mate inherits Item {
+	override method image()= "assets/mate.png"
+	override method cambioPuntaje() = 4
+}
+
+class Cafe inherits Item {
+	override method image()= "assets/cafe.png"
+	override method cambioPuntaje() = -15
+}
+
+
+
+object puntaje {
+	var property valor = 0
+	method position() = game.at(1, 13)
+	
+	method text() = "Puntaje: "+valor
+	
+	method textColor() = "#FFFFFF"
+
+}
+
+object jugador {
+	var property position = game.at(1, 1)
+	var property image = "assets/mono1.png"
+	
+	method moverIzq() {
+		image = "assets/mono1.png"
+		if (position.x() != 0 ){	
+			position = game.at(position.x() - 1, position.y())
+		}
+	}
+	method moverDer() {
+		image = "assets/mono2.png"
+		if (position.x() != 15 ){	
+			position = game.at(position.x() + 1, position.y())
+		}
+	}
+}
+
+class EstadoMinijuego inherits Estado {
+	const items = []
+	var nuevoItem = 0
+	var dificultad = 1
+	
+	override method estadoSiguiente(){}
+	override method iniciar() {
+		game.addVisual(jugador)
+		game.addVisual(puntaje)
+		keyboard.left().onPressDo({
+			jugador.moverIzq()
+		})
+		keyboard.right().onPressDo({
+			jugador.moverDer()
+		})
+		game.onTick(100, "actualizar", {
+			self.actualizar()
+		})
+
+	}
+	method actualizar() {
+		items.forEach({item => 
+			if(item.position().x() == jugador.position().x() && item.position().y() == jugador.position().y()) {
+				var diferencia = item.cambioPuntaje()
+				if (diferencia > 0) {
+					game.sound("assets/coin.mp3").play()
+				} else {
+					game.sound("assets/error.mp3").play()
+				}
+				puntaje.valor(puntaje.valor() + diferencia)
+				items.remove(item) 
+				game.removeVisual(item)
+			}
+			
+			if(item.position().y() == 0) {
+				items.remove(item) 
+				game.removeVisual(item)
+			}
+			item.mover()
+		})
+		
+		if(puntaje.valor() >= 50) {
+			dificultad = 2
+		}
+		
+
+		if (nuevoItem == 4/dificultad){
+			const random = 0.randomUpTo(100)
+			var item
+			if(random < 33){
+				item = new Banana(position=game.at(0.randomUpTo(16).truncate(0), 13), delay=6/dificultad)
+			} else if (random < 33) {
+				item = new Mate(position=game.at(0.randomUpTo(16).truncate(0), 13), delay=6/dificultad)
+			} else {
+				item = new Cafe(position=game.at(0.randomUpTo(16).truncate(0), 13), delay=6/dificultad)
+			}
+			
+		
+			game.addVisual(item)
+			items.add(item)
+			nuevoItem = 0
+		}
+		nuevoItem++
+	}
+	method ganar(){
+		game.removeTickEvent("actualizar")
+		juego.cambioEstado(automata.estados().find({estado => estado.imageID() == "imagen-perder"})
+		
+	}
+	method perder(){
+		game.removeTickEvent("actualizar")
+		juego.cambioEstado(automata.estados().find({estado => estado.imageID() == "imagen-perder"})
+	}
+}
 
 /** Autómata del juego */
 object automata {
@@ -72,7 +215,7 @@ object automata {
 		/** Acá arranca el quiz */
 		/** El valor de auxiliar representa la respuesta correcta */
 		new Estado(imageID = "quiz-0", transiciones = ["quiz-1", "quiz-1"], auxiliar = 0),
-		new Estado(imageID = "quiz-1", transiciones = ["quiz-2", "quiz-2"], auxiliar = 1),
+		new Estado(imageID = "quiz-1", transiciones = ["minijuego", "minijuego"], auxiliar = 1),
 		new Estado(imageID = "quiz-2", transiciones = ["quiz-3", "quiz-3"], auxiliar = 1),
 		new Estado(imageID = "quiz-3", transiciones = ["quiz-4", "quiz-4"], auxiliar = 0),
 		new Estado(imageID = "quiz-4", transiciones = ["quiz-5", "quiz-5"], auxiliar = 1),
@@ -260,6 +403,7 @@ object automata {
 			/** Hervir el agua */
 			new Estado(imageID = "mate-quemao", audio = 'thunder'),
 				/** ... */
+		new EstadoMinijuego(imageID = "minijuego", audio="monomovimiento", transiciones=[]),
 		/** To be continued... */
 		new Estado(imageID = "to-be-continued", audio = "roundabout", transiciones = ["creditos", "creditos"]),
 		/** Créditos */

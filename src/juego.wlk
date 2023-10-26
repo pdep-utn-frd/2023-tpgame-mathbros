@@ -55,11 +55,12 @@ object juego {
 	
 	method init() {
 		/** Ancho de la pantalla (en celdas) */
-		game.width(1024)
+		game.width(16)
 		/** Alto de la pantalla (en celdas) */
-  		game.height(896)
+  		game.height(14)
+  
   		/** Tamaño de la celda (en píxeles) */
-  		game.cellSize(1)
+  		game.cellSize(64)
   		/** Título de la ventana del juego */
   		game.title("The Big Quiz")
   		/** Fondo del juego */
