@@ -123,6 +123,8 @@ lista = [
                          '...', '...', 'chad-integral.jfif', 'ejercicio-6'],
                         # ...
                   # ...
+                  ['Optas por continuar el desarrollo de tu videojuego en Wollok. Algo que en un principio parecía sencillo, pronto se convierte en una tarea desafiante. Cada línea de código parece estar rodeada de restricciones y obstáculos que dificultan la tarea. Wollok, aunque prometedora, se revela como un entorno de desarrollo complicado.\n¿Qué juego vas a hacer?',
+                   'Juego de mono', 'Aventura gráfica', 'compu.jfif', 'videojuego-3'],
             ['Decides que un poco de leche podría suavizar este café tan desagradable. Abres la heladera y agarras el sachet de leche. Te sorprende su peso, "no más de 11 gramos", estimas. Lo viertes sobre la taza de café y una única, mísera gota de leche cae sobre este. "¿Cómo puede ser?" te preguntas. "¿Quién se tomó toda la leche?"\nPero esta es tu casa y no hay nadie más que tú. ¿Por qué guardaste el sachet vacío en la heladera?',
              'Andá a saber...', '¡Yo no fuí!', 'heladera.jfif', 'leche'],
             ['Ese café no se puede tomar. Tienes que hacer algo.\nDecides añadir edulcorante. Al sostener la botella, se te eriza la piel y sientes un escalofrío recorriendo tu espalda. "No supera los 30 gramos", estimas. Un nudo en la garganta te hace sentir como si hubieras sido víctima de una broma cruel del destino. "Esto no puede estar pasando" piensas. Pero la realidad golpea con fuerza. La botella de edulcorante también está vacía.',
@@ -203,8 +205,8 @@ lista = [
                          'Aplicar la fórmula', 'Deducir el procedimiento', 'escritorio.jfif', 'no-abrir-puerta-3'],
                         ['De repente, una figura aterradora emerge ante tus ojos. ¿Monstruo? No, es tu profesor de Paradigmas de la Programación. Esta revelación no te consuela en absoluto, habrías preferido encontrarte con un fantasma. ¡¿Qué hace aquí el endemoniado profesor?!\nPoco importan ahora estas cuestiones, el puto susto es como recibir una descarga de 200 voltios directa al corazón. Tu cuerpo no aguanta la presión y, en cuestión de segundos, te desvaneces en la oscuridad de un desmayo repentino.',
                          '...', '...', 'profe-cara.jfif', 'no-abrir-puerta-4'],
-            ['Optas por continuar el desarrollo de tu videojuego en Wollok. Algo que en un principio parecía sencillo, pronto se convierte en una tarea desafiante. Cada línea de código parece estar rodeada de restricciones y obstáculos que dificultan la tarea. Wollok, aunque prometedora, se revela como un entorno de desarrollo complicado.',
-             'Banco Wollok', 'Odio Wollok', 'compu.jfif', 'videojuego-1'],
+            ['Optas por continuar el desarrollo de tu videojuego en Wollok. Algo que en un principio parecía sencillo, pronto se convierte en una tarea desafiante. Cada línea de código parece estar rodeada de restricciones y obstáculos que dificultan la tarea. Wollok, aunque prometedora, se revela como un entorno de desarrollo complicado.\n¿Qué juego vas a hacer?',
+             'Juego de mono', 'Juego de alien', 'compu.jfif', 'videojuego-1'],
             ['Tu obra comienza a tomar forma. El concepto de *un alien que atrapa autos* puede no parecer una idea brillante, pero cumple. Notas que tu juego necesita alguna dificultad. Entonces te planteas la pregunta: ¿cuál sería el enemigo perfecto para desafiar a este alien?',
              'Bombas', 'Ranas', 'alien-auto.jfif', 'videojuego-2'],
               ['Decides que las bombas son el enemigo ideal para cualquier juego. Trabajas arduamente en la implementación de estas amenazas explosivas. El mate, ya frío, no puede competir con la adrenalina de la creación.\nHasta que al fin, tu obra maestra cobra vida. El alien se mueve, los autos tiemplan y las bombas sonríen con malicia. El juego está listo para ser jugado.',
@@ -215,8 +217,6 @@ lista = [
                 # ...
          ['El agua hierve y la pava comienza a silbar en un alarde de energía térmica. Observas el vapor que sale de ella, preguntándote si, en realidad, estás a punto de preparar una bebida o de desencadenar un fenómeno meteorológico.\nEs hora de preparar el mate. Dejas caer el agua en su punto de ebullición normal sobre el mate e, instantáneamente, un estruendo sacude tus alrededores.\nNo obstante, con la permeabilidad de un suelo arcilloso, decides continuar con tus actividades rutinarias.',
           'Estudiar para el examen', 'Trabajar en tu proyecto', 'mate-quemao.jfif', 'mate-quemao'],
-          ['',
-           '...', '...', 'mate-quemao.jfif', 'mate-quemao'],
          ['La elección de quemar el mate parece haber desencadenado la furia de la naturaleza.',
           'Estudiar para el examen', 'Trabajar en tu proyecto', 'mate-quemao.jfif', 'mate-quemao'],
             # ...
@@ -241,6 +241,6 @@ lista = [
        '...', '...', 'profe-3.jfif', 'final-juego-8'],
       ['To be continued...',
        'Dale, no pasa nada', '¡Qué manga de vagos!', 'black.jpg', 'to-be-continued'],
-      ['Juego hecho, realizado y efectuado por:\nJoaquin Terzano\nMariano Baldovino\nGuillermo Salaberry\n...\nCon el apoyo, la asistencia y colaboración de:\nChatGPT\nBingIA\nGitHubCopilot\nJohn Loquendo\nelxokas',
+      ['Juego hecho, realizado y efectuado por:\nJoaquin Terzano\nMariano Baldovino\nGuillermo Salaberry\n...\nCon el apoyo, la asistencia y colaboración de:\nChatGPT\nBingIA\nGitHubCopilot\nJohn Loquendo\nelxokas\nDrossRotzank',
        'Ta bueno', 'Juegazo', 'end.jfif', 'creditos']
 ]
