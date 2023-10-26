@@ -26,6 +26,7 @@ object juego {
 		musica.put("terror", game.sound("assets/horror-background-atmosphere.mp3"))
 		musica.put("drama", game.sound("assets/gnossienne.mp3"))
 		musica.put("flaco", game.sound("assets/amenabar.mp3"))
+		musica.put("kevin", game.sound("assets/not-as-it-seems.mp3"))
 	}
 	
 	/** Método para incrementar el puntaje */
@@ -78,6 +79,7 @@ object juego {
 		musica.get("terror").volume(0.25)
 		musica.get("drama").volume(0.10)
 		musica.get("flaco").volume(0.07)
+		musica.get("kevin").volume(0.15)
 		/** Reproduce la música del quiz */
 		game.schedule(0, {musica.get("quiz").play()})
 		
