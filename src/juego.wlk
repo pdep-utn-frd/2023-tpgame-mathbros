@@ -15,7 +15,7 @@ object juego {
 	/** Sonido de cada nodo/pantalla */
 	var property sonidoPantalla = game.sound("assets/silence.mp3")
 	/** Variable que apunta al estado actual */
-	var property estadoActual = automata.estados().first()
+	var property estadoActual = estados.first()
 	/** Diccionario de música */
 	var property musica = new Dictionary()
 	
@@ -47,7 +47,7 @@ object juego {
 	
 	method actualizar() {
 		/** Cambio de estado */
-		estadoActual.estadoSiguiente()
+		estadoActual.transicion()
 		/** Reproduce el sonido del nuevo estado */
 		self.cambioSonido(game.sound("assets/"+estadoActual.audio()+".mp3"))
 		game.schedule(0, {sonidoPantalla.play()})
