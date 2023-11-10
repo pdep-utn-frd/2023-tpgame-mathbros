@@ -1,8 +1,0 @@
-import juego.*
-import tree.*
-
-program abc {
-
-	juego.init()
-
-}
