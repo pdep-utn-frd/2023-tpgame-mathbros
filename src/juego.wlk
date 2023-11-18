@@ -16,6 +16,12 @@ const drama = game.sound("assets/gnossienne.mp3")
 const flaco = game.sound("assets/amenabar.mp3")
 const kevin = game.sound("assets/not-as-it-seems.mp3")
 const minijuego = game.sound("assets/minijuego.mp3")
+const hero = game.sound("assets/hero.mp3")
+const chad = game.sound("assets/can-you-feel-my-heart.mp3")
+const last_resort = game.sound("assets/last-resort.mp3")
+const zombie = game.sound("assets/zombie.mp3")
+const my_way = game.sound("assets/my-way.mp3")
+const tension = game.sound("assets/disturbing-call.mp3")
 
 
 object juego {
@@ -49,7 +55,7 @@ object juego {
 		estadoActual.transicion()
 		/** Reproduce el sonido del nuevo estado */
 		self.cambioSonido(game.sound("assets/"+estadoActual.audio()+".mp3"))
-		game.schedule(0, {sonidoPantalla.play()})
+		game.schedule(500, {sonidoPantalla.play()})
 		/** Actualiza la pantalla */
 		pantalla.image("assets/imagen-"+estadoActual.imageID()+".png")
 	}
@@ -120,10 +126,15 @@ object juego {
 		salvar_cafe.definirTransiciones([arrepentimiento, spiderman_ending])
 		arrepentimiento.definirTransiciones([cobrador_0, cobrador_0])
 		cobrador_0.definirTransiciones([cobrador_ending, cobrador_salvado])
+		cobrador_ending.definirTransiciones([creditos, creditos])
+		cobrador_salvado.definirTransiciones([cafe, mate])
 		aceptar_derrota.definirTransiciones([derrame_escritorio, derrame_compu])
 		derrame_compu.definirTransiciones([to_be_continued, compu_caida])
 		compu_caida.definirTransiciones([suicidio_ending, zombie_ending])
-		
+		vagabundo_ending.definirTransiciones([creditos, creditos])
+		spiderman_ending.definirTransiciones([creditos, creditos])
+		suicidio_ending.definirTransiciones([creditos, creditos])
+		zombie_ending.definirTransiciones([creditos, creditos])
 		mate.definirTransiciones([mate_bueno, mate_quemao])
 		mate_bueno.definirTransiciones([intro_quiz3, videojuego_1])
 		intro_quiz3.definirTransiciones([quiz3_0, quiz3_0])
@@ -178,6 +189,12 @@ object juego {
 		drama.volume(0.10)
 		flaco.volume(0.07)
 		kevin.volume(0.15)
+		hero.volume(0.1)
+		chad.volume(0.1)
+		last_resort.volume(0.1)
+		zombie.volume(0.1)
+		my_way.volume(0.1)
+		tension.volume(0.4)
 		/** Reproduce la música del quiz */
 		game.schedule(0, {quiz.play()})
 		

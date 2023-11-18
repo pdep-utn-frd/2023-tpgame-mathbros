@@ -9,7 +9,7 @@ class Estado {
 	/** Audio: se reproduce cuando aparece la pantalla */
 	var property audio = "silence"
 	/** Las transiciones son listas con los ID de los estados siguientes */
-	var property transiciones = ["to-be-continued" /** Left */, "to-be-continued" /** Right */]
+	var property transiciones = [/** Left, Right */]
 	/** Variable auxiliar cuya utilidad se define en la función del estado siguiente */
 	var property auxiliar = null
 	/** musicaID es la key del diccionario de canciones del juego */
@@ -71,7 +71,9 @@ class EstadoQuiz inherits Estado {
 		
 	override method transicion() {
 		/** Incrementa el puntaje */
-		juego.incrementarPuntaje()
+		if (juego.playerInput() == self.auxiliar()) {
+			juego.incrementarPuntaje()
+		}
 		super()
 	}
 }
@@ -238,16 +240,18 @@ const quiz2_0 = new Estado(imageID = "quiz2-0", auxiliar = 1)
 const quiz2_1 = new Estado(imageID = "quiz2-1", auxiliar = 0)
 const quiz2_2 = new Estado(imageID = "quiz2-2", auxiliar = 1)
 const quiz2_3 = new Estado(imageID = "quiz2-3", auxiliar = 0)
+/** censurado xd */
 const quiz2_caca = new Estado(imageID = "quiz2-caca", audio = "audio-censurado", auxiliar = 1, musica = [quiz, quiz])
 const suena_telefono_0 = new Estado(imageID = "suena-telefono-0", audio = "telefono")
 const contesta_telefono_0 = new Estado(imageID = "contesta-telefono-0", audio = "me-he-dejado-las-llaves-dentro")
 const contesta_telefono_1 = new Estado(imageID = "contesta-telefono-1", audio = "no-es-gracioso")
 const contesta_telefono_apiadarse_0 = new Estado(imageID = "contesta-telefono-apiadarse-0", audio = "gracias-por-escuchar-mis-plegarias-tio")
 const contesta_telefono_apiadarse_1 = new Estado(imageID = "contesta-telefono-apiadarse-1")
+/** censurado xd */
 const contesta_telefono_que_se_cague_0 = new Estado(imageID = "contesta-telefono-que-se-cague-0", audio = "audio-censurado")
 const contesta_telefono_que_se_cague_1 = new Estado(imageID = "contesta-telefono-que-se-cague-1")
-const suena_telefono_1 = new Estado(imageID = "suena-telefono-1", audio = "eres-un-vago-de-mierda")
-const vagabundo_ending = new Estado(imageID = "vagabundo-ending", audio = "vagabundo-ending")
+const suena_telefono_1 = new Estado(imageID = "suena-telefono-1", audio = "eres-un-vago-de-mierda", musica = [silence, my_way])
+const vagabundo_ending = new Estado(imageID = "vagabundo-ending", audio = "vago-ending", musica = [my_way, my_way])
 const videojuego_0 = new Estado(imageID = "videojuego-0")
 const no_es_un_juego_0 = new Estado(imageID = "no-es-un-juego-0", audio = "como-que-un-juego")
 const no_es_un_juego_1 = new Estado(imageID = "no-es-un-juego-1", audio = "esto-no-es-un-juego")
@@ -271,27 +275,27 @@ const ducha_1 = new Estado(imageID = "ducha-1")
 const ejercicio_0 = new Estado(imageID = "ejercicio-0")
 const ejercicio_1 = new Estado(imageID = "ejercicio-1")
 const ejercicio_2 = new Estado(imageID = "ejercicio-2", audio = "chad-2")
-const ejercicio_3 = new Estado(imageID = "ejercicio-3")
-const chad_ending = new Estado(imageID = "chad-ending", audio = "chad-3")
+const ejercicio_3 = new Estado(imageID = "ejercicio-3", musica = [silence, chad])
+const chad_ending = new Estado(imageID = "chad-ending", audio = "chad-ending")
 const ejercicio_4 = new Estado(imageID = "ejercicio-4")
 const ejercicio_5 = new Estado(imageID = "ejercicio-5")
 const ejercicio_6 = new Estado(imageID = "ejercicio-6")
 /** Trabajar en tu proyecto */
 const videojuego_3 = new Estado(imageID = "videojuego-3", musica = [minijuego, silence])
 const leche = new Estado(imageID = "leche", audio = "fridge")
-const edulcorante = new Estado(imageID = "edulcorante", audio = "drop-bounce-plastic-bottle", musica = [silence, drama])
-const salvar_cafe = new Estado(imageID = "salvar-cafe")
-const arrepentimiento = new Estado(imageID = "arrepentimiento")
-const cobrador_0 = new EstadoCobranza(imageID = "cobrador-0", audio = "disturbing-call")
+const edulcorante = new Estado(imageID = "edulcorante", audio = "drop-bounce-plastic-bottle")
+const salvar_cafe = new Estado(imageID = "salvar-cafe", musica = [silence, hero])
+const arrepentimiento = new Estado(imageID = "arrepentimiento", musica = [tension, tension])
+const cobrador_0 = new EstadoCobranza(imageID = "cobrador-0", musica = [tension, tension])
 const cobrador_ending = new Estado(imageID = "cobrador-ending", audio = "coin-drop")
 const cobrador_salvado = new Estado(imageID = "cobrador-salvado", audio = "coin-drop")
-const spiderman_ending = new Estado(imageID = "spiderman-ending", audio = "el-fin-del-hombre-arana")
+const spiderman_ending = new Estado(imageID = "spiderman-ending", audio = "spiderman-ending", musica = [hero, hero])
 const aceptar_derrota = new Estado(imageID = "aceptar-derrota")
 const derrame_escritorio = new Estado(imageID = "derrame-escritorio", audio = "mad-world-kid")
 const derrame_compu = new Estado(imageID = "derrame-compu", audio = "mad-world-kid")
-const compu_caida = new Estado(imageID = "compu-caida")
-const suicidio_ending = new Estado(imageID = "suicidio-ending", musica = [drama, drama])
-const zombie_ending = new Estado(imageID = "zombie-ending", musica = [drama, drama])
+const compu_caida = new Estado(imageID = "compu-caida", musica = [last_resort, zombie])
+const suicidio_ending = new Estado(imageID = "suicidio-ending", audio = "suicidio-ending", musica = [last_resort, last_resort])
+const zombie_ending = new Estado(imageID = "zombie-ending", audio = "zombie-ending", musica = [zombie, zombie])
 /** Mate */
 const mate = new Estado(imageID = "mate")
 const mate_bueno = new Estado(imageID = "mate-bueno", audio = 'que-rico-esta-este-mate')
@@ -305,7 +309,7 @@ const tocan_puerta_0 = new Estado(imageID = "tocan-puerta-0", audio = "toctoc", 
 const abrir_puerta_0 = new Estado(imageID = "abrir-puerta-0")
 const abrir_puerta_1 = new Estado(imageID = "abrir-puerta-1", audio = "puerta-abre", musica = [terror, silence])
 const filosofia_ending = new Estado(imageID = "filosofia-ending", audio = "filosofia-ending")
-const abrir_puerta_2 = new Estado(imageID = "abrir-puerta-2", audio = "profe", musica = [terror, terror])
+const abrir_puerta_2 = new Estado(imageID = "abrir-puerta-2", audio = "muy-bien", musica = [terror, terror])
 const facu_aula = new Estado(imageID = "facu-aula", audio = "campana")
 const facu_recorrer = new Estado(imageID = "facu-recorrer")
 const facu_vaso = new Estado(imageID = "facu-vaso")
