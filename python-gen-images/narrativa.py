@@ -124,13 +124,13 @@ lista = [
                         # ...
                   # ...
                   ['Optas por continuar el desarrollo de tu videojuego en Wollok. Algo que en un principio parecía sencillo, pronto se convierte en una tarea desafiante. Cada línea de código parece estar rodeada de restricciones y obstáculos que dificultan la tarea. Wollok, aunque prometedora, se revela como un entorno de desarrollo complicado.\n¿Qué juego vas a hacer?',
-                   'Juego de mono', 'Aventura gráfica', 'compu.jfif', 'videojuego-3'],
+                   'Juego de mono', 'Juego en primera persona con raycast', 'compu.jfif', 'videojuego-3'],
             ['Decides que un poco de leche podría suavizar este café tan desagradable. Abres la heladera y agarras el sachet de leche. Te sorprende su peso, "no más de 11 gramos", estimas. Lo viertes sobre la taza de café y una única, mísera gota de leche cae sobre este. "¿Cómo puede ser?" te preguntas. "¿Quién se tomó toda la leche?"\nPero esta es tu casa y no hay nadie más que tú. ¿Por qué guardaste el sachet vacío en la heladera?',
              'Andá a saber...', '¡Yo no fuí!', 'heladera.jfif', 'leche'],
             ['Ese café no se puede tomar. Tienes que hacer algo.\nDecides añadir edulcorante. Al sostener la botella, se te eriza la piel y sientes un escalofrío recorriendo tu espalda. "No supera los 30 gramos", estimas. Un nudo en la garganta te hace sentir como si hubieras sido víctima de una broma cruel del destino. "Esto no puede estar pasando" piensas. Pero la realidad golpea con fuerza. La botella de edulcorante también está vacía.',
              'Intentar salvar el café', 'Aceptar tu derrota', 'edulcorante.jfif', 'edulcorante'],
                ['La serie de eventos desafortunados que ha comenzado no va a vencer tu determinación, ni mucho menos tu amor por el café. Para arreglar esta situación, debes pensar fuera de la caja. Te pasas minutos rebuscando entre cajones, explorando las posibilidades hasta que te das cuenta de que la solución siempre estuvo ante tus narices.\nFinalmente, abres la heladera y agarras un envase de dulce de leche repostero.',
-                'Mezclar el dulce en el café', 'Mezclar el café en el dulce', 'dulce-de-leche.jfif', 'salvar-cafe'],
+                'Mezclar el dulce en el café', 'Mezclar el café en el dulce', 'dulce-leche.jfif', 'salvar-cafe'],
                   ['Te sientes momentáneamente complacido con tu decisión. ¿Valió la pena? El sabor resultante no es necesariamente peor que el del café solo, pero tampoco es una revelación culinaria. Te enfrentaste a una situación extremadamente complicada y, a tu manera, lograste resolverla. Deberías sentir un atisbo de orgullo por tu ingenio, pero en su lugar, solo persiste un regusto de remordimiento.',
                    'Me arrepiento...', 'No hice daño a nadie', 'mono.jfif', 'arrepentimiento'],
                   ['El aire que respiras tiene su precio. Cada elección tomada tiene su precio. Todo tiene su precio. Y la acción de mezclar dulce de leche en el café no es la excepción. De hecho, su precio es sorprendentemente alto.\nTu vida está en juego. ¿Qué eliges?',
@@ -206,7 +206,7 @@ lista = [
                         ['De repente, una figura aterradora emerge ante tus ojos. ¿Monstruo? No, es tu profesor de Paradigmas de la Programación. Esta revelación no te consuela en absoluto, habrías preferido encontrarte con un fantasma. ¡¿Qué hace aquí el endemoniado profesor?!\nPoco importan ahora estas cuestiones, el puto susto es como recibir una descarga de 200 voltios directa al corazón. Tu cuerpo no aguanta la presión y, en cuestión de segundos, te desvaneces en la oscuridad de un desmayo repentino.',
                          '...', '...', 'profe-cara.jfif', 'no-abrir-puerta-4'],
               ['Optas por continuar el desarrollo de tu videojuego en Wollok. Algo que en un principio parecía sencillo, pronto se convierte en una tarea desafiante. Cada línea de código parece estar rodeada de restricciones y obstáculos que dificultan la tarea. Wollok, aunque prometedora, se revela como un entorno de desarrollo complicado.\n¿Qué juego vas a hacer?',
-              'Juego de mono', 'Juego de alien', 'compu.jfif', 'videojuego-1'],
+              'Juego de mono', 'Juego random', 'compu.jfif', 'videojuego-1'],
               ['Tu obra comienza a tomar forma. El concepto de *un alien que atrapa autos* puede no parecer una idea brillante, pero cumple. Notas que tu juego necesita alguna dificultad. Entonces te planteas la pregunta: ¿cuál sería el enemigo perfecto para desafiar a este alien?',
               'Bombas', 'Ranas', 'alien-auto.jfif', 'videojuego-2'],
                 ['Decides que las bombas son el enemigo ideal para cualquier juego. Trabajas arduamente en la implementación de estas amenazas explosivas. El mate, ya frío, no puede competir con la adrenalina de la creación.\nHasta que al fin, tu obra maestra cobra vida. El alien se mueve, los autos tiemplan y las bombas sonríen con malicia. El juego está listo para ser jugado.',
@@ -227,14 +227,14 @@ lista = [
             # ...
       # Día 2
       # Examen
-      ['Abres los ojos y la cruda realidad te golpea con fuerza: es el día del examen. La luz del sol filtra a través de las cortinas, iluminando tu habitación de una manera que solo intensifica la ansiedad que sientes. Te sientas en la cama, tratando de recordar todo lo que estudiaste la noche anterior. ',
+      ['Abres los ojos y la cruda realidad te golpea con fuerza: es el día del parcial. La luz del sol filtra a través de las cortinas, iluminando tu habitación de una manera que solo intensifica la ansiedad que sientes. Te sientas en la cama, tratando de recordar todo lo que estudiaste la noche anterior. ',
        'Estoy en el horno', 'La tengo re clara', 'cama-dia.jfif', 'examen-0'],
-      ['El momento de la verdad ha llegado. Te encuentras frente a una encrucijada: por un lado, la puerta que conduce al examen, donde se pondrá a prueba todo tu conocimiento; por el otro, la comodidad de quedarte en casa y evitar la tensión del aula.',
+      ['El momento de la verdad ha llegado. Te encuentras frente a una encrucijada: por un lado, la puerta que conduce al parcial, donde se pondrá a prueba todo tu conocimiento; por el otro, la comodidad de quedarte en casa y evitar la tensión del aula.',
        'Ir a rendir', 'Quedarse en casa tranqui', 'puerta.jfif', 'examen-1'],
         ['Te encuentras en un pupitre incómodo, absorbiendo la tensión y la ansiedad que flotan en el aire. El murmullo de los compañeros de clase se mezcla con el sonido de hojas de examen siendo repartidas. A tu alrededor, los relojes de pared avanzan implacablemente hacia el inicio del examen.',
          '...', '...', 'aula-examen-0.jfif', 'examen-2'],
         ['El profesor da una advertencia: "Damas y caballeros. Prepáranse, que esto no va a estar fácil. Esto no va a estar fácil".\nTiemblas al mirar el contenido del examen y darte cuenta del peligro de la situación. Tu destino académico pende de un hilo y te ha tocado el tema 2...',
-         'Cagué', 'Empezamos mal', 'aula-examen-0.jfif', 'examen-3'],
+         'Cagué', 'Empezamos mal', 'aula-examen-2.jfif', 'examen-3'],
         ['El profesor da la orden de comenzar. El tiempo comienza a correr y tú te enfrentas a la primera pregunta.\n¿Cómo se denomina a una transformación lineal sobreyectiva?',
           'Epimorfismo', 'Monomorfismo', 'aula-examen-1.jfif', 'quiz-examen-0'],
         ['Notas como varios de tus compañeros se levantan, decididos a entregar en blanco. Este fenómeno parece complacer al profesor. Sin embargo, te concentras en la siguiente pregunta.\n¿Cuál aceleración es la responsable de cambiar la velocidad de un objeto en movimiento circular?',
@@ -257,11 +257,27 @@ lista = [
          'Paralela', 'Perpendicular', 'examen.jfif', 'quiz-examen-9'],
         ['El profesor empieza a apurarte. Vamos, responde a esta pregunta.\n¿Qué es un espacio vectorial?',
          'Un conjunto de vectores', 'Una estructura algebraica', 'examen.jfif', 'quiz-examen-10'],
-        ['La paciencia del profesor alcanza su límite. No tienes tiempo para más preguntas. Debes entregar el examen.',
-          'No me fue tan mal', 'Jodeme que la voy a tener que recursar', 'profe-enojado.jfif', 'examen-4'],
+        ['La paciencia del profesor alcanza su límite. No tienes tiempo para más preguntas. Debes entregar el examen.\nHiciste todo lo que pudiste. Ahora solo queda esperar los resultados.',
+         'No me fue tan mal', 'Jodeme que la voy a tener que recursar', 'profe-enojado.jfif', 'examen-4'],
+        ['El profesor comienza a observar tu parcial. Su rostro refleja una mezcla de decepción y desprecio. "¡¿Qué carajos es esto?!" grita de repente, con suficiente ira para ponerte la piel de gallina.',
+         '...', '...', 'profe-examen-0.jfif', 'examen-5'],
+        ['El profesor continúa observando tu examen. "Guau. Guau." añade sarcásticamente.\nNo te sientes muy confiado con tus respuestas, pero no puedes hacer nada al respecto.',
+         '...', '...', 'profe-examen-0.jfif', 'examen-6'],
+        ['La tensión en el ambiente se disipa cuando, de manera inesperada, el profesor suelta una leve carcajada. No puedes evitar preguntarte si esto es un buen presagio, o si tu situación acaba de empeorar.',
+         '...', '...', 'profe-examen-1.jfif', 'examen-7'],
+        ['La risa del profesor se intensifica. La situación ya era bastante complicada como para tener que soportar además semejante humillación.',
+         '...', '...', 'profe-examen-4.jfif', 'examen-8'],
+        ['El profesor, con una sonrisa burlona, te devuelve tu examen. Cada marca en el papel parece un golpe a tu autoestima. La tensión en la sala es palpable mientras observas las notas garabateadas. El profesor, sin decir una palabra, espera tu reacción.',
+         'Llorar', 'Resistir', 'profe-examen-3.jfif', 'examen-9'],
+          # Veredictos
+          # Promociona (score >= 16)
+          # Regulariza (score >= 12)
+          # Recursa (score < 12)
         ['Al evitar el examen, has cerrado una puerta importante en tu vida académica. El arrepentimiento y la insatisfacción te acompañarán como sombras constantes, recordándote las oportunidades que dejaste pasar.',
         'Fin', 'Fin', 'mono.jfif', 'exament-ending'],
       # Juego
+      ['Abres los ojos en un día que sabes que será crucial. La presentación de tu videojuego ante el profesor y tus compañeros está a la vuelta de la esquina. La ansiedad se mezcla con la excitación mientras te preparas para el evento.\nEs hora de dirigirte a la facultad para enfrentar la crítica y demostrar el fruto de tu esfuerzo.',
+       '¡Qué nervios!', '¡Qué paja!', 'cama-dia.jfif', 'juego-0'],
       ['Mientras avanzas por los pasillos sombríos de la facultad, un escalofrío gélido serpentea por tu espalda. El silencio abrumador es casi palpable. Te adentras con determinación en el pasillo en dirección al aula 8, tu corazón martillea en tus oídos, mientras la sensación de que no estás a salvo en este lugar se cierne sobre ti.',
        '...', '...', 'facu-pasillo.jfif', 'final-juego-0'],
       ['Dentro del aula, una sombra siniestra se alza y toma forma: es el profesor de Paradigmas de la Programación, una figura aterradora que envuelve la sala en una atmósfera helada. A tu lado, tu amigo Fede comparte tu inquietud. El pánico se apodera de ti mientras te enfrentas a la macabra visión del profesor y te preguntas qué pesadilla se desencadenará a continuación.\nLuego de un inquietante silencio, el profesor finalmente decide hablar. Con una sonrisa forzada, saluda a la clase: "Muy buenas tardes a todos". Sus palabras, aunque parecen amables, no te reconfortan. Sabes que las actividades están a punto de comenzar, y la incertidumbre de lo que se avecina te llena de temor.',
@@ -280,16 +296,27 @@ lista = [
        '...', '...', 'fede-2.jfif', 'final-juego-7'],
       ['El profesor se vuelve hacia ti, y te grita: "¡Dale! ¡Daleee!", impaciente de probar tu juego. Su voz resuena en el silencio del aula, haciendo eco en tus oídos. Tu corazón se acelera, y la adrenalina recorre tu cuerpo. No tienes más opciones que obedecer.',
        '...', '...', 'profe-3.jfif', 'final-juego-8'],
+      ['El profesor comienza a jugar tu videojuego. Observas con nerviosismo mientras evalúa cada elemento, cada decisión que tomaste durante su creación.',
+       '...', '...', 'profe-2.jfif', 'final-juego-9'],
+      ['Te esfuerzas por mantener la calma mientras observas la reacción del profesor. ¿Habrá cumplido tu juego con sus expectativas? El destino de tu carrera y tu reputación están en juego.',
+       '...', '...', 'profe-5.jfif', 'final-juego-10'],
+      # Veredictos
+      # Promociona (juego random y mono fácil)
+      # Aprueba (nada)
+      # Recursa (raycast y mono difícil)
+      # To be continued
       ['To be continued...',
        'Dale, no pasa nada', '¡Qué manga de vagos!', 'black.jpg', 'to-be-continued'],
+      # Creditos
       ['Juego hecho, realizado y efectuado por:\nJoaquin Terzano\nMariano Baldovino\nGuillermo Salaberry\n...\nCon el apoyo, la asistencia y colaboración de:\nChatGPT\nBingIA\nGitHubCopilot\nJohn Loquendo\nelxokas\nDrossRotzank',
        'Ta bueno', 'Juegazo', 'end.jfif', 'creditos'],
+      # Minijuego mono
       ['"El mono loco"\nInstrucciones del juego:\nMovimiento con las flechas izquierda y derecha\nAtrapa mates y bananas. Evita el café.\nBanana: 2 puntos\nMate: 4 puntos\nCafé: -15 puntos',
        'Empezar', 'Empezar, no te queda otra', 'mono-vivo.jfif', 'mono-instrucciones'],
-      ['Game Over\nEl mono murió de sobredosis de café.',
+      ['Game Over\nEl mono murió de sobredosis de café.\nPuede que tu juego sea demasiado difícil.',
        'No me la contes', 'Sorry mono', 'mono-muerto.jfif', 'mono-muerto-0'
        ],
-       ['Game Over\nEl mono murió por tomar mate con banana. El estómago le explotó.',
+       ['Ganaste\nEl mono murió por tomar mate con banana. El estómago le explotó. ¿Qué esperabas? ¿Un final feliz?\nFelicidades, tu juego es demasiado fácil.',
        'Pobrecito', '¡Que se joda!', 'mono-muerto.jfif', 'mono-muerto-1'
        ]
 ]

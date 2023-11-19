@@ -26,6 +26,7 @@ const what_you_deserve = game.sound("assets/what-you-deserve.mp3")
 const drive = game.sound("assets/drive.mp3")
 const untitled = game.sound("assets/untitled.mp3")
 const eminem = game.sound("assets/till-i-collapse.mp3")
+const kevin2 = game.sound("assets/volatile-reaction.mp3")
 
 
 object juego {
@@ -113,13 +114,7 @@ object juego {
 		no_es_un_juego_0.definirTransiciones([no_es_un_juego_1, no_es_un_juego_1])
 		no_es_un_juego_1.definirTransiciones([libertad_ending, no_es_un_juego_2])
 		no_es_un_juego_2.definirTransiciones([final_juego_0, final_juego_0])
-		final_juego_0.definirTransiciones([final_juego_1, final_juego_1])
-		final_juego_1.definirTransiciones([final_juego_2, final_juego_2])
-		final_juego_2.definirTransiciones([final_juego_3, final_juego_3])
-		final_juego_3.definirTransiciones([final_juego_4, final_juego_4])
-		final_juego_4.definirTransiciones([final_juego_5, final_juego_5])
-		final_juego_5.definirTransiciones([final_juego_6, final_juego_6])
-		final_juego_6.definirTransiciones([final_juego_7, final_juego_7])
+
 		telefono_14.definirTransiciones([intro_quiz2, videojuego_0])
 		telefono_13.definirTransiciones([intro_quiz2, videojuego_0])
 		telefono_12.definirTransiciones([intro_quiz2, videojuego_0])
@@ -188,6 +183,23 @@ object juego {
 		quiz_examen_8.definirTransiciones([quiz_examen_9, quiz_examen_9])
 		quiz_examen_9.definirTransiciones([quiz_examen_10, quiz_examen_10])
 		quiz_examen_10.definirTransiciones([examen_4, examen_4])
+		examen_4.definirTransiciones([examen_5, examen_5])
+		examen_5.definirTransiciones([examen_6, examen_6])
+		examen_6.definirTransiciones([examen_7, examen_7])
+		examen_7.definirTransiciones([examen_8, examen_8])
+		examen_8.definirTransiciones([examen_9, examen_9])
+		examen_9.definirTransiciones([to_be_continued, to_be_continued])
+		
+		final_juego_0.definirTransiciones([final_juego_1, final_juego_1])
+		final_juego_1.definirTransiciones([final_juego_2, final_juego_2])
+		final_juego_2.definirTransiciones([final_juego_3, final_juego_3])
+		final_juego_3.definirTransiciones([final_juego_4, final_juego_4])
+		final_juego_4.definirTransiciones([final_juego_5, final_juego_5])
+		final_juego_5.definirTransiciones([final_juego_6, final_juego_6])
+		final_juego_6.definirTransiciones([final_juego_7, final_juego_7])
+		final_juego_7.definirTransiciones([final_juego_8, final_juego_8])
+		final_juego_8.definirTransiciones([final_juego_9, final_juego_9])
+		final_juego_9.definirTransiciones([final_juego_10, final_juego_10])
 		
 		mono_instrucciones.definirTransiciones([minijuego_0, minijuego_0])
 		minijuego_0.definirTransiciones([])
@@ -230,6 +242,7 @@ object juego {
 		drive.volume(0.1)
 		untitled.volume(0.1)
 		eminem.volume(0.07)
+		kevin2.volume(0.15)
 		/** Reproduce la música del quiz */
 		game.schedule(0, {quiz.play()})
 		
