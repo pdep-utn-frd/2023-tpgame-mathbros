@@ -22,6 +22,10 @@ const last_resort = game.sound("assets/last-resort.mp3")
 const zombie = game.sound("assets/zombie.mp3")
 const my_way = game.sound("assets/my-way.mp3")
 const tension = game.sound("assets/disturbing-call.mp3")
+const what_you_deserve = game.sound("assets/what-you-deserve.mp3")
+const drive = game.sound("assets/drive.mp3")
+const untitled = game.sound("assets/untitled.mp3")
+const eminem = game.sound("assets/till-i-collapse.mp3")
 
 
 object juego {
@@ -40,6 +44,11 @@ object juego {
 		puntaje++
 	}
 	
+	/** Método para reiniciar el puntaje */
+	method reiniciarPuntaje() {
+		puntaje = 0
+	}
+	
 	/** Método para cambiar el estado */
 	method cambioEstado(estado) {
 		estadoActual = estado
@@ -55,7 +64,7 @@ object juego {
 		estadoActual.transicion()
 		/** Reproduce el sonido del nuevo estado */
 		self.cambioSonido(game.sound("assets/"+estadoActual.audio()+".mp3"))
-		game.schedule(500, {sonidoPantalla.play()})
+		game.schedule(0, {sonidoPantalla.play()})
 		/** Actualiza la pantalla */
 		pantalla.image("assets/imagen-"+estadoActual.imageID()+".png")
 	}
@@ -96,7 +105,9 @@ object juego {
 		contesta_telefono_0.definirTransiciones([contesta_telefono_1, contesta_telefono_1])
 		contesta_telefono_1.definirTransiciones([contesta_telefono_apiadarse_0, contesta_telefono_que_se_cague_0])
 		contesta_telefono_apiadarse_0.definirTransiciones([contesta_telefono_apiadarse_1, contesta_telefono_apiadarse_1])
+		contesta_telefono_apiadarse_1.definirTransiciones([examen_0, examen_0])
 		contesta_telefono_que_se_cague_0.definirTransiciones([contesta_telefono_que_se_cague_1, contesta_telefono_que_se_cague_1])
+		contesta_telefono_que_se_cague_1.definirTransiciones([examen_0, examen_0])
 		suena_telefono_1.definirTransiciones([contesta_telefono_0, vagabundo_ending])
 		videojuego_0.definirTransiciones([no_es_un_juego_0, no_es_un_juego_0])
 		no_es_un_juego_0.definirTransiciones([no_es_un_juego_1, no_es_un_juego_1])
@@ -131,6 +142,7 @@ object juego {
 		aceptar_derrota.definirTransiciones([derrame_escritorio, derrame_compu])
 		derrame_compu.definirTransiciones([to_be_continued, compu_caida])
 		compu_caida.definirTransiciones([suicidio_ending, zombie_ending])
+		libertad_ending.definirTransiciones([creditos, creditos])
 		vagabundo_ending.definirTransiciones([creditos, creditos])
 		spiderman_ending.definirTransiciones([creditos, creditos])
 		suicidio_ending.definirTransiciones([creditos, creditos])
@@ -157,11 +169,30 @@ object juego {
 		no_abrir_puerta_4.definirTransiciones([facu_aula, facu_aula])
 		videojuego_1.definirTransiciones([mono_instrucciones, videojuego_2])
 		videojuego_2.definirTransiciones([videojuego_bombas, videojuego_ranas])
+		chad_ending.definirTransiciones([creditos, creditos])
+		
+		mate_quemao.definirTransiciones([corte_luz, corte_luz])
+		
+		examen_0.definirTransiciones([examen_1, examen_1])
+		examen_1.definirTransiciones([examen_2, exament_ending])
+		examen_2.definirTransiciones([examen_3, examen_3])
+		examen_3.definirTransiciones([quiz_examen_0, quiz_examen_0])
+		quiz_examen_0.definirTransiciones([quiz_examen_1, quiz_examen_1])
+		quiz_examen_1.definirTransiciones([quiz_examen_2, quiz_examen_2])
+		quiz_examen_2.definirTransiciones([quiz_examen_3, quiz_examen_3])
+		quiz_examen_3.definirTransiciones([quiz_examen_4, quiz_examen_4])
+		quiz_examen_4.definirTransiciones([quiz_examen_5, quiz_examen_5])
+		quiz_examen_5.definirTransiciones([quiz_examen_6, quiz_examen_6])
+		quiz_examen_6.definirTransiciones([quiz_examen_7, quiz_examen_7])
+		quiz_examen_7.definirTransiciones([quiz_examen_8, quiz_examen_8])
+		quiz_examen_8.definirTransiciones([quiz_examen_9, quiz_examen_9])
+		quiz_examen_9.definirTransiciones([quiz_examen_10, quiz_examen_10])
+		quiz_examen_10.definirTransiciones([examen_4, examen_4])
 		
 		mono_instrucciones.definirTransiciones([minijuego_0, minijuego_0])
 		minijuego_0.definirTransiciones([])
 		to_be_continued.definirTransiciones([creditos, creditos])
-		creditos.definirTransiciones([resultado_0, resultado_1, resultado_2, resultado_2, resultado_2, resultado_3, resultado_3, resultado_4])
+		creditos.definirTransiciones([quiz_0, quiz_0])
 	}
 	
 	method init() {
@@ -195,6 +226,10 @@ object juego {
 		zombie.volume(0.1)
 		my_way.volume(0.1)
 		tension.volume(0.4)
+		what_you_deserve.volume(0.1)
+		drive.volume(0.1)
+		untitled.volume(0.1)
+		eminem.volume(0.07)
 		/** Reproduce la música del quiz */
 		game.schedule(0, {quiz.play()})
 		

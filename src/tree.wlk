@@ -101,10 +101,25 @@ class EstadoQuiz6 inherits EstadoQuiz {
 }
 
 class EstadoCreditos inherits Estado {
-		
-	/** La transición depende del puntaje */
+	
+	/** Referencia al GTA SA */
+	override method sonidoDeTransicion() {
+		game.schedule(0, {(game.sound("assets/ah-shit-here-we-go-again.mp3").play())})
+	}
+	
+	/** Reinicia el puntaje */
+	override method transicion() {
+		juego.reiniciarPuntaje()
+		super()
+	}
+}
+
+/** Créditos */
+const creditos = new EstadoCreditos(imageID = "creditos", audio = "in-the-end", musica = [quiz, quiz])
+
+class EstadoFinal inherits Estado {
 	override method estadoSiguiente() {
-		juego.cambioEstado(self.transiciones().get(juego.puntaje()))
+		juego.cambioEstado(creditos)
 	}
 }
 
@@ -223,8 +238,11 @@ const resultado_4 = new Estado(imageID = "resultado-4", audio = 'quiz-4')
 /** Acá arranca la aventura */
 /** Café */
 const cafe = new Estado(imageID = "cafe")
+/** Tomar solo */
 const chad_cafe_solo = new Estado(imageID = "chad-cafe-solo", audio = "chad-0")
+/** Ducha fría */
 const ducha_0 = new Estado(imageID = "ducha-0")
+/** Llamar al dueño del edificio */
 const telefono_0 = new Estado(imageID = "telefono-0", audio = "que")
 const telefono_01 = new Estado(imageID = "telefono-01", audio = "tell-me-what-you-want")
 const telefono_02 = new Estado(imageID = "telefono-02", audio = "me-suda-la-polla")
@@ -232,40 +250,32 @@ const telefono_03 = new Estado(imageID = "telefono-03", audio = "es-culpa-tuya")
 const telefono_04 = new Estado(imageID = "telefono-04", audio = "que-quieres-que-haga")
 const telefono_05 = new Estado(imageID = "telefono-05", audio = "no-quiero")
 const telefono_06 = new Estado(imageID = "telefono-06", audio = "joder")
-const telefono_16 = new Estado(imageID = "telefono-16", audio = "ruptura-ending")
+/** Cortar la llamada */
+const telefono_16 = new EstadoFinal(imageID = "telefono-16", audio = "ruptura-ending")
 /** Tu servicio es desproporcional al precio */
 const telefono_15 = new Estado(imageID = "telefono-15", audio = "lo-que-no-tengo-proporcional")
 const intro_quiz2 = new Estado(imageID = "intro-quiz2", musica = [quiz, quiz])
-const quiz2_0 = new Estado(imageID = "quiz2-0", auxiliar = 1)
-const quiz2_1 = new Estado(imageID = "quiz2-1", auxiliar = 0)
-const quiz2_2 = new Estado(imageID = "quiz2-2", auxiliar = 1)
-const quiz2_3 = new Estado(imageID = "quiz2-3", auxiliar = 0)
-/** censurado xd */
-const quiz2_caca = new Estado(imageID = "quiz2-caca", audio = "audio-censurado", auxiliar = 1, musica = [quiz, quiz])
+const quiz2_0 = new EstadoQuiz(imageID = "quiz2-0", auxiliar = 1)
+const quiz2_1 = new EstadoQuiz(imageID = "quiz2-1", auxiliar = 0)
+const quiz2_2 = new EstadoQuiz(imageID = "quiz2-2", auxiliar = 1)
+const quiz2_3 = new EstadoQuiz(imageID = "quiz2-3", auxiliar = 0)
+const quiz2_caca = new EstadoQuiz(imageID = "quiz2-caca", audio = "quieres-que-te-haga-caca-en-la-cara", auxiliar = 1, musica = [quiz, quiz])
 const suena_telefono_0 = new Estado(imageID = "suena-telefono-0", audio = "telefono")
 const contesta_telefono_0 = new Estado(imageID = "contesta-telefono-0", audio = "me-he-dejado-las-llaves-dentro")
 const contesta_telefono_1 = new Estado(imageID = "contesta-telefono-1", audio = "no-es-gracioso")
 const contesta_telefono_apiadarse_0 = new Estado(imageID = "contesta-telefono-apiadarse-0", audio = "gracias-por-escuchar-mis-plegarias-tio")
 const contesta_telefono_apiadarse_1 = new Estado(imageID = "contesta-telefono-apiadarse-1")
-/** censurado xd */
-const contesta_telefono_que_se_cague_0 = new Estado(imageID = "contesta-telefono-que-se-cague-0", audio = "audio-censurado")
+const contesta_telefono_que_se_cague_0 = new Estado(imageID = "contesta-telefono-que-se-cague-0", audio = "me-cago-en-tus-muertos")
 const contesta_telefono_que_se_cague_1 = new Estado(imageID = "contesta-telefono-que-se-cague-1")
 const suena_telefono_1 = new Estado(imageID = "suena-telefono-1", audio = "eres-un-vago-de-mierda", musica = [silence, my_way])
-const vagabundo_ending = new Estado(imageID = "vagabundo-ending", audio = "vago-ending", musica = [my_way, my_way])
+const vagabundo_ending = new EstadoFinal(imageID = "vagabundo-ending", audio = "vago-ending", musica = [my_way, my_way])
 const videojuego_0 = new Estado(imageID = "videojuego-0")
 const no_es_un_juego_0 = new Estado(imageID = "no-es-un-juego-0", audio = "como-que-un-juego")
-const no_es_un_juego_1 = new Estado(imageID = "no-es-un-juego-1", audio = "esto-no-es-un-juego")
-const libertad_ending = new Estado(imageID = "libertad-ending", audio = "libertad-ending")
+const no_es_un_juego_1 = new Estado(imageID = "no-es-un-juego-1", audio = "esto-no-es-un-juego", musica = [drive, silence])
+const libertad_ending = new EstadoFinal(imageID = "libertad-ending", audio = "libertad-ending")
 /** NADA es un juego */
 const no_es_un_juego_2 = new Estado(imageID = "no-es-un-juego-2")
-const final_juego_0 = new Estado(imageID = "final-juego-0")
-const final_juego_1 = new Estado(imageID = "final-juego-1", audio = "1-muy-buenas-tardes-a-todos", musica = [kevin, kevin])
-const final_juego_2 = new Estado(imageID = "final-juego-2", audio = "2-get-ready")
-const final_juego_3 = new Estado(imageID = "final-juego-3", audio = "audio-censurado")
-const final_juego_4 = new Estado(imageID = "final-juego-4", audio = "4-dale")
-const final_juego_5 = new Estado(imageID = "final-juego-5", audio = "5-el-boton-de-reset")
-const final_juego_6 = new Estado(imageID = "final-juego-6", audio = "6-el-creador-de-esta-mierda")
-const final_juego_7 = new Estado(imageID = "final-juego-7", audio = "7-quien-cono-es-fede", musica = [kevin, kevin])
+
 const telefono_14 = new Estado(imageID = "telefono-14", audio = "mentiroso-de-mierda")
 const telefono_13 = new Estado(imageID = "telefono-13", audio = "quien-cojones-te-crees-que-eres")
 const telefono_12 = new Estado(imageID = "telefono-12", audio = "que-dices")
@@ -287,15 +297,15 @@ const edulcorante = new Estado(imageID = "edulcorante", audio = "drop-bounce-pla
 const salvar_cafe = new Estado(imageID = "salvar-cafe", musica = [silence, hero])
 const arrepentimiento = new Estado(imageID = "arrepentimiento", musica = [tension, tension])
 const cobrador_0 = new EstadoCobranza(imageID = "cobrador-0", musica = [tension, tension])
-const cobrador_ending = new Estado(imageID = "cobrador-ending", audio = "coin-drop")
+const cobrador_ending = new EstadoFinal(imageID = "cobrador-ending", audio = "coin-drop")
 const cobrador_salvado = new Estado(imageID = "cobrador-salvado", audio = "coin-drop")
-const spiderman_ending = new Estado(imageID = "spiderman-ending", audio = "spiderman-ending", musica = [hero, hero])
+const spiderman_ending = new EstadoFinal(imageID = "spiderman-ending", audio = "spiderman-ending", musica = [hero, hero])
 const aceptar_derrota = new Estado(imageID = "aceptar-derrota")
 const derrame_escritorio = new Estado(imageID = "derrame-escritorio", audio = "mad-world-kid")
 const derrame_compu = new Estado(imageID = "derrame-compu", audio = "mad-world-kid")
 const compu_caida = new Estado(imageID = "compu-caida", musica = [last_resort, zombie])
-const suicidio_ending = new Estado(imageID = "suicidio-ending", audio = "suicidio-ending", musica = [last_resort, last_resort])
-const zombie_ending = new Estado(imageID = "zombie-ending", audio = "zombie-ending", musica = [zombie, zombie])
+const suicidio_ending = new EstadoFinal(imageID = "suicidio-ending", audio = "suicidio-ending", musica = [last_resort, last_resort])
+const zombie_ending = new EstadoFinal(imageID = "zombie-ending", audio = "zombie-ending", musica = [zombie, zombie])
 /** Mate */
 const mate = new Estado(imageID = "mate")
 const mate_bueno = new Estado(imageID = "mate-bueno", audio = 'que-rico-esta-este-mate')
@@ -308,13 +318,13 @@ const quiz3_wollok = new EstadoQuizWollok(imageID = "quiz3-wollok", auxiliar = 1
 const tocan_puerta_0 = new Estado(imageID = "tocan-puerta-0", audio = "toctoc", musica = [terror, terror])
 const abrir_puerta_0 = new Estado(imageID = "abrir-puerta-0")
 const abrir_puerta_1 = new Estado(imageID = "abrir-puerta-1", audio = "puerta-abre", musica = [terror, silence])
-const filosofia_ending = new Estado(imageID = "filosofia-ending", audio = "filosofia-ending")
+const filosofia_ending = new EstadoFinal(imageID = "filosofia-ending", audio = "filosofia-ending")
 const abrir_puerta_2 = new Estado(imageID = "abrir-puerta-2", audio = "muy-bien", musica = [terror, terror])
 const facu_aula = new Estado(imageID = "facu-aula", audio = "campana")
 const facu_recorrer = new Estado(imageID = "facu-recorrer")
 const facu_vaso = new Estado(imageID = "facu-vaso")
 const dilema_supremo = new Estado(imageID = "dilema-supremo")
-const anti_ecologimo_ending = new Estado(imageID = "anti-ecologimo-ending", audio = "anti-ecologismo-ending")
+const anti_ecologimo_ending = new EstadoFinal(imageID = "anti-ecologimo-ending", audio = "anti-ecologismo-ending")
 const no_abrir_puerta_0 = new Estado(imageID = "no-abrir-puerta-0", audio = "toctoc-1")
 const no_abrir_puerta_1 = new Estado(imageID = "no-abrir-puerta-1", audio = "toctoc-2", musica = [silence, terror])
 const no_abrir_puerta_2 = new Estado(imageID = "no-abrir-puerta-2")
@@ -326,15 +336,46 @@ const videojuego_bombas = new Estado(imageID = "videojuego-bombas")
 const videojuego_ranas = new Estado(imageID = "videojuego-ranas")
 /** Hervir el agua */
 const mate_quemao = new Estado(imageID = "mate-quemao", audio = 'thunder')
+const corte_luz = new Estado(imageID = "corte-luz", audio = "la-puta-madre-se-corto-la-luz")
 /** ... */
+/** Mate ending */
+const mate_ending = new EstadoFinal(imageID = "mate-ending", musica = [what_you_deserve, what_you_deserve])
 const mono_instrucciones = new Estado(imageID="mono-instrucciones")
 const minijuego_0 = new EstadoMinijuego(imageID = "minijuego", audio="monomovimiento")
 const mono_muerto_0 = new Estado(imageID = "mono-muerto-0", musica=[minijuego, minijuego])
 const mono_muerto_1 = new Estado(imageID = "mono-muerto-1", musica=[minijuego, minijuego])
+/** Día 2 */
+/** Examen */
+const examen_0 = new Estado(imageID = "examen-0", audio = "gallo")
+const examen_1 = new Estado(imageID = "examen-1", musica = [silence, untitled])
+const examen_2 = new Estado(imageID = "examen-2", audio = "ticking-clock", musica = [eminem, eminem])
+const examen_3 = new Estado(imageID = "examen-3", audio = "esto-no-va-a-estar-facil")
+const quiz_examen_0 = new EstadoQuiz(imageID = "quiz-examen-0", audio = "empiecen-a-escribir", auxiliar = 0)
+const quiz_examen_1 = new EstadoQuiz(imageID = "quiz-examen-1", audio = "perfecto-epico", auxiliar = 0)
+const quiz_examen_2 = new EstadoQuiz(imageID = "quiz-examen-2", auxiliar = 1)
+const quiz_examen_3 = new EstadoQuiz(imageID = "quiz-examen-3", audio = "vibracion-0", auxiliar = 0, musica = [eminem, eminem])
+const quiz_examen_4 = new EstadoQuizWollok(imageID = "quiz-examen-4", auxiliar = 0, musica = [eminem, eminem])
+const quiz_examen_5 = new EstadoQuiz(imageID = "quiz-examen-5", audio = "ticking-clock", auxiliar = 0)
+const quiz_examen_6 = new EstadoQuiz(imageID = "quiz-examen-6", auxiliar = 0)
+const quiz_examen_7 = new EstadoQuiz(imageID = "quiz-examen-7", audio = "vibracion-1", auxiliar = 1)
+const quiz_examen_8 = new EstadoQuiz(imageID = "quiz-examen-8", audio = "alarma", auxiliar = 1)
+const quiz_examen_9 = new EstadoQuiz(imageID = "quiz-examen-9", audio = "ambulancia", auxiliar = 1)
+const quiz_examen_10 = new EstadoQuiz(imageID = "quiz-examen-10", audio = "apurate-0", auxiliar = 1, musica = [eminem, eminem])
+const examen_4 = new Estado(imageID = "examen-4", audio = "apurate-1")
+/** Examen't ending */
+const exament_ending = new EstadoFinal(imageID = "exament-ending", audio = "exament-ending", musica = [untitled, untitled])
+/** Juego */
+const final_juego_0 = new Estado(imageID = "final-juego-0")
+const final_juego_1 = new Estado(imageID = "final-juego-1", audio = "1-muy-buenas-tardes-a-todos", musica = [kevin, kevin])
+const final_juego_2 = new Estado(imageID = "final-juego-2", audio = "2-get-ready")
+const final_juego_3 = new Estado(imageID = "final-juego-3", audio = "3-me-cago-en-dios-gaste-un-poder")
+const final_juego_4 = new Estado(imageID = "final-juego-4", audio = "4-dale")
+const final_juego_5 = new Estado(imageID = "final-juego-5", audio = "5-el-boton-de-reset")
+const final_juego_6 = new Estado(imageID = "final-juego-6", audio = "6-el-creador-de-esta-mierda")
+const final_juego_7 = new Estado(imageID = "final-juego-7", audio = "7-quien-cono-es-fede", musica = [kevin, kevin])
 /** To be continued... */
 const to_be_continued = new Estado(imageID = "to-be-continued", audio = "roundabout")
-/** Créditos */
-const creditos = new EstadoCreditos(imageID = "creditos", audio = "in-the-end")
+
 
 
 
