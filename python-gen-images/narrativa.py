@@ -45,8 +45,14 @@ lista = [
                                '¡Dale, gordo!', 'Cortar', 'telefono.jfif', 'telefono-05'],
                                 ['"Joder" grita con resignación. Finalmente, cede ante tu demanda. "Voy a mandar a alguien a revisarlo, pero no esperes que sea rápido. Tengo muchas cosas que hacer". Seguidamente corta el teléfono.\nFelicidades, lo lograste. ¿Qué harás mientras esperas al sujeto?',
                                  'Estudiar para el examen', 'Trabajar en tu proyecto', 'telefono.jfif', 'telefono-06'],
-                                  # ...
-                                  # ...
+                                  # Otro quiz
+                                  ['El estado de trance en el que te hallabas se quiebra abruptamente al escuchar un llamado proveniente de la puerta principal. Supones que debe ser la persona que resolverá el problema del agua. Aunque la voz suena familiar, no logras identificar a quién pertenece.',
+                                   'Abrir', 'Abrir, no me queda otra', 'puerta-cerrada.jpeg', 'llaman-puerta-0'],
+                                  ['Cuando sientes el frío del picaporte, una oleada de terror recorre tu cuerpo. No hay motivos para desconfiar, pero un presentimiento desagradable se apodera de ti. Aún así, recuerdas que has pasado por momentos más difíciles, como el final de Análisis Matemático 1.\nCon cautela, abres la puerta...',
+                                   '...', '...', 'picaporte.jpeg', 'llaman-puerta-1'],
+                                  ['En el umbral de la puerta, una figura sombría te observa con una sonrisa siniestra. Conoces a esta persona, aunque preferirías no recordarla. Es el profesor de Paradigmas de la Programación, el mismo que te reprobó en dos ocasiones.\nUna sensación escalofriante se apodera de ti al verlo. ¿Qué demonios hace aquí el profesor? Tu mente trabaja a toda velocidad en busca de respuestas, pero antes de que puedas formular una pregunta, el profesor te lanza una mirada intensa y plantea una pregunta con tono ominoso: "¿Cuál es el mejor lenguaje de programación?" Su autoridad se impone sobre ti, y sientes la urgencia de responder',
+                                    'Pascal', 'Wollok', 'profe-puerta.jfif', 'llaman-puerta-2'],
+                                  # Trabajar en tu proyecto
                                 ['Has agotado tu paciencia y decides poner fin a la llamada. Canalizas toda la energía térmica adquirida durante la discusión en un golpe contra el pobre aparato telefónico. La fuerza ejercida es tal que supera incluso las limitaciones establecidas por la segunda ley de la termodinámica, provocando una ruptura en la simulación. Este es el fin de tu historia.',
                                  'Fin', 'Fin', 'black.jpg', 'telefono-16'],
                               ['"Lo que no tengo proporcional es la polla, que la tengo *muy* pequeña." son sus últimas palabras antes de cortar la llamada.\nMientras terminas de procesar lo que acabas de escuchar, ¿por qué no aprovechas para ponerte al día con alguna de tus tareas pendientes?',
@@ -91,7 +97,8 @@ lista = [
                                    'Fin', 'Fin', 'libertad.jfif', 'libertad-ending'],
                                   ['Esta nueva perspectiva te brinda argumentos para prescindir de terminar tu juego. Si nada es un juego, entonces eso es lo que vas a realizar.',
                                    'Brillante', 'Buee, la re pensaba...', 'cerebro.jpeg', 'no-es-un-juego-2'],
-                                    # ...
+                                  ['Has hecho suficiente por hoy. Es hora de ir a dormir.',
+                                   '...', '...', 'cama.jfif', 'ir-a-dormir'],
                            ['"Eres un puto mentiroso de mierda y un hijo de la gran puta, y un pecetero. Y un mierdas". La llamada se corta abruptamente.\nNo te lamentes todavía, tienes cosas que hacer.',
                             'Estudiar para el examen', 'Trabajar en tu proyecto', 'telefono.jfif', 'telefono-14'],
                         ['"¿Quién cojones te crees que eres?" contesta ofendido por tu tono. A continuación, cuelga la llamada en un acceso de enojo.\nNo te lamentes todavía, tienes cosas que hacer.',
@@ -108,7 +115,8 @@ lista = [
                    'Aplicar la fórmula', 'Deducir el procedimiento', 'escritorio.jfif', 'ejercicio-0'],
                      ['Inmediatamente al ver la ecuación, tu mente identifica las componentes de la fórmula del método del factor integrante. El ejercicio es resuelto en pocos minutos.',
                       '...', '...', 'escritorio.jfif', 'ejercicio-1'],
-                        # ...
+                        ['Persistes en tu tarea hasta completar la guía de ejercicios, manejando cada uno con maestría en menos de 10 minutos. Tu confianza para enfrentar el examen crece de forma considerable.',
+                         '...', '...', 'escritorio.jfif', 'ejercicio-8'],
                      ['No necesitas ninguna fórmula. Con paciencia y atención, comienzas a analizar la ecuación diferencial:\ndy/dt - 3y = e^(2t)\nMientras dejas que las ideas sobre cómo resolverla fluyan por tu mente.',
                       'Separar las variables', 'Usar la regla del producto para derivadas', 'chad-integral.jfif', 'ejercicio-2'],
                         ['Pese a tu buena disposición, las variables no acceden a separarse. Las reglas matemáticas simplemente no lo permiten. No puedes hacer nada al respecto.',
@@ -121,8 +129,8 @@ lista = [
                          '...', '...', 'chad-integral.jfif', 'ejercicio-5'],
                         ["El resultado final es\ny(t) = e^(2t) (c e^t - 1)\nRápidamente deduces que c = 2 a partir de las condiciones iniciales dadas. Llegados a este punto, decides que vale la pena verificar el resultado reemplazando en la ecuación original. Una vez que compruebas que es correcto, pasas al siguiente ejercicio.",
                          '...', '...', 'chad-integral.jfif', 'ejercicio-6'],
-                        # ...
-                  # ...
+                        ['El ejercicio 21 te ha tomado más tiempo del que habías previsto. Tu mente, exhausta, se resiste a proseguir. Es evidente que necesitas descansar.',
+                         '...', '...', 'chad-integral.jfif', 'ejercicio-7'],
                   ['Optas por continuar el desarrollo de tu videojuego en Wollok. Algo que en un principio parecía sencillo, pronto se convierte en una tarea desafiante. Cada línea de código parece estar rodeada de restricciones y obstáculos que dificultan la tarea. Wollok, aunque prometedora, se revela como un entorno de desarrollo complicado.\n¿Qué juego vas a hacer?',
                    'Juego de mono', 'Juego en primera persona con raycast', 'compu.jfif', 'videojuego-3'],
             ['Decides que un poco de leche podría suavizar este café tan desagradable. Abres la heladera y agarras el sachet de leche. Te sorprende su peso, "no más de 11 gramos", estimas. Lo viertes sobre la taza de café y una única, mísera gota de leche cae sobre este. "¿Cómo puede ser?" te preguntas. "¿Quién se tomó toda la leche?"\nPero esta es tu casa y no hay nadie más que tú. ¿Por qué guardaste el sachet vacío en la heladera?',
@@ -186,9 +194,9 @@ lista = [
                                 ['Como si se tratara de una competición olímpica, una súbita urgencia impulsa tus piernas a emprender un sprint desesperado hacia la puerta del aula. ¡Has recuperado tu libertad!\nO sea, digamos, si lo ponemos en estos terminos, puedes hacer de tu vida lo que quieras a partir de ahora.',
                                  'Recorrer los pasillos de la facu', 'Regresar a casa', 'sprint-aula.jpeg', 'facu-recorrer'],
                                     ['Luego de una ardua clase, no hay nada mejor que caminar un poco. Oh, observas un vaso de carton en el suelo.', 
-                                     'Agarrarlo para desecharlo', 'Ignorarlo, no te importa nada', 'vaso-descartable.jpeg', 'facu-vaso'],
+                                     'Agarrarlo para desecharlo', 'Ignorarlo, no te importa nada', 'vaso-de-carton.jfif', 'facu-vaso'],
                                         ['Te felicito, demuestras un deseo genuino de contribuir a la creación de un mundo mejor. Te encaminas hacia la esquina donde se encuentran los contenedores de reciclaje.\nAllí, ante ti, se despliegan tres opciones:\n1. Papel y cartón.\n2. Vidrio y plásticos.\n3. Orgánicos.\nNo obstante, tu decisión se complica al notar que el vaso de cartón aún alberga residuos de yerba usada. La elección se torna repentinamente en una decisión crucial, como si tu destino dependiera de ello.\n¿Dónde decides desechar el vaso?',
-                                         'Papel y carton', 'Organicos', 'basura.jpeg', 'dilema-supremo'],
+                                         'Papel y carton', 'Organicos', 'cestos-reciclaje.jfif', 'dilema-supremo'],
                                           # ...
                                         ['Has optado por pasar por alto ese desecho en el suelo. No has contribuido a hacer del mundo un lugar mejor. Mis expectativas eran escasas, y, a pesar de ello, logras decepcionarme. Llegamos al final de nuestro camino juntos. No deseo seguir siendo el narrador de tu historia. Adiós.',
                                           'Fin', 'Fin', 'black.jpg', 'anti-ecologimo-ending'],
@@ -258,7 +266,7 @@ lista = [
         ['El profesor empieza a apurarte. Vamos, responde a esta pregunta.\n¿Qué es un espacio vectorial?',
          'Un conjunto de vectores', 'Una estructura algebraica', 'examen.jfif', 'quiz-examen-10'],
         ['La paciencia del profesor alcanza su límite. No tienes tiempo para más preguntas. Debes entregar el examen.\nHiciste todo lo que pudiste. Ahora solo queda esperar los resultados.',
-         'No me fue tan mal', 'Jodeme que la voy a tener que recursar', 'profe-enojado.jfif', 'examen-4'],
+         'No me fue tan mal', 'Me fue como el culo', 'profe-enojado.jfif', 'examen-4'],
         ['El profesor comienza a observar tu parcial. Su rostro refleja una mezcla de decepción y desprecio. "¡¿Qué carajos es esto?!" grita de repente, con suficiente ira para ponerte la piel de gallina.',
          '...', '...', 'profe-examen-0.jfif', 'examen-5'],
         ['El profesor continúa observando tu examen. "Guau. Guau." añade sarcásticamente.\nNo te sientes muy confiado con tus respuestas, pero no puedes hacer nada al respecto.',
@@ -270,9 +278,15 @@ lista = [
         ['El profesor, con una sonrisa burlona, te devuelve tu examen. Cada marca en el papel parece un golpe a tu autoestima. La tensión en la sala es palpable mientras observas las notas garabateadas. El profesor, sin decir una palabra, espera tu reacción.',
          'Llorar', 'Resistir', 'profe-examen-3.jfif', 'examen-9'],
           # Veredictos
-          # Promociona (score >= 16)
-          # Regulariza (score >= 12)
-          # Recursa (score < 12)
+          # Promociona (score >= 18)
+          ['Promocionaste.\nNo lo puedes creer. Es demasiado bueno para ser cierto. Pero ahí está, la nota que tanto anhelabas. La alegría te inunda, y te sientes como si pudieras conquistar el mundo.\nPero no festejes todavía, pues todo esto podría ser un sueño. O peor aún, una narrativa ficticia. Y no quisiera arrebatarte este momento tan especial, pero no nos engañemos, esto no significa nada.\nNo dejes de estudiar, porque el próximo parcial podría ser tu perdición.',
+           'Fin', 'Fin', 'promocion.jfif', 'promocion-ending'],
+          # Regulariza (score >= 14)
+          ['Regularizaste.\nLo has logrado, has superado los requisitos mínimos. Aunque la satisfacción no sea abrumadora, reconoces que podrías haberlo hecho peor. Y eso es algo, ¿no?\nPero surge la pregunta: si esto te resultó difícil, ¿qué te depara el examen final? Así que recuerda que, incluso en la victoria, persiste el sufrimiento.',
+           'Fin', 'Fin', 'regulariza.jfif', 'regulariza-ending'],
+          # Recursa (score < 14)
+          ['Recursaste.\nLa decepción te inunda, y sientes que el mundo se desmorona a tu alrededor. Es un golpe bajo, una derrota amarga que se suma a la lista.\nLa luz al final del túnel parece apagarse, y tu futuro profesional continúa alejándose. Pero no te rindas por completo. Aunque, siendo honestos, las esperanzas de recuperación son escasas.',
+           'Fin', 'Fin', 'recursa.jfif', 'recursa-ending'],
         ['Al evitar el examen, has cerrado una puerta importante en tu vida académica. El arrepentimiento y la insatisfacción te acompañarán como sombras constantes, recordándote las oportunidades que dejaste pasar.',
         'Fin', 'Fin', 'mono.jfif', 'exament-ending'],
       # Juego
@@ -313,10 +327,8 @@ lista = [
       # Minijuego mono
       ['"El mono loco"\nInstrucciones del juego:\nMovimiento con las flechas izquierda y derecha\nAtrapa mates y bananas. Evita el café.\nBanana: 2 puntos\nMate: 4 puntos\nCafé: -15 puntos',
        'Empezar', 'Empezar, no te queda otra', 'mono-vivo.jfif', 'mono-instrucciones'],
-      ['Game Over\nEl mono murió de sobredosis de café.\nPuede que tu juego sea demasiado difícil.',
-       'No me la contes', 'Sorry mono', 'mono-muerto.jfif', 'mono-muerto-0'
-       ],
-       ['Ganaste\nEl mono murió por tomar mate con banana. El estómago le explotó. ¿Qué esperabas? ¿Un final feliz?\nFelicidades, tu juego es demasiado fácil.',
-       'Pobrecito', '¡Que se joda!', 'mono-muerto.jfif', 'mono-muerto-1'
-       ]
+        ['Game Over\nEl mono murió de sobredosis de café.\nPuede que tu juego sea demasiado difícil.',
+        'No me la contes', 'Sorry mono', 'mono-muerto.jfif', 'mono-muerto-0'],
+        ['Ganaste\nEl mono murió por tomar mate con banana. El estómago le explotó. ¿Qué esperabas? ¿Un final feliz?\nFelicidades, tu juego es demasiado fácil.',
+         'Pobrecito', '¡Que se joda!', 'mono-muerto.jfif', 'mono-muerto-1']
 ]

@@ -79,53 +79,107 @@ object juego {
 		quiz_4.definirTransiciones([quiz_5, quiz_5])
 		quiz_5.definirTransiciones([quiz_6, quiz_6])
 		quiz_6.definirTransiciones([resultado_0, resultado_1, resultado_2, resultado_2, resultado_2, resultado_3, resultado_3, resultado_4])
+
 		resultado_0.definirTransiciones([cafe, mate])
 		resultado_1.definirTransiciones([cafe, mate])
 		resultado_2.definirTransiciones([cafe, mate])
 		resultado_3.definirTransiciones([cafe, mate])
 		resultado_4.definirTransiciones([cafe, mate])
+
 		cafe.definirTransiciones([chad_cafe_solo, leche])
+
 		chad_cafe_solo.definirTransiciones([ducha_0, ducha_0])
+
 		ducha_0.definirTransiciones([telefono_0, chad_ducha])
+
 		telefono_0.definirTransiciones([telefono_01, telefono_11])
 		telefono_01.definirTransiciones([telefono_02, telefono_12])
 		telefono_02.definirTransiciones([telefono_03, telefono_13])
 		telefono_03.definirTransiciones([telefono_04, telefono_14])
 		telefono_04.definirTransiciones([telefono_05, telefono_15])
 		telefono_05.definirTransiciones([telefono_06, telefono_16])
-		telefono_06.definirTransiciones([telefono_06])
-		telefono_16.definirTransiciones([creditos, creditos])
+
+		telefono_06.definirTransiciones([intro_quiz4, videojuego2_1])
+
+		intro_quiz4.definirTransiciones([quiz4_0, quiz4_0])
+		quiz4_0.definirTransiciones([quiz4_1, quiz4_1])
+		quiz4_1.definirTransiciones([quiz4_2, quiz4_2])
+		quiz4_2.definirTransiciones([quiz4_3, quiz4_3])
+		quiz4_3.definirTransiciones([quiz4_wollok, quiz4_wollok])
+		quiz4_wollok.definirTransiciones([llaman_puerta_0, llaman_puerta_0])
+		
+		llaman_puerta_0.definirTransiciones([llaman_puerta_1, llaman_puerta_1])
+		llaman_puerta_1.definirTransiciones([llaman_puerta_2, llaman_puerta_2])
+		llaman_puerta_2.definirTransiciones([filosofia_ending, abrir_puerta_2])
+
+		videojuego2_1.definirTransiciones([mono_instrucciones2, videojuego_2])
+		
+		mono_instrucciones2.definirTransiciones([minijuego2_0, minijuego2_0])
+		minijuego2_0.definirTransiciones([])
+		
+		mono_muerto2_0.definirTransiciones([llaman_puerta_0, llaman_puerta_0])
+		
+		mono_muerto2_1.definirTransiciones([llaman_puerta_0, llaman_puerta_0])
+		
+		videojuego2_2.definirTransiciones([videojuego2_bombas, videojuego2_ranas])
+		
+		videojuego2_bombas.definirTransiciones([llaman_puerta_0, llaman_puerta_0])
+		videojuego2_ranas.definirTransiciones([llaman_puerta_0, llaman_puerta_0])
+		
 		telefono_15.definirTransiciones([intro_quiz2, no_es_un_juego_0])
+		
 		intro_quiz2.definirTransiciones([quiz2_0, quiz2_0])
 		quiz2_0.definirTransiciones([quiz2_1, quiz2_1])
 		quiz2_1.definirTransiciones([quiz2_2, quiz2_2])
 		quiz2_2.definirTransiciones([quiz2_3, quiz2_3])
 		quiz2_3.definirTransiciones([quiz2_caca, quiz2_caca])
 		quiz2_caca.definirTransiciones([suena_telefono_0, suena_telefono_0])
+		
 		suena_telefono_0.definirTransiciones([contesta_telefono_0, suena_telefono_1])
+		
 		contesta_telefono_0.definirTransiciones([contesta_telefono_1, contesta_telefono_1])
 		contesta_telefono_1.definirTransiciones([contesta_telefono_apiadarse_0, contesta_telefono_que_se_cague_0])
+
 		contesta_telefono_apiadarse_0.definirTransiciones([contesta_telefono_apiadarse_1, contesta_telefono_apiadarse_1])
 		contesta_telefono_apiadarse_1.definirTransiciones([examen_0, examen_0])
+
 		contesta_telefono_que_se_cague_0.definirTransiciones([contesta_telefono_que_se_cague_1, contesta_telefono_que_se_cague_1])
 		contesta_telefono_que_se_cague_1.definirTransiciones([examen_0, examen_0])
+
 		suena_telefono_1.definirTransiciones([contesta_telefono_0, vagabundo_ending])
+
 		videojuego_0.definirTransiciones([no_es_un_juego_0, no_es_un_juego_0])
+
 		no_es_un_juego_0.definirTransiciones([no_es_un_juego_1, no_es_un_juego_1])
 		no_es_un_juego_1.definirTransiciones([libertad_ending, no_es_un_juego_2])
-		no_es_un_juego_2.definirTransiciones([final_juego_0, final_juego_0])
+
+		no_es_un_juego_2.definirTransiciones([ir_a_dormir_juego, ir_a_dormir_juego])
+		ir_a_dormir_juego.definirTransiciones([juego_0, juego_0])
 
 		telefono_14.definirTransiciones([intro_quiz2, videojuego_0])
 		telefono_13.definirTransiciones([intro_quiz2, videojuego_0])
 		telefono_12.definirTransiciones([intro_quiz2, videojuego_0])
 		telefono_11.definirTransiciones([intro_quiz2, videojuego_0])
+		
 		chad_ducha.definirTransiciones([ducha_1, ducha_1])
 		ducha_1.definirTransiciones([ejercicio_0, videojuego_3])
+		
 		ejercicio_0.definirTransiciones([ejercicio_1, ejercicio_2])
+		
+		ejercicio_1.definirTransiciones([ejercicio_8, ejercicio_8])
+		ir_a_dormir_examen.definirTransiciones([examen_0, examen_0])
+		
 		ejercicio_2.definirTransiciones([ejercicio_3, ejercicio_4])
+		
+		ejercicio_2.definirTransiciones([ejercicio_3, ejercicio_4])
+		
 		ejercicio_3.definirTransiciones([ejercicio_4, chad_ending])
+		
 		ejercicio_4.definirTransiciones([ejercicio_5, ejercicio_5])
 		ejercicio_5.definirTransiciones([ejercicio_6, ejercicio_6])
+		ejercicio_6.definirTransiciones([ejercicio_7, ejercicio_7])
+		ejercicio_7.definirTransiciones([ir_a_dormir_examen, ir_a_dormir_examen])
+		
 		videojuego_3.definirTransiciones([mono_instrucciones, to_be_continued])
 		leche.definirTransiciones([edulcorante, edulcorante])
 		edulcorante.definirTransiciones([salvar_cafe, aceptar_derrota])
@@ -190,6 +244,7 @@ object juego {
 		examen_8.definirTransiciones([examen_9, examen_9])
 		examen_9.definirTransiciones([to_be_continued, to_be_continued])
 		
+		juego_0.definirTransiciones([final_juego_0, final_juego_0])
 		final_juego_0.definirTransiciones([final_juego_1, final_juego_1])
 		final_juego_1.definirTransiciones([final_juego_2, final_juego_2])
 		final_juego_2.definirTransiciones([final_juego_3, final_juego_3])
