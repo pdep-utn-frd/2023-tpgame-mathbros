@@ -63,6 +63,7 @@ object juego {
 	method actualizar() {
 		/** Cambio de estado */
 		estadoActual.transicion()
+		estadoActual.iniciar()
 		/** Reproduce el sonido del nuevo estado */
 		self.cambioSonido(game.sound("assets/"+estadoActual.audio()+".mp3"))
 		game.schedule(0, {sonidoPantalla.play()})
@@ -117,14 +118,18 @@ object juego {
 		mono_instrucciones2.definirTransiciones([minijuego2_0, minijuego2_0])
 		minijuego2_0.definirTransiciones([])
 		
-		mono_muerto2_0.definirTransiciones([llaman_puerta_0, llaman_puerta_0])
+		mono_muerto2_0.definirTransiciones([llaman_puerta_0_j, llaman_puerta_0_j])
 		
-		mono_muerto2_1.definirTransiciones([llaman_puerta_0, llaman_puerta_0])
+		mono_muerto2_1.definirTransiciones([llaman_puerta_0_j, llaman_puerta_0_j])
 		
 		videojuego2_2.definirTransiciones([videojuego2_bombas, videojuego2_ranas])
 		
-		videojuego2_bombas.definirTransiciones([llaman_puerta_0, llaman_puerta_0])
-		videojuego2_ranas.definirTransiciones([llaman_puerta_0, llaman_puerta_0])
+		videojuego2_bombas.definirTransiciones([llaman_puerta_0_j, llaman_puerta_0_j])
+		videojuego2_ranas.definirTransiciones([llaman_puerta_0_j, llaman_puerta_0_j])
+		
+		llaman_puerta_0_j.definirTransiciones([llaman_puerta_1_j, llaman_puerta_1_j])
+		llaman_puerta_1_j.definirTransiciones([llaman_puerta_2_j, llaman_puerta_2_j])
+		llaman_puerta_2_j.definirTransiciones([filosofia_ending, abrir_puerta_2_j])
 		
 		telefono_15.definirTransiciones([intro_quiz2, no_es_un_juego_0])
 		
@@ -167,6 +172,7 @@ object juego {
 		ejercicio_0.definirTransiciones([ejercicio_1, ejercicio_2])
 		
 		ejercicio_1.definirTransiciones([ejercicio_8, ejercicio_8])
+		ejercicio_8.definirTransiciones([ir_a_dormir_examen, ir_a_dormir_examen])
 		ir_a_dormir_examen.definirTransiciones([examen_0, examen_0])
 		
 		ejercicio_2.definirTransiciones([ejercicio_3, ejercicio_4])
@@ -207,17 +213,34 @@ object juego {
 		tocan_puerta_0.definirTransiciones([abrir_puerta_0, no_abrir_puerta_0])
 		abrir_puerta_0.definirTransiciones([abrir_puerta_1, abrir_puerta_1])
 		abrir_puerta_1.definirTransiciones([filosofia_ending, abrir_puerta_2])
+		
 		abrir_puerta_2.definirTransiciones([facu_aula, facu_aula])
-		facu_aula.definirTransiciones([facu_recorrer, facu_aula])
-		facu_recorrer.definirTransiciones([facu_vaso, to_be_continued])
+		facu_aula.definirTransiciones([facu_vaso, facu_vaso])
 		facu_vaso.definirTransiciones([dilema_supremo, anti_ecologimo_ending])
+		dilema_supremo.definirTransiciones([fin_del_mundo_ending, messi_ending])
+		messi_ending.definirTransiciones([examen_0, examen_0])
+		
+		abrir_puerta_2_j.definirTransiciones([facu_aula_j, facu_aula_j])
+		facu_aula_j.definirTransiciones([facu_vaso_j, facu_vaso_j])
+		facu_vaso_j.definirTransiciones([dilema_supremo_j, anti_ecologimo_ending])
+		dilema_supremo_j.definirTransiciones([fin_del_mundo_ending, messi_ending])
+		messi_ending_j.definirTransiciones([juego_0, juego_0])		
+		
 		no_abrir_puerta_0.definirTransiciones([abrir_puerta_0, no_abrir_puerta_1])
 		no_abrir_puerta_1.definirTransiciones([abrir_puerta_0, no_abrir_puerta_2])
 		no_abrir_puerta_2.definirTransiciones([no_abrir_puerta_3, no_abrir_puerta_3])
 		no_abrir_puerta_3.definirTransiciones([no_abrir_puerta_4, no_abrir_puerta_4])
 		no_abrir_puerta_4.definirTransiciones([facu_aula, facu_aula])
+		
 		videojuego_1.definirTransiciones([mono_instrucciones, videojuego_2])
+		mono_instrucciones.definirTransiciones([minijuego_0, minijuego_0])
+		minijuego_0.definirTransiciones([])
+		
 		videojuego_2.definirTransiciones([videojuego_bombas, videojuego_ranas])
+
+		videojuego2_bombas.definirTransiciones([llaman_puerta_0_j, llaman_puerta_0_j])
+		videojuego2_ranas.definirTransiciones([llaman_puerta_0_j, llaman_puerta_0_j])
+		
 		chad_ending.definirTransiciones([creditos, creditos])
 		
 		mate_quemao.definirTransiciones([corte_luz, corte_luz])
@@ -256,8 +279,6 @@ object juego {
 		final_juego_8.definirTransiciones([final_juego_9, final_juego_9])
 		final_juego_9.definirTransiciones([final_juego_10, final_juego_10])
 		
-		mono_instrucciones.definirTransiciones([minijuego_0, minijuego_0])
-		minijuego_0.definirTransiciones([])
 		to_be_continued.definirTransiciones([creditos, creditos])
 		creditos.definirTransiciones([quiz_0, quiz_0])
 	}

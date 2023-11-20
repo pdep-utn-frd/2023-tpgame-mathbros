@@ -189,20 +189,18 @@ lista = [
                          '...', '...', 'muerte-filosofica.jpeg', 'filosofia-ending'],
                         ['Una extraña sonrisa se dibuja en el rostro del profesor. Sus ojos se ensanchan y, con una voz ronca, pronuncia: "Muy bien. Muy bien".\nUnos eternos segundos transcurren antes de que otra palabra salga de sus labios: "Tienes potencial".\nSientes que estás perdiendo el control de tus extremidades, hasta que finalmente te desplomas, desmayado, en tu propia casa.',
                          '...', '...', 'profe-cara.jfif', 'abrir-puerta-2'],
-                            ['¡Despierta! Sí, abre los ojos. Te encuentras en este instante en un banco de la facultad. A simple vista, parece ser una de las típicas aulas de la UTN donde se imparten clases sobre Paradigmas. Sin embargo, tus sentidos captan una anomalía sutil: la escasez de estudiantes en la estancia.\nTras contar meticulosamente, llegas a cinco. Mientras el profesor se empeña en reforzar el concepto de herencia en el pizarrón, tus ojos, sin embargo, no pueden evitar desviarse hacia las expresiones de tus compañeros. No reflejan estar allí por elección propia, sino más bien por un enigma que los envuelve.', 
-                             'Decides salir corriendo', 'Te quedas a prestar atencion', 'aula.jpeg', 'facu-aula'],
-                                ['Como si se tratara de una competición olímpica, una súbita urgencia impulsa tus piernas a emprender un sprint desesperado hacia la puerta del aula. ¡Has recuperado tu libertad!\nO sea, digamos, si lo ponemos en estos terminos, puedes hacer de tu vida lo que quieras a partir de ahora.',
-                                 'Recorrer los pasillos de la facu', 'Regresar a casa', 'sprint-aula.jpeg', 'facu-recorrer'],
-                                    ['Luego de una ardua clase, no hay nada mejor que caminar un poco. Oh, observas un vaso de carton en el suelo.', 
-                                     'Agarrarlo para desecharlo', 'Ignorarlo, no te importa nada', 'vaso-de-carton.jfif', 'facu-vaso'],
-                                        ['Te felicito, demuestras un deseo genuino de contribuir a la creación de un mundo mejor. Te encaminas hacia la esquina donde se encuentran los contenedores de reciclaje.\nAllí, ante ti, se despliegan tres opciones:\n1. Papel y cartón.\n2. Vidrio y plásticos.\n3. Orgánicos.\nNo obstante, tu decisión se complica al notar que el vaso de cartón aún alberga residuos de yerba usada. La elección se torna repentinamente en una decisión crucial, como si tu destino dependiera de ello.\n¿Dónde decides desechar el vaso?',
-                                         'Papel y carton', 'Organicos', 'cestos-reciclaje.jfif', 'dilema-supremo'],
-                                          # ...
-                                        ['Has optado por pasar por alto ese desecho en el suelo. No has contribuido a hacer del mundo un lugar mejor. Mis expectativas eran escasas, y, a pesar de ello, logras decepcionarme. Llegamos al final de nuestro camino juntos. No deseo seguir siendo el narrador de tu historia. Adiós.',
-                                          'Fin', 'Fin', 'black.jpg', 'anti-ecologimo-ending'],
-                                    # ...
-                                 ['¡Qué buena explicación!. Tu mente se siente reconfortada al entender finalmente qué es la herencia en el paradigma orientado a objetos. La clase ha terminado.\nHa sido extraño ser raptado de esta manera, pero, valió la pena el conocimiento adquirido ¿no?\nEres libre de la clase ¿ahora qué?',
-                                  'Recorrer los pasillos de la facu', 'Regresar a casa', 'cerebro.jpeg', 'facu-clase'],
+                            ['Abres los ojos, recobrando la conciencia en un banco de la facultad. A primera vista, la sala se asemeja a las aulas habituales de la UTN. No obstante, tus sentidos detectan una peculiaridad: la notable ausencia de estudiantes en el recinto. Un silencio inusual impregna el ambiente, creando una atmósfera cargada de misterio.', 
+                             '¿Qué hago acá?', 'Recorrer la facultad', 'aula-vacia.jfif', 'facu-aula'],
+                            ['Decides explorar la facultad, no es que tengas otra cosa que hacer. En tu travesía por uno de los pasillos, un obstáculo obstruye tu camino. Es un vaso de cartón abandonado en el suelo.\nPuede parecer un objeto trivial, pero algo en él te transmite una sensación inquietante. ¿Cómo decides abordar este elemento aparentemente fuera de lugar?', 
+                             'Agarrarlo para desecharlo', 'Ignorarlo, no te importa nada', 'vaso-de-carton.jfif', 'facu-vaso'],
+                            ['Te felicito, demuestras un deseo genuino de contribuir a la creación de un mundo mejor. Al levantar el vaso de cartón, este revela su contenido: un poco de yerba usada. Te encaminas hacia la esquina donde se encuentran los contenedores de reciclaje.\nAhora te encuentras ante la encrucijada de decidir en qué cesto de reciclaje deberías arrojarlo. La responsabilidad recae sobre tus hombros, y el tiempo parece detenerse mientras reflexionas sobre las posibles consecuencias de tu elección.\nTómate el tiempo que necesites para pensar. Esta es, probablemente, la decisión más importante de tu vida.',
+                             'Papel y carton', 'Orgánicos', 'cestos-reciclaje.jfif', 'dilema-supremo'],
+                                ['Has optado por arrojar el vaso de cartón en el cesto de papel y cartón. Graso error. Has contaminado el material reciclable.\nAunque las consecuencias no se manifiestan de inmediato, con el transcurso del tiempo, las noticias informan sobre fenómenos climáticos extremos, la alteración de ecosistemas y problemas ambientales sin precedentes. Tu elección ha desencadenado una cadena de eventos que, como una sombra persistente, se expande lentamente, llevando al mundo hacia un estado irreversible de deterioro. La humanidad, inconsciente de tu pequeño error, lucha en vano por remediar el daño que, sin saberlo, has desencadenado.\nEventualmente, las condiciones climatológicas del planeta Tierra empeoran hasta tal punto que se convierte en un entorno inhóspito para cualquier forma de vida.',
+                                 'Fin', 'Fin', 'fin-del-mundo.jfif', 'fin-del-mundo-ending'],
+                                ['El instante de tu elección ha llegado. Siguiendo tu instinto ambientalista, decides arrojar el vaso de cartón con restos de yerba en el cesto de orgánicos. La decisión correcta.\nDe repente, una luz intensa ilumina la facultad, y de la nada, aparece Lionel Messi, el mismísimo astro del fútbol. Te mira con admiración y dice: "Por tu contribución al cuidado del medio ambiente, te nombro Ingeniero Ambiental". Tu corazón late con emoción mientras Messi te coloca una capa ingenieril sobre tus hombros. Has alcanzado la cima de la gloria académica.',
+                                 '¡¿Messi?!', '¡Te amo, Leo!', 'messi.jfif', 'messi-ending'],
+                            ['Has optado por pasar por alto ese desecho en el suelo. No has contribuido a hacer del mundo un lugar mejor. Mis expectativas eran escasas, y, a pesar de ello, logras decepcionarme. Llegamos al final de nuestro camino juntos. No deseo seguir siendo el narrador de tu historia. Adiós.',
+                              'Fin', 'Fin', 'black.jpg', 'anti-ecologimo-ending'],
                   ['Los golpes en la puerta se vuelven más intensos. Quien sea que esté del otro lado debe tener algo importante que comunicarte. O quizás simplemente no soporta ser ignorado.',
                    'Abrir', 'No abrir', 'puerta-cerrada.jpeg', 'no-abrir-puerta-0'],
                      ['Están sacudiendo violentamente tu puerta. No sabes qué hay afuera, pero está empeñado en entrar y no con buenas intenciones. Deberías prepararte para lo peor.',
@@ -232,9 +230,10 @@ lista = [
             # ...
               ['El mate es una bebida que requiere de cierto cuidado y atención. No es algo que puedas preparar y luego olvidar. No, el mate es una compañía que requiere de tu presencia. Y tú, en tu arrogancia, has decidido ignorar esta realidad.\nEl mate, como un amante despechado, no puede soportar tu desprecio y, en un acto de venganza, se prende fuego. El fuego se propaga rápidamente, consumiendo todo a su paso. Tu casa, tu barrio, tu ciudad, tu país, tu continente, tu planeta, tu sistema solar, tu galaxia, tu universo, tu existencia, todo es consumido por el fuego.\nTu decisión ha desencadenado una reacción en cadena que ha resultado en la destrucción de todo lo que conoces. ¿Ves lo que has hecho?',
               'Fin', 'Fin', 'mate-de-fuego.jfif', 'mate-ending'],
-            # ...
       # Día 2
       # Examen
+      ['Abres los ojos y la cruda realidad te golpea con fuerza: has tenido un sueño y es el día del parcial. La luz del sol filtra a través de las cortinas, iluminando tu habitación de una manera que solo intensifica la ansiedad que sientes. Te sientas en la cama, tratando de recordar todo lo que estudiaste la noche anterior. ',
+       'Estoy en el horno', 'Messi...', 'cama-dia.jfif', 'examen-0-sueno'],
       ['Abres los ojos y la cruda realidad te golpea con fuerza: es el día del parcial. La luz del sol filtra a través de las cortinas, iluminando tu habitación de una manera que solo intensifica la ansiedad que sientes. Te sientas en la cama, tratando de recordar todo lo que estudiaste la noche anterior. ',
        'Estoy en el horno', 'La tengo re clara', 'cama-dia.jfif', 'examen-0'],
       ['El momento de la verdad ha llegado. Te encuentras frente a una encrucijada: por un lado, la puerta que conduce al parcial, donde se pondrá a prueba todo tu conocimiento; por el otro, la comodidad de quedarte en casa y evitar la tensión del aula.',
@@ -290,6 +289,8 @@ lista = [
         ['Al evitar el examen, has cerrado una puerta importante en tu vida académica. El arrepentimiento y la insatisfacción te acompañarán como sombras constantes, recordándote las oportunidades que dejaste pasar.',
         'Fin', 'Fin', 'mono.jfif', 'exament-ending'],
       # Juego
+      ['Despierta, era todo un sueño. Vuelves a la realidad en un día crucial, la presentación de tu videojuego ante el profesor y tus compañeros está a la vuelta de la esquina. La ansiedad se mezcla con la excitación mientras te preparas para el evento.\nEs hora de dirigirte a la facultad para enfrentar la crítica y demostrar el fruto de tu esfuerzo.',
+       '¡Qué nervios!', '¡Qué paja!', 'cama-dia.jfif', 'juego-0-sueno'],
       ['Abres los ojos en un día que sabes que será crucial. La presentación de tu videojuego ante el profesor y tus compañeros está a la vuelta de la esquina. La ansiedad se mezcla con la excitación mientras te preparas para el evento.\nEs hora de dirigirte a la facultad para enfrentar la crítica y demostrar el fruto de tu esfuerzo.',
        '¡Qué nervios!', '¡Qué paja!', 'cama-dia.jfif', 'juego-0'],
       ['Mientras avanzas por los pasillos sombríos de la facultad, un escalofrío gélido serpentea por tu espalda. El silencio abrumador es casi palpable. Te adentras con determinación en el pasillo en dirección al aula 8, tu corazón martillea en tus oídos, mientras la sensación de que no estás a salvo en este lugar se cierne sobre ti.',
@@ -325,7 +326,7 @@ lista = [
       ['Juego hecho, realizado y efectuado por:\nJoaquin Terzano\nMariano Baldovino\nGuillermo Salaberry\n...\nCon el apoyo, la asistencia y colaboración de:\nChatGPT\nBingIA\nGitHubCopilot\nJohn Loquendo\nelxokas\nDrossRotzank',
        'Ta bueno', 'Juegazo', 'end.jfif', 'creditos'],
       # Minijuego mono
-      ['"El mono loco"\nInstrucciones del juego:\nMovimiento con las flechas izquierda y derecha\nAtrapa mates y bananas. Evita el café.\nBanana: 2 puntos\nMate: 4 puntos\nCafé: -15 puntos',
+      ['"El mono loco"\nInstrucciones del juego:\nMovimiento con las teclas "a" y "d".\nAtrapa mates y bananas. Evita el café.\nBanana: 2 puntos\nMate: 4 puntos\nCafé: -15 puntos',
        'Empezar', 'Empezar, no te queda otra', 'mono-vivo.jfif', 'mono-instrucciones'],
         ['Game Over\nEl mono murió de sobredosis de café.\nPuede que tu juego sea demasiado difícil.',
         'No me la contes', 'Sorry mono', 'mono-muerto.jfif', 'mono-muerto-0'],

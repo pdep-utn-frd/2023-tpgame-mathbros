@@ -151,7 +151,7 @@ class EstadoNoJuego inherits Estado {
 	
 	override method transicion() {
 		juego.reiniciarPuntaje()
-		2.times({juego.incrementarPuntaje()})
+		2.times{i => juego.incrementarPuntaje()}
 		super()
 	}
 }
@@ -160,7 +160,7 @@ class EstadoBuenJuego inherits Estado {
 	
 	override method transicion() {
 		juego.reiniciarPuntaje()
-		3.times({juego.incrementarPuntaje()})
+		3.times{i => juego.incrementarPuntaje()}
 		super()
 	}
 }
@@ -168,7 +168,7 @@ class EstadoBuenJuego inherits Estado {
 class EstadoEstudioEficiente inherits Estado {
 	
 	override method transicion() {
-		5.times({juego.incrementarPuntaje()})
+		5.times{i => juego.incrementarPuntaje()}
 		super()
 	}
 }
@@ -340,6 +340,10 @@ const videojuego2_2 = new EstadoBuenJuego(imageID = "videojuego-2")
 const videojuego2_bombas = new Estado(imageID = "videojuego-bombas")
 const videojuego2_ranas = new Estado(imageID = "videojuego-ranas")
 
+const llaman_puerta_0_j = new Estado(imageID = "llaman-puerta-0", audio = "alooo", musica = [terror, terror])
+const llaman_puerta_1_j = new Estado(imageID = "llaman-puerta-1")
+const llaman_puerta_2_j = new Estado(imageID = "llaman-puerta-2", audio = "puerta-abre")
+
 /** Cortar la llamada */
 /** Ruptura ending */
 const telefono_16 = new EstadoFinal(imageID = "telefono-16", audio = "ruptura-ending")
@@ -426,6 +430,8 @@ const ejercicio_7 = new Estado(imageID = "ejercicio-1")
 
 /** Trabajar en tu proyecto */
 const videojuego_3 = new Estado(imageID = "videojuego-3", musica = [minijuego, silence])
+/** ... */
+
 const leche = new Estado(imageID = "leche", audio = "fridge")
 const edulcorante = new Estado(imageID = "edulcorante", audio = "drop-bounce-plastic-bottle")
 const salvar_cafe = new Estado(imageID = "salvar-cafe", musica = [silence, hero])
@@ -453,12 +459,37 @@ const tocan_puerta_0 = new Estado(imageID = "tocan-puerta-0", audio = "toctoc", 
 const abrir_puerta_0 = new Estado(imageID = "abrir-puerta-0")
 const abrir_puerta_1 = new Estado(imageID = "abrir-puerta-1", audio = "puerta-abre", musica = [terror, silence])
 const filosofia_ending = new EstadoFinal(imageID = "filosofia-ending", audio = "filosofia-ending")
+
+/** Sueño (examen) */
 const abrir_puerta_2 = new Estado(imageID = "abrir-puerta-2", audio = "muy-bien", musica = [terror, terror])
 const facu_aula = new Estado(imageID = "facu-aula", audio = "campana")
-const facu_recorrer = new Estado(imageID = "facu-recorrer")
 const facu_vaso = new Estado(imageID = "facu-vaso")
+
+/** Agarrarlo */
 const dilema_supremo = new Estado(imageID = "dilema-supremo")
+
+/** Papel y cartón */
+/** Fin del mundo ending */
+const fin_del_mundo_ending = new EstadoFinal(imageID = "fin-del-mundo-ending")
+
+/** Orgánicos */
+const messi_ending = new EstadoFinal(imageID = "messi-ending")
+
+/** Ignorarlo */
 const anti_ecologimo_ending = new EstadoFinal(imageID = "anti-ecologimo-ending", audio = "anti-ecologismo-ending")
+
+/** Sueño (juego) */
+const abrir_puerta_2_j = new Estado(imageID = "abrir-puerta-2", audio = "muy-bien", musica = [terror, terror])
+const facu_aula_j = new Estado(imageID = "facu-aula", audio = "campana")
+const facu_vaso_j = new Estado(imageID = "facu-vaso")
+
+/** Agarrarlo */
+const dilema_supremo_j = new Estado(imageID = "dilema-supremo")
+
+/** Orgánicos */
+const messi_ending_j = new EstadoFinal(imageID = "messi-ending")
+
+
 const no_abrir_puerta_0 = new Estado(imageID = "no-abrir-puerta-0", audio = "toctoc-1")
 const no_abrir_puerta_1 = new Estado(imageID = "no-abrir-puerta-1", audio = "toctoc-2", musica = [silence, terror])
 const no_abrir_puerta_2 = new Estado(imageID = "no-abrir-puerta-2")
@@ -474,6 +505,8 @@ const corte_luz = new Estado(imageID = "corte-luz", audio = "la-puta-madre-se-co
 /** ... */
 /** Mate ending */
 const mate_ending = new EstadoFinal(imageID = "mate-ending", musica = [what_you_deserve, what_you_deserve])
+
+/** Juego mono */
 const mono_instrucciones = new Estado(imageID="mono-instrucciones")
 const minijuego_0 = new EstadoMinijuego(imageID = "minijuego", audio="monomovimiento")
 const mono_muerto_0 = new Estado(imageID = "mono-muerto-0", musica=[minijuego, minijuego])
@@ -482,6 +515,7 @@ const mono_muerto_1 = new Estado(imageID = "mono-muerto-1", musica=[minijuego, m
 /** Día 2 */
 
 /** Examen */
+const examen_0_sueno = new Estado(imageID = "examen-0-sueno", audio = "gallo")
 const examen_0 = new Estado(imageID = "examen-0", audio = "gallo")
 const examen_1 = new Estado(imageID = "examen-1", musica = [silence, untitled])
 
@@ -520,6 +554,7 @@ const recursa_ending = new EstadoFinal(imageID = "recursa-ending")
 const exament_ending = new EstadoFinal(imageID = "exament-ending", audio = "exament-ending", musica = [untitled, untitled])
 
 /** Juego */
+const juego_0_sueno = new Estado(imageID = "juego-0-sueno", audio = "gallo")
 const juego_0 = new Estado(imageID = "juego-0", audio = "gallo")
 const final_juego_0 = new Estado(imageID = "final-juego-0")
 const final_juego_1 = new Estado(imageID = "final-juego-1", audio = "1-muy-buenas-tardes-a-todos", musica = [kevin, kevin])
