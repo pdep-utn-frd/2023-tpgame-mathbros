@@ -27,6 +27,7 @@ const drive = game.sound("assets/drive.mp3")
 const untitled = game.sound("assets/untitled.mp3")
 const eminem = game.sound("assets/till-i-collapse.mp3")
 const kevin2 = game.sound("assets/volatile-reaction.mp3")
+const evanescence = game.sound("assets/bring-me-to-life.mp3")
 
 
 object juego {
@@ -113,7 +114,7 @@ object juego {
 		llaman_puerta_1.definirTransiciones([llaman_puerta_2, llaman_puerta_2])
 		llaman_puerta_2.definirTransiciones([filosofia_ending, abrir_puerta_2])
 
-		videojuego2_1.definirTransiciones([mono_instrucciones2, videojuego_2])
+		videojuego2_1.definirTransiciones([mono_instrucciones2, videojuego2_2])
 		
 		mono_instrucciones2.definirTransiciones([minijuego2_0, minijuego2_0])
 		minijuego2_0.definirTransiciones([])
@@ -186,7 +187,20 @@ object juego {
 		ejercicio_6.definirTransiciones([ejercicio_7, ejercicio_7])
 		ejercicio_7.definirTransiciones([ir_a_dormir_examen, ir_a_dormir_examen])
 		
-		videojuego_3.definirTransiciones([mono_instrucciones, to_be_continued])
+		videojuego_3.definirTransiciones([mono_instrucciones3, videojuego_raycasting_0])
+		
+		videojuego_raycasting_0.definirTransiciones([videojuego_raycasting_1, videojuego_raycasting_1])
+		videojuego_raycasting_1.definirTransiciones([videojuego_raycasting_2, chad_ending2])
+				
+		videojuego_raycasting_2.definirTransiciones([juego_0, juego_0])
+
+		mono_instrucciones3.definirTransiciones([minijuego3_0, minijuego3_0])
+		minijuego3_0.definirTransiciones([])
+		
+		mono_muerto3_0.definirTransiciones([ir_a_dormir_juego, ir_a_dormir_juego])
+		
+		mono_muerto3_1.definirTransiciones([ir_a_dormir_juego, ir_a_dormir_juego])
+		
 		leche.definirTransiciones([edulcorante, edulcorante])
 		edulcorante.definirTransiciones([salvar_cafe, aceptar_derrota])
 		salvar_cafe.definirTransiciones([arrepentimiento, spiderman_ending])
@@ -194,9 +208,19 @@ object juego {
 		cobrador_0.definirTransiciones([cobrador_ending, cobrador_salvado])
 		cobrador_ending.definirTransiciones([creditos, creditos])
 		cobrador_salvado.definirTransiciones([cafe, mate])
+		
 		aceptar_derrota.definirTransiciones([derrame_escritorio, derrame_compu])
-		derrame_compu.definirTransiciones([to_be_continued, compu_caida])
+		
+		derrame_escritorio.definirTransiciones([derrame_escritorio_1, desesperanza_ending])
+		
+		derrame_escritorio_1.definirTransiciones([examen_0, examen_0])
+		
+		derrame_compu.definirTransiciones([derrame_compu_1, compu_caida])
+		
+		derrame_compu_1.definirTransiciones([juego_0, juego_0])
+		
 		compu_caida.definirTransiciones([suicidio_ending, zombie_ending])
+		
 		libertad_ending.definirTransiciones([creditos, creditos])
 		vagabundo_ending.definirTransiciones([creditos, creditos])
 		spiderman_ending.definirTransiciones([creditos, creditos])
@@ -218,13 +242,13 @@ object juego {
 		facu_aula.definirTransiciones([facu_vaso, facu_vaso])
 		facu_vaso.definirTransiciones([dilema_supremo, anti_ecologimo_ending])
 		dilema_supremo.definirTransiciones([fin_del_mundo_ending, messi_ending])
-		messi_ending.definirTransiciones([examen_0, examen_0])
+		messi_ending.definirTransiciones([examen_0_sueno, examen_0_sueno])
 		
 		abrir_puerta_2_j.definirTransiciones([facu_aula_j, facu_aula_j])
 		facu_aula_j.definirTransiciones([facu_vaso_j, facu_vaso_j])
 		facu_vaso_j.definirTransiciones([dilema_supremo_j, anti_ecologimo_ending])
-		dilema_supremo_j.definirTransiciones([fin_del_mundo_ending, messi_ending])
-		messi_ending_j.definirTransiciones([juego_0, juego_0])		
+		dilema_supremo_j.definirTransiciones([fin_del_mundo_ending, messi_ending_j])
+		messi_ending_j.definirTransiciones([juego_0_sueno, juego_0_sueno])		
 		
 		no_abrir_puerta_0.definirTransiciones([abrir_puerta_0, no_abrir_puerta_1])
 		no_abrir_puerta_1.definirTransiciones([abrir_puerta_0, no_abrir_puerta_2])
@@ -236,15 +260,21 @@ object juego {
 		mono_instrucciones.definirTransiciones([minijuego_0, minijuego_0])
 		minijuego_0.definirTransiciones([])
 		
+		mono_muerto_0.definirTransiciones([ir_a_dormir_juego, ir_a_dormir_juego])
+		
+		mono_muerto_1.definirTransiciones([ir_a_dormir_juego, ir_a_dormir_juego])
+		
 		videojuego_2.definirTransiciones([videojuego_bombas, videojuego_ranas])
 
-		videojuego2_bombas.definirTransiciones([llaman_puerta_0_j, llaman_puerta_0_j])
-		videojuego2_ranas.definirTransiciones([llaman_puerta_0_j, llaman_puerta_0_j])
+		videojuego_bombas.definirTransiciones([ir_a_dormir_juego, ir_a_dormir_juego])
+		videojuego_ranas.definirTransiciones([ir_a_dormir_juego, ir_a_dormir_juego])
 		
 		chad_ending.definirTransiciones([creditos, creditos])
 		
 		mate_quemao.definirTransiciones([corte_luz, corte_luz])
+		corte_luz.definirTransiciones([mate_ending, mate_ending])
 		
+		examen_0_sueno.definirTransiciones([examen_1, examen_1])
 		examen_0.definirTransiciones([examen_1, examen_1])
 		examen_1.definirTransiciones([examen_2, exament_ending])
 		examen_2.definirTransiciones([examen_3, examen_3])
@@ -265,8 +295,9 @@ object juego {
 		examen_6.definirTransiciones([examen_7, examen_7])
 		examen_7.definirTransiciones([examen_8, examen_8])
 		examen_8.definirTransiciones([examen_9, examen_9])
-		examen_9.definirTransiciones([to_be_continued, to_be_continued])
+		examen_9.definirTransiciones([recursa_ending, recursa_ending, recursa_ending, recursa_ending, recursa_ending, recursa_ending, recursa_ending, recursa_ending, recursa_ending, recursa_ending, recursa_ending, recursa_ending, recursa_ending, regulariza_ending, regulariza_ending, regulariza_ending, regulariza_ending, regulariza_ending, promocion_ending, promocion_ending, promocion_ending, promocion_ending, promocion_ending, promocion_ending])
 		
+		juego_0_sueno.definirTransiciones([final_juego_0, final_juego_0])
 		juego_0.definirTransiciones([final_juego_0, final_juego_0])
 		final_juego_0.definirTransiciones([final_juego_1, final_juego_1])
 		final_juego_1.definirTransiciones([final_juego_2, final_juego_2])
@@ -278,8 +309,18 @@ object juego {
 		final_juego_7.definirTransiciones([final_juego_8, final_juego_8])
 		final_juego_8.definirTransiciones([final_juego_9, final_juego_9])
 		final_juego_9.definirTransiciones([final_juego_10, final_juego_10])
+		final_juego_10.definirTransiciones([recursa_juego_raycasting, recursa_juego_mono, regulariza_juego, promocion_juego])
+
+		promocion_juego.definirTransiciones([promocion_juego_ending, promocion_juego_ending])
 		
+		recursa_juego_raycasting.definirTransiciones([recursa_juego_ending, recursa_juego_ending])
+		
+		recursa_juego_mono.definirTransiciones([recursa_juego_ending, recursa_juego_ending])
+		
+		regulariza_juego.definirTransiciones([regulariza_juego_ending, regulariza_juego_ending])
+				
 		to_be_continued.definirTransiciones([creditos, creditos])
+		
 		creditos.definirTransiciones([quiz_0, quiz_0])
 	}
 	
@@ -314,11 +355,12 @@ object juego {
 		zombie.volume(0.1)
 		my_way.volume(0.1)
 		tension.volume(0.4)
-		what_you_deserve.volume(0.1)
+		what_you_deserve.volume(0.05)
 		drive.volume(0.1)
 		untitled.volume(0.1)
 		eminem.volume(0.07)
 		kevin2.volume(0.15)
+		evanescence.volume(0.1)
 		/** Reproduce la música del quiz */
 		game.schedule(0, {quiz.play()})
 		
