@@ -1,6 +1,7 @@
 import wollok.game.*
 import juego.*
 import minijuego.*
+import musica.*
 
 /** Estados de un autómata */
 class Estado {
@@ -24,13 +25,9 @@ class Estado {
 	/** Método que reproduce o pausa la música */
 	method poneMusica() {
 		/** Variable que obtiene el objeto musical */
-		const music = self.musica().get(juego.playerInput())
-		/** Si está pausada, la despausa */
-		if (music.paused()){game.schedule(0, {music.resume()})}
-		/** Si se está reproduciendo, la pausa */
-		else if (music.played()) {game.schedule(0, {music.pause()})}
-		/** Si no, la reproduce */
-		else {game.schedule(0, {music.play()})}
+		const cancion = self.musica().get(juego.playerInput())
+		
+		cancion.alternar()
 	}
 	
 	/** Reproduce un sonido de transición */
@@ -109,17 +106,27 @@ class EstadoCreditos inherits Estado {
 	
 	/** Reinicia el puntaje */
 	override method transicion() {
+    if (juego.playerInput() == 1) {
+			game.stop()
+	  }
 		juego.reiniciarPuntaje()
 		super()
+		juego.inicializarMusica()
+		quiz.alternar()
 	}
 }
 
 /** Créditos */
-const creditos = new EstadoCreditos(imageID = "creditos", audio = "in-the-end", musica = [quiz, quiz])
+const creditos = new EstadoCreditos(imageID = "creditos", musica = [in_the_end, in_the_end])
 
 class EstadoFinal inherits Estado {
 	override method estadoSiguiente() {
 		juego.cambioEstado(creditos)
+	}
+
+	override method poneMusica() {
+		super()
+		game.schedule(0, {in_the_end.alternar()})
 	}
 }
 
@@ -615,7 +622,4 @@ const recursa_juego_ending = new EstadoFinal(imageID = "recursa-juego-ending", a
 
 /** To be continued... */
 const to_be_continued = new Estado(imageID = "to-be-continued", audio = "roundabout")
-
-
-
 

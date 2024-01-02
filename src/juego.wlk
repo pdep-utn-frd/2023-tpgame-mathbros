@@ -1,34 +1,12 @@
 import wollok.game.*
 import tree.*
+import musica.*
 
 /** La pantalla tiene un atributo posición y una imagen */
 object pantalla {
 	var property position = game.at(0,0)
 	var property image = "assets/imagen-quiz-0.png"
 }
-
-
-/** Música */
-const silence = game.sound("assets/silence.mp3")
-const quiz = game.sound("assets/dreamscape.mp3")
-const terror = game.sound("assets/horror-background-atmosphere.mp3")
-const drama = game.sound("assets/gnossienne.mp3")
-const flaco = game.sound("assets/amenabar.mp3")
-const kevin = game.sound("assets/not-as-it-seems.mp3")
-const minijuego = game.sound("assets/minijuego.mp3")
-const hero = game.sound("assets/hero.mp3")
-const chad = game.sound("assets/can-you-feel-my-heart.mp3")
-const last_resort = game.sound("assets/last-resort.mp3")
-const zombie = game.sound("assets/zombie.mp3")
-const my_way = game.sound("assets/my-way.mp3")
-const tension = game.sound("assets/disturbing-call.mp3")
-const what_you_deserve = game.sound("assets/what-you-deserve.mp3")
-const drive = game.sound("assets/drive.mp3")
-const untitled = game.sound("assets/untitled.mp3")
-const eminem = game.sound("assets/till-i-collapse.mp3")
-const kevin2 = game.sound("assets/volatile-reaction.mp3")
-const evanescence = game.sound("assets/bring-me-to-life.mp3")
-
 
 object juego {
 	/** Variable auxilar que almacena 0 ("Left") o 1 ("Right") dependiendo de la última tecla que presionó el jugador */
@@ -39,7 +17,31 @@ object juego {
 	var property sonidoPantalla = game.sound("assets/silence.mp3")
 	/** Variable que apunta al estado actual */
 	var property estadoActual = quiz_0
-	
+
+	method inicializarMusica() {
+		
+		silence.inicializar()
+		quiz.inicializar()
+		terror.inicializar()
+		kevin.inicializar()
+		minijuego.inicializar()
+		hero.inicializar()
+		chad.inicializar()
+		last_resort.inicializar()
+		zombie.inicializar()
+		my_way.inicializar()
+		tension.inicializar()
+		what_you_deserve.inicializar()
+		untitled.inicializar()
+		eminem.inicializar()
+		kevin2.inicializar()
+		evanescence.inicializar()
+		in_the_end.inicializar()
+		
+		/** Configura la música para que suene en loop */
+  		silence.shouldLoop(true)
+		quiz.shouldLoop(true)
+	}
 	
 	/** Método para incrementar el puntaje */
 	method incrementarPuntaje() {
@@ -73,7 +75,7 @@ object juego {
 	}
 	
 	/** Método para iniciar las transiciones de los estados */
-	method iniciarTransiciones() {
+	method inicializarTransiciones() {
 		quiz_0.definirTransiciones([quiz_1, quiz_1])
 		quiz_1.definirTransiciones([quiz_2, quiz_2])
 		quiz_2.definirTransiciones([quiz_3, quiz_3])
@@ -338,32 +340,12 @@ object juego {
   		/** Agrega la imagen de la pantalla */
   		game.addVisual(pantalla)
   		
-  		self.iniciarTransiciones()
-  		
-  		/** Configura la música para que suene en loop */
-  		silence.shouldLoop(true)
-		quiz.shouldLoop(true)
-		/** Ajusta el volumen de los sonidos */
-		quiz.volume(0.03)
-		terror.volume(0.25)
-		drama.volume(0.10)
-		flaco.volume(0.07)
-		kevin.volume(0.15)
-		hero.volume(0.1)
-		chad.volume(0.1)
-		last_resort.volume(0.1)
-		zombie.volume(0.1)
-		my_way.volume(0.1)
-		tension.volume(0.4)
-		what_you_deserve.volume(0.05)
-		drive.volume(0.1)
-		untitled.volume(0.1)
-		eminem.volume(0.07)
-		kevin2.volume(0.15)
-		evanescence.volume(0.1)
-		/** Reproduce la música del quiz */
-		game.schedule(0, {quiz.play()})
+  		self.inicializarTransiciones()
+
+		self.inicializarMusica()
 		
+		/** Reproduce la música del quiz */
+		game.schedule(0, {quiz.alternar()})
 		
 		/** Cuando el jugador presiona "Left" */
 		keyboard.left().onPressDo({

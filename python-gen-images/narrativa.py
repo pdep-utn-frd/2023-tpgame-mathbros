@@ -347,7 +347,7 @@ lista = [
        'Dale, no pasa nada', '¡Qué manga de vagos!', 'black.jpg', 'to-be-continued'],
       # Creditos
       ['Juego hecho, realizado y efectuado por:\nJoaquin Terzano\nMariano Baldovino\nGuillermo Salaberry\n...\nCon el apoyo, la asistencia y colaboración de:\nChatGPT\nBingIA\nGitHubCopilot\nJohn Loquendo\nelxokas\nDrossRotzank',
-       'Ta bueno', 'Juegazo', 'end.jfif', 'creditos'],
+       'Volver a jugar', 'Salir del juego', 'end.jfif', 'creditos'],
       # Minijuego mono
       ['"El mono loco"\nInstrucciones del juego:\nMovimiento con las teclas "a" y "d".\nAtrapa mates y bananas. Evita el café.\nBanana: 2 puntos\nMate: 4 puntos\nCafé: -15 puntos',
        'Empezar', 'Empezar, no te queda otra', 'mono-vivo.jfif', 'mono-instrucciones'],
